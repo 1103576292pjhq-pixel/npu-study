@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="560" viewBox="0 0 1180 560">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155" />
+    </marker>
+    <style>
+      .title { font: 700 30px "Microsoft YaHei", "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+      .label { font: 600 18px "Microsoft YaHei", "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+      .text { font: 16px "Microsoft YaHei", "Segoe UI", Arial, sans-serif; fill: #1e293b; }
+      .tiny { font: 14px "Microsoft YaHei", "Segoe UI", Arial, sans-serif; fill: #334155; }
+      .box { rx: 18; ry: 18; stroke: #475569; stroke-width: 2; }
+      .arrow { stroke: #334155; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1180" height="560" fill="#f8fafc" />
+  <text x="48" y="52" class="title">多级 IR 到目标工件的连续流水</text>
+  <text x="48" y="82" class="tiny">回答的问题：每一层 IR 多承诺了什么，为什么不能“一次翻到指令”。</text>
+
+  <rect x="50" y="145" width="170" height="170" class="box" fill="#dbeafe" />
+  <text x="91" y="182" class="label">框架 / 导入</text>
+  <text x="81" y="216" class="text">PyTorch</text>
+  <text x="81" y="244" class="text">TensorFlow</text>
+  <text x="81" y="272" class="text">ONNX</text>
+  <text x="81" y="300" class="tiny">保留模型语义与图结构</text>
+
+  <rect x="270" y="115" width="190" height="200" class="box" fill="#e0f2fe" />
+  <text x="318" y="152" class="label">Graph IR</text>
+  <text x="301" y="186" class="text">shape / 依赖 / 融合模式</text>
+  <text x="301" y="214" class="text">子图划分 / 常量折叠</text>
+  <text x="301" y="242" class="text">layout 调整</text>
+  <text x="301" y="284" class="tiny">承诺：算子语义还在</text>
+
+  <rect x="510" y="95" width="220" height="220" class="box" fill="#dcfce7" />
+  <text x="566" y="132" class="label">Loop / Tensor IR</text>
+  <text x="541" y="166" class="text">tile / split / reorder</text>
+  <text x="541" y="194" class="text">buffer 生命周期</text>
+  <text x="541" y="222" class="text">pipeline / layout / locality</text>
+  <text x="541" y="264" class="tiny">承诺：开始暴露硬件偏好</text>
+  <text x="541" y="288" class="tiny">TVM 锚点：TE / TensorIR</text>
+
+  <rect x="780" y="115" width="190" height="200" class="box" fill="#fef3c7" />
+  <text x="811" y="152" class="label">Target / Command</text>
+  <text x="811" y="186" class="text">指令 / 描述符 / DMA</text>
+  <text x="811" y="214" class="text">ABI / 打包格式</text>
+  <text x="811" y="242" class="text">kernel 边界</text>
+  <text x="811" y="284" class="tiny">承诺：具体到目标设备</text>
+
+  <rect x="1020" y="145" width="120" height="170" class="box" fill="#fee2e2" />
+  <text x="1048" y="182" class="label">工件</text>
+  <text x="1042" y="216" class="text">runtime.Module</text>
+  <text x="1042" y="244" class="text">binary</text>
+  <text x="1042" y="272" class="text">metadata</text>
+
+  <path d="M220 230 H270" class="arrow" />
+  <path d="M460 215 H510" class="arrow" />
+  <path d="M730 215 H780" class="arrow" />
+  <path d="M970 230 H1020" class="arrow" />
+
+  <rect x="140" y="380" width="900" height="115" class="box" fill="#eef2ff" />
+  <text x="175" y="420" class="label">为什么必须分层</text>
+  <text x="175" y="452" class="text">如果停在 Graph IR：知道语义，但看不见 tile / buffer / DMA，无法对齐阵列和内存层级。</text>
+  <text x="175" y="480" class="text">如果直接跳到 Target：能吐命令，却很难回溯“为什么这个子图、这个 layout、这个内存计划会更好”。</text>
+
+  <text x="875" y="118" class="tiny">TVM 锚点：</text>
+  <text x="875" y="140" class="tiny">Target Translation</text>
+  <text x="875" y="162" class="tiny">device codegen</text>
+
+  <text x="1018" y="356" class="tiny">下一步进入</text>
+  <text x="1018" y="378" class="tiny">runtime / driver</text>
+</svg>

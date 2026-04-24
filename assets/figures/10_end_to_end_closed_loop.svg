@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="620" viewBox="0 0 1180 620">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155" />
+    </marker>
+    <style>
+      .title { font: 700 30px "Microsoft YaHei", "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+      .label { font: 600 18px "Microsoft YaHei", "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+      .text { font: 16px "Microsoft YaHei", "Segoe UI", Arial, sans-serif; fill: #1e293b; }
+      .tiny { font: 14px "Microsoft YaHei", "Segoe UI", Arial, sans-serif; fill: #334155; }
+      .box { rx: 18; ry: 18; stroke: #475569; stroke-width: 2; }
+      .arrow { stroke: #334155; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1180" height="620" fill="#f8fafc" />
+  <text x="48" y="52" class="title">边缘 INT8 CNN 案例的系统闭环</text>
+  <text x="48" y="82" class="tiny">回答的问题：前九卷为什么不是并列知识，而是一条会反压回前面的设计链。</text>
+
+  <rect x="70" y="135" width="210" height="90" class="box" fill="#dbeafe" />
+  <text x="103" y="185" class="label">场景目标</text>
+  <text x="103" y="210" class="tiny">20 ms / 2 W / 边缘单核</text>
+
+  <rect x="340" y="135" width="210" height="90" class="box" fill="#e0f2fe" />
+  <text x="373" y="185" class="label">工作负载</text>
+  <text x="373" y="210" class="tiny">卷积主导、规则乘加、搬运重</text>
+
+  <rect x="610" y="135" width="210" height="90" class="box" fill="#dcfce7" />
+  <text x="646" y="185" class="label">计算核心</text>
+  <text x="646" y="210" class="tiny">PE array + local buffer</text>
+
+  <rect x="880" y="135" width="220" height="90" class="box" fill="#fef3c7" />
+  <text x="930" y="185" class="label">数据流 / SRAM / DMA</text>
+  <text x="930" y="210" class="tiny">tile 是否真的喂得饱阵列</text>
+
+  <rect x="140" y="300" width="230" height="90" class="box" fill="#fee2e2" />
+  <text x="187" y="350" class="label">量化 / 融合</text>
+  <text x="187" y="375" class="tiny">把数据路径整体压轻</text>
+
+  <rect x="475" y="300" width="230" height="90" class="box" fill="#ede9fe" />
+  <text x="536" y="350" class="label">编译器</text>
+  <text x="536" y="375" class="tiny">IR / partition / memory plan</text>
+
+  <rect x="810" y="300" width="230" height="90" class="box" fill="#fae8ff" />
+  <text x="862" y="350" class="label">runtime / 驱动</text>
+  <text x="862" y="375" class="tiny">装载、提交、同步、回调</text>
+
+  <rect x="280" y="470" width="250" height="95" class="box" fill="#ecfccb" />
+  <text x="335" y="520" class="label">性能 / 功耗 / 热</text>
+  <text x="335" y="546" class="tiny">看 sustained，而不只看首帧</text>
+
+  <rect x="640" y="470" width="260" height="95" class="box" fill="#ffe4e6" />
+  <text x="705" y="520" class="label">安全 / 扩展</text>
+  <text x="705" y="546" class="tiny">权限边界、多核、Chiplet</text>
+
+  <path d="M280 180 H340" class="arrow" />
+  <path d="M550 180 H610" class="arrow" />
+  <path d="M820 180 H880" class="arrow" />
+
+  <path d="M990 225 C990 270, 930 290, 925 300" class="arrow" />
+  <path d="M880 345 H705" class="arrow" />
+  <path d="M475 345 H370" class="arrow" />
+  <path d="M255 300 C220 270, 200 250, 205 225" class="arrow" />
+
+  <path d="M370 390 C395 430, 410 445, 410 470" class="arrow" />
+  <path d="M820 390 C795 430, 770 445, 770 470" class="arrow" />
+
+  <path d="M640 517 H530" class="arrow" />
+  <path d="M280 517 C190 517, 120 470, 120 360 C120 260, 150 220, 170 225" class="arrow" />
+
+  <text x="925" y="278" class="tiny">系统最怕这里断粮</text>
+  <text x="720" y="281" class="tiny">软件栈把硬件偏好落成可执行计划</text>
+  <text x="525" y="612" class="tiny">底层测得的性能、功耗、安全边界，会反过来改前面的架构与软件选择。</text>
+</svg>

@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="680" viewBox="0 0 1180 680">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155" />
+    </marker>
+    <style>
+      .title { font: 700 30px "Microsoft YaHei", "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+      .label { font: 600 18px "Microsoft YaHei", "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+      .text { font: 16px "Microsoft YaHei", "Segoe UI", Arial, sans-serif; fill: #1e293b; }
+      .tiny { font: 14px "Microsoft YaHei", "Segoe UI", Arial, sans-serif; fill: #334155; }
+      .box { rx: 18; ry: 18; stroke: #475569; stroke-width: 2; }
+      .arrow { stroke: #334155; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .grid { stroke: #cbd5e1; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <rect width="1180" height="680" fill="#f8fafc" />
+  <text x="48" y="52" class="title">卷积 tile 的供数与三重流水</text>
+  <text x="48" y="82" class="tiny">回答的问题：tile 怎样同时约束数据流、存储层级和 load/compute/store 重叠。</text>
+
+  <rect x="50" y="120" width="240" height="150" class="box" fill="#dbeafe" />
+  <text x="75" y="158" class="label">Loop / Tile 选择</text>
+  <text x="75" y="190" class="text">空间映射：`ow / oc` 铺到阵列</text>
+  <text x="75" y="220" class="text">时间映射：`ic / kh / kw` 按批推进</text>
+  <text x="75" y="250" class="text">目标：让复用留在片上</text>
+
+  <rect x="340" y="120" width="220" height="150" class="box" fill="#e2e8f0" />
+  <text x="372" y="158" class="label">Global SRAM</text>
+  <text x="372" y="190" class="text">输入 tile</text>
+  <text x="372" y="220" class="text">权重 tile</text>
+  <text x="372" y="250" class="text">输出 / 中间结果</text>
+
+  <rect x="620" y="120" width="220" height="150" class="box" fill="#dcfce7" />
+  <text x="664" y="158" class="label">Local Buffer</text>
+  <text x="664" y="190" class="text">更小工作集</text>
+  <text x="664" y="220" class="text">窗口复用</text>
+  <text x="664" y="250" class="text">避免共享总线拥塞</text>
+
+  <rect x="900" y="120" width="220" height="150" class="box" fill="#fef3c7" />
+  <text x="956" y="158" class="label">PE Array</text>
+  <text x="952" y="190" class="text">MAC / accumulate</text>
+  <text x="952" y="220" class="text">部分和尽量本地保留</text>
+  <text x="952" y="250" class="text">等数据就会掉利用率</text>
+
+  <path d="M290 195 H340" class="arrow" />
+  <path d="M560 195 H620" class="arrow" />
+  <path d="M840 195 H900" class="arrow" />
+
+  <text x="92" y="308" class="label">三重流水线</text>
+  <text x="92" y="336" class="tiny">同一时刻，不同 tile 处在不同阶段，目标是把等待藏进重叠。</text>
+
+  <line x1="180" y1="380" x2="1080" y2="380" class="grid" />
+  <line x1="180" y1="450" x2="1080" y2="450" class="grid" />
+  <line x1="180" y1="520" x2="1080" y2="520" class="grid" />
+  <line x1="180" y1="590" x2="1080" y2="590" class="grid" />
+
+  <line x1="180" y1="380" x2="180" y2="590" class="grid" />
+  <line x1="330" y1="380" x2="330" y2="590" class="grid" />
+  <line x1="480" y1="380" x2="480" y2="590" class="grid" />
+  <line x1="630" y1="380" x2="630" y2="590" class="grid" />
+  <line x1="780" y1="380" x2="780" y2="590" class="grid" />
+  <line x1="930" y1="380" x2="930" y2="590" class="grid" />
+  <line x1="1080" y1="380" x2="1080" y2="590" class="grid" />
+
+  <text x="116" y="425" class="label">Tile t</text>
+  <text x="102" y="495" class="label">Tile t+1</text>
+  <text x="102" y="565" class="label">Tile t+2</text>
+
+  <text x="224" y="365" class="label">slot 1</text>
+  <text x="374" y="365" class="label">slot 2</text>
+  <text x="524" y="365" class="label">slot 3</text>
+  <text x="674" y="365" class="label">slot 4</text>
+  <text x="824" y="365" class="label">slot 5</text>
+  <text x="974" y="365" class="label">slot 6</text>
+
+  <rect x="190" y="395" width="130" height="40" rx="12" ry="12" fill="#bfdbfe" />
+  <text x="234" y="420" class="text">load</text>
+  <rect x="340" y="395" width="130" height="40" rx="12" ry="12" fill="#bbf7d0" />
+  <text x="371" y="420" class="text">compute</text>
+  <rect x="490" y="395" width="130" height="40" rx="12" ry="12" fill="#fde68a" />
+  <text x="535" y="420" class="text">store</text>
+
+  <rect x="340" y="465" width="130" height="40" rx="12" ry="12" fill="#bfdbfe" />
+  <text x="384" y="490" class="text">load</text>
+  <rect x="490" y="465" width="130" height="40" rx="12" ry="12" fill="#bbf7d0" />
+  <text x="521" y="490" class="text">compute</text>
+  <rect x="640" y="465" width="130" height="40" rx="12" ry="12" fill="#fde68a" />
+  <text x="685" y="490" class="text">store</text>
+
+  <rect x="490" y="535" width="130" height="40" rx="12" ry="12" fill="#bfdbfe" />
+  <text x="534" y="560" class="text">load</text>
+  <rect x="640" y="535" width="130" height="40" rx="12" ry="12" fill="#bbf7d0" />
+  <text x="671" y="560" class="text">compute</text>
+  <rect x="790" y="535" width="130" height="40" rx="12" ry="12" fill="#fde68a" />
+  <text x="835" y="560" class="text">store</text>
+
+  <text x="912" y="432" class="tiny">如果下一 tile 没提前到位，</text>
+  <text x="912" y="454" class="tiny">compute 这格就会变成等待。</text>
+  <text x="912" y="502" class="tiny">真正吃满阵列，不是只看 MAC 数，</text>
+  <text x="912" y="524" class="tiny">而是看供数链路能否持续重叠。</text>
+</svg>

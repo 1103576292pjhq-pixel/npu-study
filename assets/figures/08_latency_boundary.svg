@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="560" viewBox="0 0 1180 560">
+  <defs>
+    <style>
+      .title { font: 700 30px "Microsoft YaHei", "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+      .label { font: 600 18px "Microsoft YaHei", "Segoe UI", Arial, sans-serif; fill: #0f172a; }
+      .text { font: 16px "Microsoft YaHei", "Segoe UI", Arial, sans-serif; fill: #1e293b; }
+      .tiny { font: 14px "Microsoft YaHei", "Segoe UI", Arial, sans-serif; fill: #334155; }
+      .box { rx: 18; ry: 18; stroke: #475569; stroke-width: 2; }
+      .line { stroke: #334155; stroke-width: 4; }
+    </style>
+  </defs>
+
+  <rect width="1180" height="560" fill="#f8fafc" />
+  <text x="48" y="52" class="title">冷启动、首帧与稳态的口径边界</text>
+  <text x="48" y="82" class="tiny">回答的问题：同一个 benchmark 数字，究竟包不包含 compile、load、first inference。</text>
+
+  <rect x="70" y="155" width="240" height="90" class="box" fill="#dbeafe" />
+  <text x="120" y="205" class="label">compile / build</text>
+  <text x="120" y="230" class="tiny">图编译、缓存生成、目标工件落地</text>
+
+  <rect x="330" y="155" width="240" height="90" class="box" fill="#dcfce7" />
+  <text x="382" y="205" class="label">load / init</text>
+  <text x="382" y="230" class="tiny">装载模型、创建 context、初始化 device</text>
+
+  <rect x="590" y="155" width="220" height="90" class="box" fill="#fef3c7" />
+  <text x="637" y="205" class="label">first inference</text>
+  <text x="637" y="230" class="tiny">第一次真正执行 NPU 推理</text>
+
+  <rect x="830" y="155" width="280" height="90" class="box" fill="#fee2e2" />
+  <text x="907" y="205" class="label">steady-state inference</text>
+  <text x="907" y="230" class="tiny">热启动后重复推理的常态区间</text>
+
+  <line x1="90" y1="310" x2="1100" y2="310" class="line" />
+  <text x="90" y="338" class="tiny">时间轴</text>
+
+  <rect x="70" y="360" width="740" height="52" rx="14" ry="14" fill="#bfdbfe" stroke="#1d4ed8" stroke-width="2" />
+  <text x="97" y="393" class="label">FEIL = compile + load/init + first inference</text>
+
+  <rect x="330" y="432" width="480" height="52" rx="14" ry="14" fill="#bbf7d0" stroke="#15803d" stroke-width="2" />
+  <text x="360" y="465" class="label">FIL = load/init + first inference</text>
+
+  <rect x="830" y="360" width="280" height="124" rx="18" ry="18" fill="#fff7ed" stroke="#c2410c" stroke-width="2" />
+  <text x="870" y="395" class="label">steady-state 指标</text>
+  <text x="870" y="425" class="text">不再包含 compile</text>
+  <text x="870" y="452" class="text">通常也不代表首次装载成本</text>
+
+  <text x="78" y="522" class="tiny">如果不把这三种边界分开，runtime 优化、cache 命中与平台对比会被混成一个数。</text>
+</svg>
