@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="230" viewBox="0 0 760 230">
+  <rect width="760" height="230" fill="#f8fafc"/>
+  <g font-family="Arial, sans-serif" font-size="17" fill="#111827">
+    <text x="35" y="35">同一批数字可以有不同形状</text>
+    <rect x="55" y="75" width="150" height="45" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="75" y="103">[1,2,3,4,5,6]</text>
+    <text x="238" y="104">reshape</text>
+    <text x="330" y="104">→</text>
+    <rect x="385" y="58" width="160" height="96" fill="#dcfce7" stroke="#16a34a"/>
+    <line x1="385" y1="106" x2="545" y2="106" stroke="#16a34a"/>
+    <text x="425" y="88">1 2 3</text>
+    <text x="425" y="136">4 5 6</text>
+    <text x="585" y="104">shape=[2,3]</text>
+    <text x="55" y="190" font-size="15">值没有变，摆放方式变了；后续算子的理解也可能变。</text>
+  </g>
+</svg>

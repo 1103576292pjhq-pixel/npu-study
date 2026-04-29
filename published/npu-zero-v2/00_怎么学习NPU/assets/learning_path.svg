@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="260" viewBox="0 0 900 260">
+  <rect width="900" height="260" fill="#f8fafc"/>
+  <style>
+    text{font-family:Arial,'Microsoft YaHei',sans-serif;fill:#172033}
+    .box{fill:#ffffff;stroke:#2563eb;stroke-width:2;rx:8}
+    .arrow{stroke:#475569;stroke-width:2;marker-end:url(#m)}
+    .small{font-size:14px}.title{font-size:20px;font-weight:700}.body{font-size:16px}
+  </style>
+  <defs><marker id="m" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#475569"/></marker></defs>
+  <text class="title" x="30" y="38">零基础学习 NPU 的主线</text>
+  <rect class="box" x="35" y="80" width="140" height="90"/>
+  <text class="body" x="63" y="116">具体数字</text>
+  <text class="small" x="54" y="144">像素、权重、分数</text>
+  <line class="arrow" x1="180" y1="125" x2="235" y2="125"/>
+  <rect class="box" x="240" y="80" width="140" height="90"/>
+  <text class="body" x="268" y="116">手算乘加</text>
+  <text class="small" x="267" y="144">一个输出怎么来</text>
+  <line class="arrow" x1="385" y1="125" x2="440" y2="125"/>
+  <rect class="box" x="445" y="80" width="140" height="90"/>
+  <text class="body" x="474" y="116">循环规则</text>
+  <text class="small" x="466" y="144">很多输出怎么来</text>
+  <line class="arrow" x1="590" y1="125" x2="645" y2="125"/>
+  <rect class="box" x="650" y="80" width="170" height="90"/>
+  <text class="body" x="696" y="116">硬件映射</text>
+  <text class="small" x="676" y="144">阵列、buffer、DMA</text>
+  <text class="small" x="35" y="218">学习顺序不是背术语，而是让每个硬件名词都能回到一个可手算的数字过程。</text>
+</svg>

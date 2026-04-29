@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="230" viewBox="0 0 760 230">
+  <rect width="760" height="230" fill="#f8fafc"/>
+  <g font-family="Arial, sans-serif" font-size="17" fill="#111827">
+    <text x="40" y="35">一个像素可以有多个通道值</text>
+    <rect x="70" y="75" width="90" height="90" fill="#fee2e2" stroke="#dc2626"/>
+    <text x="95" y="126">R=120</text>
+    <rect x="190" y="75" width="90" height="90" fill="#dcfce7" stroke="#16a34a"/>
+    <text x="215" y="126">G=80</text>
+    <rect x="310" y="75" width="90" height="90" fill="#dbeafe" stroke="#2563eb"/>
+    <text x="335" y="126">B=30</text>
+    <text x="445" y="120">→ 同一位置的像素向量 [120,80,30]</text>
+  </g>
+</svg>

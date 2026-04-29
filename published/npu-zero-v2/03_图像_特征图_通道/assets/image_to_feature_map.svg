@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="280" viewBox="0 0 760 280">
+  <rect width="760" height="280" fill="#ffffff"/>
+  <g font-family="Arial, sans-serif" font-size="16" fill="#111827">
+    <text x="40" y="35">输入图像通道经过卷积后变成特征图通道</text>
+    <rect x="65" y="75" width="120" height="120" fill="#fef2f2" stroke="#dc2626"/>
+    <text x="105" y="135">R</text>
+    <rect x="95" y="55" width="120" height="120" fill="#ecfdf5" stroke="#059669" opacity="0.85"/>
+    <text x="140" y="115">G</text>
+    <rect x="125" y="35" width="120" height="120" fill="#eff6ff" stroke="#2563eb" opacity="0.85"/>
+    <text x="170" y="95">B</text>
+    <text x="295" y="115">卷积核做乘加</text>
+    <text x="425" y="115">→</text>
+    <rect x="485" y="70" width="105" height="105" fill="#fef3c7" stroke="#d97706"/>
+    <text x="518" y="127">特征 0</text>
+    <rect x="610" y="70" width="105" height="105" fill="#ede9fe" stroke="#7c3aed"/>
+    <text x="643" y="127">特征 1</text>
+    <text x="65" y="230">输入通道来自图像颜色；输出通道来自模型学到的特征检测器。</text>
+  </g>
+</svg>
