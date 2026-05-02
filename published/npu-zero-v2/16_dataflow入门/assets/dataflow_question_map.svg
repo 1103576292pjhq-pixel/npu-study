@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="390" viewBox="0 0 940 390" role="img" aria-labelledby="title desc">
+  <title id="title">dataflow 回答的问题</title>
+  <desc id="desc">dataflow 关心数据从哪里来、在哪里停、给谁用、在哪里累加和何时写回。</desc>
+  <rect width="940" height="390" fill="#f8fafc"/>
+  <text x="470" y="42" text-anchor="middle" font-size="26" font-family="Arial, sans-serif" fill="#0f172a">dataflow 问的不是名字，而是移动规则</text>
+  <g font-family="Arial, sans-serif" font-size="18" fill="#1f2937">
+    <rect x="60" y="140" width="150" height="80" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+    <text x="135" y="174" text-anchor="middle">外部内存</text>
+    <text x="135" y="200" text-anchor="middle" font-size="15">数据从哪里来</text>
+    <rect x="270" y="140" width="150" height="80" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+    <text x="345" y="174" text-anchor="middle">片上 buffer</text>
+    <text x="345" y="200" text-anchor="middle" font-size="15">在哪里停</text>
+    <rect x="480" y="140" width="150" height="80" rx="14" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+    <text x="555" y="174" text-anchor="middle">PE 阵列</text>
+    <text x="555" y="200" text-anchor="middle" font-size="15">给谁使用</text>
+    <rect x="690" y="140" width="150" height="80" rx="14" fill="#fce7f3" stroke="#be185d" stroke-width="2"/>
+    <text x="765" y="174" text-anchor="middle">输出 buffer</text>
+    <text x="765" y="200" text-anchor="middle" font-size="15">何时写回</text>
+    <path d="M210 180 H270" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M420 180 H480" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M630 180 H690" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="470" y="290" text-anchor="middle" font-size="20" fill="#334155">核心判断：输入、权重、部分和，谁应该少动？</text>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L8,3 z" fill="#334155"/>
+    </marker>
+  </defs>
+</svg>

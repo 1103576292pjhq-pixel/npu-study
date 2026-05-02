@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="330" viewBox="0 0 780 330">
+  <rect width="780" height="330" fill="#ffffff"/>
+  <style>
+    .loop{fill:#fff7ed;stroke:#c05621;stroke-width:2;rx:8}
+    .buf{fill:#edfdfd;stroke:#2c7a7b;stroke-width:2;rx:8}
+    .pe{fill:#f0fff4;stroke:#2f855a;stroke-width:2;rx:8}
+    .txt{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:16px;fill:#1a202c}
+    .small{font-size:13px;fill:#2d3748}
+    .arrow{stroke:#4a5568;stroke-width:2;marker-end:url(#arrow)}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4a5568"/>
+    </marker>
+  </defs>
+  <rect x="30" y="35" width="145" height="70" class="loop"/>
+  <text x="103" y="64" text-anchor="middle" class="txt">oc</text>
+  <text x="103" y="87" text-anchor="middle" class="small">选择权重组</text>
+  <rect x="30" y="130" width="145" height="70" class="loop"/>
+  <text x="103" y="159" text-anchor="middle" class="txt">oh / ow</text>
+  <text x="103" y="182" text-anchor="middle" class="small">选择空间位置</text>
+  <rect x="30" y="225" width="145" height="70" class="loop"/>
+  <text x="103" y="254" text-anchor="middle" class="txt">ic / r / s</text>
+  <text x="103" y="277" text-anchor="middle" class="small">归约成 psum</text>
+  <rect x="285" y="35" width="155" height="70" class="buf"/>
+  <text x="363" y="64" text-anchor="middle" class="txt">Weight buffer</text>
+  <text x="363" y="87" text-anchor="middle" class="small">复用同一 oc</text>
+  <rect x="285" y="130" width="155" height="70" class="buf"/>
+  <text x="363" y="159" text-anchor="middle" class="txt">Input buffer</text>
+  <text x="363" y="182" text-anchor="middle" class="small">复用相邻窗口</text>
+  <rect x="285" y="225" width="155" height="70" class="buf"/>
+  <text x="363" y="254" text-anchor="middle" class="txt">Psum buffer</text>
+  <text x="363" y="277" text-anchor="middle" class="small">保留归约结果</text>
+  <rect x="570" y="105" width="150" height="115" class="pe"/>
+  <text x="645" y="145" text-anchor="middle" class="txt">PE array</text>
+  <text x="645" y="171" text-anchor="middle" class="small">并行哪些循环</text>
+  <text x="645" y="194" text-anchor="middle" class="small">驻留哪些数据</text>
+  <line x1="175" y1="70" x2="285" y2="70" class="arrow"/>
+  <line x1="175" y1="165" x2="285" y2="165" class="arrow"/>
+  <line x1="175" y1="260" x2="285" y2="260" class="arrow"/>
+  <line x1="440" y1="70" x2="570" y2="135" class="arrow"/>
+  <line x1="440" y1="165" x2="570" y2="165" class="arrow"/>
+  <line x1="440" y1="260" x2="570" y2="195" class="arrow"/>
+  <text x="390" y="315" text-anchor="middle" class="small">六重循环不是代码装饰；它直接对应权重、输入、部分和三类数据在片上的停留位置。</text>
+</svg>

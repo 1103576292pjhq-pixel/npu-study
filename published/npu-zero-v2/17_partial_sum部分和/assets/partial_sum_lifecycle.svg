@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="360" viewBox="0 0 960 360">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#2b5c7a"/>
+    </marker>
+    <style>
+      .title { font: 700 26px sans-serif; fill: #183247; }
+      .label { font: 600 17px sans-serif; fill: #183247; }
+      .small { font: 14px sans-serif; fill: #34495e; }
+      .box { fill: #f4fbff; stroke: #2b5c7a; stroke-width: 2; rx: 14; }
+      .sum { fill: #fff7e6; stroke: #b36b00; stroke-width: 2; rx: 14; }
+      .out { fill: #eaf8ed; stroke: #27733a; stroke-width: 2; rx: 14; }
+      .arrow { stroke: #2b5c7a; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="960" height="360" fill="#ffffff"/>
+  <text x="40" y="46" class="title">partial sum 生命周期：乘积流逐步长成输出</text>
+
+  <rect x="50" y="105" width="130" height="70" class="box"/>
+  <text x="78" y="135" class="label">乘积 1</text>
+  <text x="74" y="158" class="small">input * weight</text>
+
+  <rect x="235" y="105" width="130" height="70" class="sum"/>
+  <text x="266" y="135" class="label">psum 1</text>
+  <text x="260" y="158" class="small">0 + product1</text>
+
+  <rect x="420" y="105" width="130" height="70" class="box"/>
+  <text x="448" y="135" class="label">乘积 2</text>
+  <text x="444" y="158" class="small">new product</text>
+
+  <rect x="605" y="105" width="130" height="70" class="sum"/>
+  <text x="636" y="135" class="label">psum 2</text>
+  <text x="626" y="158" class="small">psum1 + product2</text>
+
+  <rect x="790" y="105" width="120" height="70" class="out"/>
+  <text x="824" y="135" class="label">输出</text>
+  <text x="812" y="158" class="small">所有项累完</text>
+
+  <path d="M180 140 H228" class="arrow"/>
+  <path d="M365 140 H413" class="arrow"/>
+  <path d="M550 140 H598" class="arrow"/>
+  <path d="M735 140 H783" class="arrow"/>
+
+  <text x="72" y="242" class="small">乘积：短生命周期，产生后立即参与累加</text>
+  <text x="72" y="270" class="small">部分和：跨周期、跨通道或跨 tile 存活，必须暂存</text>
+  <text x="72" y="298" class="small">输出：归约维度全部完成后，部分和才变成最终结果</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="430" viewBox="0 0 900 430" role="img" aria-labelledby="title desc">
+  <title id="title">multi channel convolution sum</title>
+  <desc id="desc">Each input channel has a matching kernel plane. Channel contributions are added into one output value.</desc>
+  <style>
+    .label { font: 18px sans-serif; fill: #1f2933; }
+    .small { font: 14px sans-serif; fill: #52606d; }
+    .plane { fill: #f8fafc; stroke: #4a5568; stroke-width: 1.5; }
+    .kernel { fill: #fff5f5; stroke: #d64545; stroke-width: 1.5; }
+    .sum { fill: #e6fffa; stroke: #0987a0; stroke-width: 2; }
+    .arrow { stroke: #1f6feb; stroke-width: 3; marker-end: url(#arrow); }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f6feb"/>
+    </marker>
+  </defs>
+  <text x="40" y="42" class="label">C input channels, one kernel group, one output channel</text>
+  <g transform="translate(70 90)">
+    <text x="0" y="-15" class="label">Input windows</text>
+    <rect class="plane" x="0" y="0" width="110" height="90"/>
+    <rect class="plane" x="25" y="25" width="110" height="90"/>
+    <rect class="plane" x="50" y="50" width="110" height="90"/>
+    <text x="12" y="122" class="small">channel 0</text>
+    <text x="68" y="152" class="small">channel C-1</text>
+  </g>
+  <g transform="translate(305 90)">
+    <text x="0" y="-15" class="label">Matching kernel planes</text>
+    <rect class="kernel" x="0" y="0" width="110" height="90"/>
+    <rect class="kernel" x="25" y="25" width="110" height="90"/>
+    <rect class="kernel" x="50" y="50" width="110" height="90"/>
+    <text x="5" y="122" class="small">kernel channel 0</text>
+    <text x="58" y="152" class="small">kernel channel C-1</text>
+  </g>
+  <line x1="235" y1="165" x2="292" y2="165" class="arrow"/>
+  <line x1="485" y1="165" x2="560" y2="165" class="arrow"/>
+  <g transform="translate(585 100)">
+    <rect class="sum" x="0" y="0" width="125" height="55" rx="8"/>
+    <text x="19" y="34" class="label">sum c0</text>
+    <rect class="sum" x="0" y="75" width="125" height="55" rx="8"/>
+    <text x="20" y="109" class="label">sum c1</text>
+    <rect class="sum" x="0" y="150" width="125" height="55" rx="8"/>
+    <text x="12" y="184" class="label">sum c...</text>
+  </g>
+  <line x1="720" y1="130" x2="805" y2="200" class="arrow"/>
+  <line x1="720" y1="205" x2="805" y2="205" class="arrow"/>
+  <line x1="720" y1="280" x2="805" y2="210" class="arrow"/>
+  <g transform="translate(805 172)">
+    <circle cx="35" cy="35" r="35" fill="#ebf8ff" stroke="#1f6feb" stroke-width="2"/>
+    <text x="13" y="42" class="label">out</text>
+  </g>
+  <text x="165" y="355" class="small">For one output value: sum over C, R, S. Channel contributions do not stay separate.</text>
+</svg>

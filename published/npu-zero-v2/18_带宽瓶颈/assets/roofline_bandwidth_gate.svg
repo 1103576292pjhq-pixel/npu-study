@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="320" viewBox="0 0 760 320">
+  <rect width="760" height="320" fill="#fff"/>
+  <style>.axis{stroke:#2d3748;stroke-width:2}.line{stroke:#c53030;stroke-width:3;fill:none}.flat{stroke:#2f855a;stroke-width:3;fill:none}.t{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:15px;fill:#1a202c}.s{font-size:13px;fill:#2d3748}.pt{fill:#2b6cb0}</style>
+  <text x="380" y="28" text-anchor="middle" class="t">带宽闸门：计算强度太低时，TOPS 喂不满</text>
+  <line x1="90" y1="260" x2="680" y2="260" class="axis"/>
+  <line x1="90" y1="260" x2="90" y2="55" class="axis"/>
+  <path d="M95 250 L260 160 L430 90" class="line"/>
+  <path d="M430 90 L670 90" class="flat"/>
+  <circle cx="210" cy="188" r="7" class="pt"/><text x="210" y="210" text-anchor="middle" class="s">带宽受限</text>
+  <circle cx="560" cy="90" r="7" class="pt"/><text x="560" y="115" text-anchor="middle" class="s">算力受限</text>
+  <text x="385" y="295" text-anchor="middle" class="s">横轴：计算强度 MAC/byte；纵轴：可达到吞吐。斜线由带宽决定，平台由峰值算力决定。</text>
+  <text x="53" y="68" class="s" transform="rotate(-90 53 68)">吞吐</text>
+  <text x="620" y="285" class="s">计算强度</text>
+</svg>

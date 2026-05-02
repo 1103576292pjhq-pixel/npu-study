@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="430" viewBox="0 0 900 430" role="img" aria-labelledby="title desc">
+  <title id="title">相邻窗口共享输入</title>
+  <desc id="desc">3x3 输入上的四个 2x2 窗口共享中心元素。</desc>
+  <rect width="900" height="430" fill="#ecfeff"/>
+  <text x="450" y="42" text-anchor="middle" font-size="26" font-family="Arial, sans-serif" fill="#155e75">中心输入元素被 4 个窗口复用</text>
+  <g transform="translate(95,85)" font-family="Arial, sans-serif" font-size="24" text-anchor="middle">
+    <g stroke="#0e7490" stroke-width="2">
+      <rect x="0" y="0" width="90" height="90" fill="#bae6fd"/>
+      <rect x="90" y="0" width="90" height="90" fill="#7dd3fc"/>
+      <rect x="180" y="0" width="90" height="90" fill="#bae6fd"/>
+      <rect x="0" y="90" width="90" height="90" fill="#7dd3fc"/>
+      <rect x="90" y="90" width="90" height="90" fill="#fef08a"/>
+      <rect x="180" y="90" width="90" height="90" fill="#7dd3fc"/>
+      <rect x="0" y="180" width="90" height="90" fill="#bae6fd"/>
+      <rect x="90" y="180" width="90" height="90" fill="#7dd3fc"/>
+      <rect x="180" y="180" width="90" height="90" fill="#bae6fd"/>
+    </g>
+    <text x="45" y="55">1</text>
+    <text x="135" y="55">2</text>
+    <text x="225" y="55">3</text>
+    <text x="45" y="145">4</text>
+    <text x="135" y="145">5</text>
+    <text x="225" y="145">6</text>
+    <text x="45" y="235">7</text>
+    <text x="135" y="235">8</text>
+    <text x="225" y="235">9</text>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="18" fill="#1f2937">
+    <rect x="455" y="96" width="310" height="52" rx="10" fill="#ffffff" stroke="#0891b2" stroke-width="2"/>
+    <rect x="455" y="166" width="310" height="52" rx="10" fill="#ffffff" stroke="#0891b2" stroke-width="2"/>
+    <rect x="455" y="236" width="310" height="52" rx="10" fill="#ffffff" stroke="#0891b2" stroke-width="2"/>
+    <rect x="455" y="306" width="310" height="52" rx="10" fill="#ffffff" stroke="#0891b2" stroke-width="2"/>
+    <text x="610" y="130" text-anchor="middle">窗口 1: 1,2,4,5</text>
+    <text x="610" y="200" text-anchor="middle">窗口 2: 2,3,5,6</text>
+    <text x="610" y="270" text-anchor="middle">窗口 3: 4,5,7,8</text>
+    <text x="610" y="340" text-anchor="middle">窗口 4: 5,6,8,9</text>
+    <text x="610" y="386" text-anchor="middle" fill="#155e75">数字 5 出现在四个窗口中</text>
+  </g>
+</svg>

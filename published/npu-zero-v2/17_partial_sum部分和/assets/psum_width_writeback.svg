@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="300" viewBox="0 0 760 300">
+  <rect width="760" height="300" fill="#fff"/>
+  <style>.b{fill:#eef6ff;stroke:#2b6cb0;stroke-width:2;rx:8}.p{fill:#f0fff4;stroke:#2f855a;stroke-width:2;rx:8}.m{fill:#fff5f5;stroke:#c53030;stroke-width:2;rx:8}.t{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:16px;fill:#1a202c}.s{font-size:13px;fill:#2d3748}.a{stroke:#4a5568;stroke-width:2;marker-end:url(#arr)}</style>
+  <defs><marker id="arr" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#4a5568"/></marker></defs>
+  <text x="380" y="28" text-anchor="middle" class="t">partial sum 是“状态”，不是一次性结果</text>
+  <rect x="40" y="70" width="135" height="70" class="b"/><text x="108" y="100" text-anchor="middle" class="t">乘积</text><text x="108" y="122" text-anchor="middle" class="s">input * weight</text>
+  <rect x="255" y="70" width="160" height="70" class="p"/><text x="335" y="100" text-anchor="middle" class="t">宽累加器</text><text x="335" y="122" text-anchor="middle" class="s">psum += product</text>
+  <rect x="500" y="70" width="170" height="70" class="p"/><text x="585" y="100" text-anchor="middle" class="t">最终输出</text><text x="585" y="122" text-anchor="middle" class="s">归约完成后写回</text>
+  <line x1="175" y1="105" x2="255" y2="105" class="a"/><line x1="415" y1="105" x2="500" y2="105" class="a"/>
+  <rect x="95" y="195" width="220" height="60" class="m"/><text x="205" y="220" text-anchor="middle" class="t">坏路径</text><text x="205" y="242" text-anchor="middle" class="s">每次 MAC 都写外存再读回</text>
+  <rect x="445" y="195" width="220" height="60" class="p"/><text x="555" y="220" text-anchor="middle" class="t">好路径</text><text x="555" y="242" text-anchor="middle" class="s">本地累加，完成后写一次</text>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="360" viewBox="0 0 920 360" role="img" aria-labelledby="title desc">
+  <title id="title">tile 的容量问题</title>
+  <desc id="desc">大张量在外部内存中，片上 SRAM 只能容纳一个小工作集。</desc>
+  <rect width="920" height="360" fill="#f8fafc"/>
+  <rect x="55" y="70" width="250" height="220" rx="18" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="180" y="108" text-anchor="middle" font-size="24" font-family="Arial, sans-serif" fill="#075985">外部内存</text>
+  <text x="180" y="146" text-anchor="middle" font-size="17" font-family="Arial, sans-serif" fill="#334155">整张输入</text>
+  <text x="180" y="176" text-anchor="middle" font-size="17" font-family="Arial, sans-serif" fill="#334155">整组权重</text>
+  <text x="180" y="206" text-anchor="middle" font-size="17" font-family="Arial, sans-serif" fill="#334155">整张输出</text>
+  <text x="180" y="250" text-anchor="middle" font-size="16" font-family="Arial, sans-serif" fill="#64748b">容量大，但慢且耗能</text>
+  <path d="M320 180 H440" stroke="#334155" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="380" y="160" text-anchor="middle" font-size="18" font-family="Arial, sans-serif" fill="#334155">DMA 搬一个 tile</text>
+  <rect x="455" y="92" width="220" height="176" rx="18" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="565" y="128" text-anchor="middle" font-size="24" font-family="Arial, sans-serif" fill="#166534">片上 SRAM</text>
+  <rect x="500" y="150" width="130" height="70" rx="10" fill="#ffffff" stroke="#22c55e" stroke-width="2"/>
+  <text x="565" y="178" text-anchor="middle" font-size="17" font-family="Arial, sans-serif" fill="#334155">working set</text>
+  <text x="565" y="204" text-anchor="middle" font-size="15" font-family="Arial, sans-serif" fill="#334155">输入+权重+输出</text>
+  <path d="M690 180 H805" stroke="#334155" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="805" y="120" width="80" height="120" rx="12" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+  <text x="845" y="170" text-anchor="middle" font-size="20" font-family="Arial, sans-serif" fill="#854d0e">MAC</text>
+  <text x="845" y="198" text-anchor="middle" font-size="20" font-family="Arial, sans-serif" fill="#854d0e">阵列</text>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L8,3 z" fill="#334155"/>
+    </marker>
+  </defs>
+</svg>

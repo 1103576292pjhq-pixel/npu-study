@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="310" viewBox="0 0 920 310">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#334155"/>
+    </marker>
+    <style>
+      text { font-family: "Microsoft YaHei", "SimHei", sans-serif; fill: #172033; }
+      .title { font-size: 22px; font-weight: 700; }
+      .label { font-size: 17px; font-weight: 600; }
+      .note { font-size: 14px; fill: #475569; }
+      .x { fill: #eff6ff; stroke: #2563eb; stroke-width: 2; }
+      .w { fill: #fff7ed; stroke: #f97316; stroke-width: 2; }
+      .y { fill: #ecfdf5; stroke: #16a34a; stroke-width: 2; }
+    </style>
+  </defs>
+  <rect width="920" height="310" fill="#ffffff"/>
+  <text class="title" x="34" y="42">全连接主计算：X[M,K] * W[K,N] = Y[M,N]</text>
+  <rect class="x" x="70" y="100" width="170" height="96"/>
+  <text class="label" x="119" y="142">输入 X</text>
+  <text class="note" x="116" y="168">M x K</text>
+  <text class="note" x="75" y="222">M: batch 行数</text>
+  <line x1="255" y1="148" x2="330" y2="148" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect class="w" x="350" y="80" width="150" height="136"/>
+  <text class="label" x="382" y="142">权重 W</text>
+  <text class="note" x="395" y="168">K x N</text>
+  <text class="note" x="350" y="242">K: 累加维度</text>
+  <line x1="515" y1="148" x2="590" y2="148" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect class="y" x="610" y="100" width="190" height="96"/>
+  <text class="label" x="658" y="142">输出 Y</text>
+  <text class="note" x="665" y="168">M x N</text>
+  <text class="note" x="616" y="222">N: 输出神经元数</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420" role="img" aria-labelledby="title desc">
+  <title id="title">stride padding output size</title>
+  <desc id="desc">Padding expands the logical input, stride chooses spaced window starts, and legal starts determine output size.</desc>
+  <style>
+    .label { font: 18px sans-serif; fill: #1f2933; }
+    .small { font: 14px sans-serif; fill: #52606d; }
+    .cell { fill: #ffffff; stroke: #4a5568; stroke-width: 1.5; }
+    .pad { fill: #eef2f7; stroke: #9aa5b1; stroke-width: 1.2; }
+    .win { fill: none; stroke: #d64545; stroke-width: 4; }
+    .arrow { stroke: #1f6feb; stroke-width: 3; marker-end: url(#arrow); }
+    .out { fill: #e6fffa; stroke: #0987a0; stroke-width: 1.5; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f6feb"/>
+    </marker>
+  </defs>
+  <text x="40" y="40" class="label">Input H x W, padding P=1</text>
+  <g transform="translate(60 70)">
+    <rect class="pad" x="0" y="0" width="240" height="240"/>
+    <g>
+      <rect class="cell" x="40" y="40" width="40" height="40"/>
+      <rect class="cell" x="80" y="40" width="40" height="40"/>
+      <rect class="cell" x="120" y="40" width="40" height="40"/>
+      <rect class="cell" x="160" y="40" width="40" height="40"/>
+      <rect class="cell" x="40" y="80" width="40" height="40"/>
+      <rect class="cell" x="80" y="80" width="40" height="40"/>
+      <rect class="cell" x="120" y="80" width="40" height="40"/>
+      <rect class="cell" x="160" y="80" width="40" height="40"/>
+      <rect class="cell" x="40" y="120" width="40" height="40"/>
+      <rect class="cell" x="80" y="120" width="40" height="40"/>
+      <rect class="cell" x="120" y="120" width="40" height="40"/>
+      <rect class="cell" x="160" y="120" width="40" height="40"/>
+      <rect class="cell" x="40" y="160" width="40" height="40"/>
+      <rect class="cell" x="80" y="160" width="40" height="40"/>
+      <rect class="cell" x="120" y="160" width="40" height="40"/>
+      <rect class="cell" x="160" y="160" width="40" height="40"/>
+    </g>
+    <rect class="win" x="0" y="0" width="120" height="120"/>
+    <text x="62" y="268" class="small">padded logical input</text>
+  </g>
+  <line x1="330" y1="190" x2="430" y2="190" class="arrow"/>
+  <text x="340" y="160" class="small">stride T=2</text>
+  <text x="332" y="220" class="small">legal starts only</text>
+  <g transform="translate(470 95)">
+    <text x="0" y="-30" class="label">Output OH x OW</text>
+    <rect class="out" x="0" y="0" width="70" height="70"/>
+    <rect class="out" x="70" y="0" width="70" height="70"/>
+    <rect class="out" x="0" y="70" width="70" height="70"/>
+    <rect class="out" x="70" y="70" width="70" height="70"/>
+    <text x="27" y="43" class="label">0,0</text>
+    <text x="97" y="43" class="label">0,1</text>
+    <text x="27" y="113" class="label">1,0</text>
+    <text x="97" y="113" class="label">1,1</text>
+  </g>
+  <g transform="translate(665 88)">
+    <text x="0" y="0" class="label">Formula</text>
+    <text x="0" y="45" class="small">OH = floor((H + 2P - R) / T) + 1</text>
+    <text x="0" y="80" class="small">OW = floor((W + 2P - S) / T) + 1</text>
+    <text x="0" y="125" class="small">Window must fit completely.</text>
+  </g>
+</svg>

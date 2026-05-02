@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="430" viewBox="0 0 960 430">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#38546a"/>
+    </marker>
+    <style>
+      .title { font: 700 25px sans-serif; fill: #183247; }
+      .label { font: 600 17px sans-serif; fill: #183247; }
+      .small { font: 14px sans-serif; fill: #34495e; }
+      .pe { fill: #eef6ff; stroke: #2b5c7a; stroke-width: 2; rx: 12; }
+      .reg { fill: #fff5db; stroke: #b36b00; stroke-width: 2; rx: 12; }
+      .buf { fill: #eaf8ed; stroke: #27733a; stroke-width: 2; rx: 12; }
+      .mem { fill: #f7ebff; stroke: #6c3a8a; stroke-width: 2; rx: 12; }
+      .arrow { stroke: #38546a; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+      .warn { fill: #fff1f0; stroke: #b23b3b; stroke-width: 2; rx: 12; }
+    </style>
+  </defs>
+
+  <rect width="960" height="430" fill="#ffffff"/>
+  <text x="40" y="45" class="title">部分和暂存位置：越靠近 MAC 越省搬运</text>
+
+  <rect x="70" y="110" width="180" height="105" class="pe"/>
+  <text x="116" y="145" class="label">MAC / PE</text>
+  <text x="95" y="174" class="small">执行 sum += a*b</text>
+  <text x="96" y="197" class="small">产生新部分和</text>
+
+  <rect x="330" y="95" width="170" height="130" class="reg"/>
+  <text x="360" y="132" class="label">寄存器 / 累加器</text>
+  <text x="360" y="162" class="small">最快，容量最小</text>
+  <text x="360" y="185" class="small">适合短生命周期</text>
+
+  <rect x="570" y="95" width="170" height="130" class="buf"/>
+  <text x="612" y="132" class="label">片上 buffer</text>
+  <text x="603" y="162" class="small">容量更大</text>
+  <text x="592" y="185" class="small">适合 tile 级 psum</text>
+
+  <rect x="790" y="95" width="120" height="130" class="mem"/>
+  <text x="815" y="132" class="label">外部内存</text>
+  <text x="810" y="162" class="small">容量最大</text>
+  <text x="805" y="185" class="small">代价最高</text>
+
+  <path d="M250 162 H323" class="arrow"/>
+  <path d="M500 162 H563" class="arrow"/>
+  <path d="M740 162 H783" class="arrow"/>
+
+  <rect x="86" y="285" width="790" height="82" class="warn"/>
+  <text x="115" y="318" class="label">判断口径</text>
+  <text x="115" y="346" class="small">如果部分和能在寄存器或片上 buffer 内完成，带宽压力低；如果频繁写回外部内存，计算阵列容易等待。</text>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="360" viewBox="0 0 860 360">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#334155"/>
+    </marker>
+    <style>
+      text { font-family: "Microsoft YaHei", "SimHei", sans-serif; fill: #172033; }
+      .title { font-size: 22px; font-weight: 700; }
+      .note { font-size: 14px; fill: #475569; }
+      .cell { fill: #f8fafc; stroke: #64748b; stroke-width: 1.4; }
+      .row { fill: #dbeafe; stroke: #2563eb; stroke-width: 3; }
+      .col { fill: #ffedd5; stroke: #f97316; stroke-width: 3; }
+      .out { fill: #dcfce7; stroke: #16a34a; stroke-width: 3; }
+      .num { font-size: 18px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+    </style>
+  </defs>
+  <rect width="860" height="360" fill="#ffffff"/>
+  <text class="title" x="34" y="42">一个输出格子 = X 的一行和 W 的一列做点积</text>
+  <g transform="translate(80,92)">
+    <text class="note" x="0" y="-12">X 第 m 行</text>
+    <rect class="row" x="0" y="0" width="66" height="54"/><text class="num" x="33" y="27">1</text>
+    <rect class="row" x="66" y="0" width="66" height="54"/><text class="num" x="99" y="27">2</text>
+    <rect class="row" x="132" y="0" width="66" height="54"/><text class="num" x="165" y="27">0</text>
+  </g>
+  <line x1="300" y1="119" x2="380" y2="119" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <g transform="translate(410,76)">
+    <text class="note" x="0" y="-12">W 第 n 列</text>
+    <rect class="col" x="0" y="0" width="58" height="54"/><text class="num" x="29" y="27">1</text>
+    <rect class="col" x="0" y="54" width="58" height="54"/><text class="num" x="29" y="81">2</text>
+    <rect class="col" x="0" y="108" width="58" height="54"/><text class="num" x="29" y="135">0</text>
+  </g>
+  <line x1="500" y1="155" x2="600" y2="155" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <g transform="translate(630,112)">
+    <rect class="out" x="0" y="0" width="90" height="72"/>
+    <text class="num" x="45" y="36">5</text>
+    <text class="note" x="-8" y="100">1*1 + 2*2 + 0*0</text>
+  </g>
+  <text class="note" x="80" y="302">同样的点积规则填满 Y 的每个 (m,n) 位置。</text>
+</svg>

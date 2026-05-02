@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="320" viewBox="0 0 780 320">
+  <rect width="780" height="320" fill="#fff"/>
+  <style>.h{fill:#edf2f7;stroke:#4a5568}.c{fill:#f7fafc;stroke:#cbd5e0}.g{fill:#f0fff4;stroke:#9ae6b4}.w{fill:#fffaf0;stroke:#fbd38d}.t{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:15px;fill:#1a202c}.s{font-size:13px;fill:#2d3748}</style>
+  <text x="390" y="28" text-anchor="middle" class="t">dataflow 选择先看“哪类数据最值得不动”</text>
+  <rect x="40" y="55" width="170" height="48" class="h"/><text x="125" y="84" text-anchor="middle" class="t">优先保护</text>
+  <rect x="210" y="55" width="180" height="48" class="h"/><text x="300" y="84" text-anchor="middle" class="t">常见选择</text>
+  <rect x="390" y="55" width="175" height="48" class="h"/><text x="478" y="84" text-anchor="middle" class="t">收益</text>
+  <rect x="565" y="55" width="175" height="48" class="h"/><text x="653" y="84" text-anchor="middle" class="t">风险</text>
+  <rect x="40" y="103" width="170" height="60" class="c"/><text x="125" y="138" text-anchor="middle" class="t">权重</text>
+  <rect x="210" y="103" width="180" height="60" class="g"/><text x="300" y="128" text-anchor="middle" class="s">weight-stationary</text><text x="300" y="150" text-anchor="middle" class="s">权重驻留</text>
+  <rect x="390" y="103" width="175" height="60" class="g"/><text x="478" y="128" text-anchor="middle" class="s">少搬权重</text><text x="478" y="150" text-anchor="middle" class="s">空间复用强</text>
+  <rect x="565" y="103" width="175" height="60" class="w"/><text x="653" y="128" text-anchor="middle" class="s">psum 需要移动</text><text x="653" y="150" text-anchor="middle" class="s">权重太大装不下</text>
+  <rect x="40" y="163" width="170" height="60" class="c"/><text x="125" y="198" text-anchor="middle" class="t">部分和</text>
+  <rect x="210" y="163" width="180" height="60" class="g"/><text x="300" y="188" text-anchor="middle" class="s">output-stationary</text><text x="300" y="210" text-anchor="middle" class="s">psum 驻留</text>
+  <rect x="390" y="163" width="175" height="60" class="g"/><text x="478" y="188" text-anchor="middle" class="s">少中间写回</text><text x="478" y="210" text-anchor="middle" class="s">归约清楚</text>
+  <rect x="565" y="163" width="175" height="60" class="w"/><text x="653" y="188" text-anchor="middle" class="s">累加器压力</text><text x="653" y="210" text-anchor="middle" class="s">输出多时难放</text>
+  <rect x="40" y="223" width="170" height="60" class="c"/><text x="125" y="258" text-anchor="middle" class="t">输入</text>
+  <rect x="210" y="223" width="180" height="60" class="g"/><text x="300" y="248" text-anchor="middle" class="s">input/row-stationary</text><text x="300" y="270" text-anchor="middle" class="s">输入或行驻留</text>
+  <rect x="390" y="223" width="175" height="60" class="g"/><text x="478" y="248" text-anchor="middle" class="s">窗口重叠复用</text><text x="478" y="270" text-anchor="middle" class="s">减少外部读</text>
+  <rect x="565" y="223" width="175" height="60" class="w"/><text x="653" y="248" text-anchor="middle" class="s">需要广播/行缓冲</text><text x="653" y="270" text-anchor="middle" class="s">边界复杂</text>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360" role="img" aria-labelledby="title desc">
+  <title id="title">stride window positions</title>
+  <desc id="desc">Comparison of stride 1 and stride 2 window starts on a one dimensional input.</desc>
+  <style>
+    .label { font: 18px sans-serif; fill: #1f2933; }
+    .small { font: 14px sans-serif; fill: #52606d; }
+    .cell { fill: #ffffff; stroke: #4a5568; stroke-width: 1.5; }
+    .start { fill: #fef3c7; stroke: #d97706; stroke-width: 2; }
+    .win1 { fill: rgba(214,69,69,0.12); stroke: #d64545; stroke-width: 3; }
+    .win2 { fill: rgba(9,135,160,0.12); stroke: #0987a0; stroke-width: 3; }
+  </style>
+  <text x="40" y="42" class="label">Same input length 5, kernel length 3</text>
+  <text x="60" y="100" class="label">stride = 1</text>
+  <g transform="translate(180 70)">
+    <rect class="cell" x="0" y="0" width="70" height="70"/><text x="29" y="43" class="label">0</text>
+    <rect class="cell" x="70" y="0" width="70" height="70"/><text x="99" y="43" class="label">1</text>
+    <rect class="cell" x="140" y="0" width="70" height="70"/><text x="169" y="43" class="label">2</text>
+    <rect class="cell" x="210" y="0" width="70" height="70"/><text x="239" y="43" class="label">3</text>
+    <rect class="cell" x="280" y="0" width="70" height="70"/><text x="309" y="43" class="label">4</text>
+    <rect class="win1" x="0" y="-8" width="210" height="86"/>
+    <rect class="win1" x="70" y="-18" width="210" height="106"/>
+    <rect class="win1" x="140" y="-28" width="210" height="126"/>
+    <circle class="start" cx="35" cy="100" r="10"/>
+    <circle class="start" cx="105" cy="100" r="10"/>
+    <circle class="start" cx="175" cy="100" r="10"/>
+    <text x="0" y="135" class="small">starts: 0, 1, 2 -> output length 3</text>
+  </g>
+  <text x="60" y="255" class="label">stride = 2</text>
+  <g transform="translate(180 225)">
+    <rect class="cell" x="0" y="0" width="70" height="70"/><text x="29" y="43" class="label">0</text>
+    <rect class="cell" x="70" y="0" width="70" height="70"/><text x="99" y="43" class="label">1</text>
+    <rect class="cell" x="140" y="0" width="70" height="70"/><text x="169" y="43" class="label">2</text>
+    <rect class="cell" x="210" y="0" width="70" height="70"/><text x="239" y="43" class="label">3</text>
+    <rect class="cell" x="280" y="0" width="70" height="70"/><text x="309" y="43" class="label">4</text>
+    <rect class="win2" x="0" y="-8" width="210" height="86"/>
+    <rect class="win2" x="140" y="-18" width="210" height="106"/>
+    <circle class="start" cx="35" cy="100" r="10"/>
+    <circle class="start" cx="175" cy="100" r="10"/>
+    <text x="0" y="135" class="small">starts: 0, 2 -> output length 2</text>
+  </g>
+</svg>

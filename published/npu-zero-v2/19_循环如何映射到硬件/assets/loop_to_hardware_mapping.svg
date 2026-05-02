@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="430" viewBox="0 0 960 430">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#2b5c7a"/>
+    </marker>
+    <style>
+      .title { font: 700 25px sans-serif; fill: #183247; }
+      .label { font: 600 17px sans-serif; fill: #183247; }
+      .small { font: 14px sans-serif; fill: #34495e; }
+      .loop { fill: #fff7e6; stroke: #b36b00; stroke-width: 2; rx: 14; }
+      .hw { fill: #eef6ff; stroke: #2b5c7a; stroke-width: 2; rx: 14; }
+      .buf { fill: #eaf8ed; stroke: #27733a; stroke-width: 2; rx: 14; }
+      .arrow { stroke: #2b5c7a; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="960" height="430" fill="#ffffff"/>
+  <text x="40" y="45" class="title">循环到硬件：维度被分配到空间、时间、存储和搬运</text>
+
+  <rect x="55" y="105" width="190" height="210" class="loop"/>
+  <text x="96" y="140" class="label">卷积循环维度</text>
+  <text x="88" y="175" class="small">oc: 输出通道</text>
+  <text x="88" y="200" class="small">oh, ow: 输出位置</text>
+  <text x="88" y="225" class="small">ic: 输入通道</text>
+  <text x="88" y="250" class="small">r, s: 核内位置</text>
+  <text x="88" y="280" class="small">psum: 归约状态</text>
+
+  <rect x="350" y="80" width="210" height="95" class="hw"/>
+  <text x="402" y="116" class="label">空间映射</text>
+  <text x="382" y="146" class="small">oh/ow/oc 分给 PE</text>
+
+  <rect x="350" y="220" width="210" height="95" class="hw"/>
+  <text x="402" y="256" class="label">时间映射</text>
+  <text x="382" y="286" class="small">ic/r/s 顺序累加</text>
+
+  <rect x="675" y="80" width="215" height="95" class="buf"/>
+  <text x="735" y="116" class="label">存储映射</text>
+  <text x="706" y="146" class="small">输入/权重/psum 放哪级</text>
+
+  <rect x="675" y="220" width="215" height="95" class="buf"/>
+  <text x="735" y="256" class="label">搬运映射</text>
+  <text x="716" y="286" class="small">DMA 何时搬入写回</text>
+
+  <path d="M245 185 C285 185 300 128 342 128" class="arrow"/>
+  <path d="M245 225 C285 225 300 268 342 268" class="arrow"/>
+  <path d="M560 128 H667" class="arrow"/>
+  <path d="M560 268 H667" class="arrow"/>
+
+  <text x="92" y="370" class="small">核心判断：输出枚举维度更容易空间并行；归约维度必须保护部分和并最终合并。</text>
+</svg>

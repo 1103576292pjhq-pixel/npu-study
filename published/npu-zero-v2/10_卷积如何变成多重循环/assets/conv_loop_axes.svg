@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="460" viewBox="0 0 920 460" role="img" aria-labelledby="title desc">
+  <title id="title">卷积公式拆成循环变量</title>
+  <desc id="desc">展示输出位置循环 oh/ow 和卷积核内部循环 r/s 如何共同决定输入地址、权重地址和输出地址。</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf6; }
+      .panel { fill: #ffffff; stroke: #2f3a3d; stroke-width: 2; rx: 14; }
+      .cell { fill: #e9f4ee; stroke: #5b7f68; stroke-width: 1.4; }
+      .hot { fill: #f9d57e; stroke: #8a5a00; stroke-width: 2; }
+      .kernel { fill: #d9e6ff; stroke: #355f9f; stroke-width: 1.4; }
+      .out { fill: #ffe2d6; stroke: #a94d2b; stroke-width: 1.4; }
+      .arrow { stroke: #34444a; stroke-width: 2.2; marker-end: url(#arrow); fill: none; }
+      .label { font: 18px "Microsoft YaHei", Arial, sans-serif; fill: #1d2b2f; }
+      .small { font: 15px "Microsoft YaHei", Arial, sans-serif; fill: #30444a; }
+      .code { font: 15px Consolas, "Microsoft YaHei", monospace; fill: #182428; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#34444a"/>
+    </marker>
+  </defs>
+  <rect class="bg" x="0" y="0" width="920" height="460"/>
+  <text class="label" x="38" y="42">四层循环：外层选输出位置，内层选核内偏移</text>
+
+  <rect class="panel" x="35" y="70" width="285" height="310"/>
+  <text class="label" x="60" y="105">输入 input[H][W]</text>
+  <g transform="translate(70,135)">
+    <rect class="cell" x="0" y="0" width="48" height="48"/><text class="small" x="19" y="31">1</text>
+    <rect class="hot" x="48" y="0" width="48" height="48"/><text class="small" x="67" y="31">0</text>
+    <rect class="hot" x="96" y="0" width="48" height="48"/><text class="small" x="115" y="31">2</text>
+    <rect class="cell" x="144" y="0" width="48" height="48"/><text class="small" x="163" y="31">4</text>
+    <rect class="cell" x="0" y="48" width="48" height="48"/><text class="small" x="19" y="79">0</text>
+    <rect class="hot" x="48" y="48" width="48" height="48"/><text class="small" x="67" y="79">1</text>
+    <rect class="hot" x="96" y="48" width="48" height="48"/><text class="small" x="115" y="79">3</text>
+    <rect class="cell" x="144" y="48" width="48" height="48"/><text class="small" x="163" y="79">5</text>
+    <rect class="cell" x="0" y="96" width="48" height="48"/><text class="small" x="19" y="127">2</text>
+    <rect class="cell" x="48" y="96" width="48" height="48"/><text class="small" x="67" y="127">1</text>
+    <rect class="cell" x="96" y="96" width="48" height="48"/><text class="small" x="115" y="127">0</text>
+    <rect class="cell" x="144" y="96" width="48" height="48"/><text class="small" x="163" y="127">6</text>
+  </g>
+  <text class="code" x="60" y="325">当前输出位置：oh=0, ow=1</text>
+  <text class="code" x="60" y="350">输入地址：input[oh+r][ow+s]</text>
+
+  <rect class="panel" x="360" y="70" width="210" height="310"/>
+  <text class="label" x="392" y="105">卷积核 kernel</text>
+  <g transform="translate(407,150)">
+    <rect class="kernel" x="0" y="0" width="58" height="58"/><text class="small" x="23" y="36">1</text>
+    <rect class="kernel" x="58" y="0" width="58" height="58"/><text class="small" x="81" y="36">0</text>
+    <rect class="kernel" x="0" y="58" width="58" height="58"/><text class="small" x="23" y="94">0</text>
+    <rect class="kernel" x="58" y="58" width="58" height="58"/><text class="small" x="81" y="94">1</text>
+  </g>
+  <text class="code" x="392" y="325">内层循环：r=0..R-1</text>
+  <text class="code" x="392" y="350">           s=0..S-1</text>
+
+  <rect class="panel" x="615" y="70" width="260" height="310"/>
+  <text class="label" x="650" y="105">输出 out[OH][OW]</text>
+  <g transform="translate(685,150)">
+    <rect class="out" x="0" y="0" width="58" height="58"/><text class="small" x="23" y="36">2</text>
+    <rect class="hot" x="58" y="0" width="58" height="58"/><text class="small" x="81" y="36">3</text>
+    <rect class="out" x="0" y="58" width="58" height="58"/><text class="small" x="23" y="94">1</text>
+    <rect class="out" x="58" y="58" width="58" height="58"/><text class="small" x="81" y="94">1</text>
+  </g>
+  <text class="code" x="650" y="325">输出地址：out[oh][ow]</text>
+  <text class="code" x="650" y="350">sum 完成后才写回</text>
+
+  <path class="arrow" d="M320 220 C345 220, 345 220, 360 220"/>
+  <path class="arrow" d="M570 220 C595 220, 595 220, 615 220"/>
+  <text class="small" x="335" y="205">读输入</text>
+  <text class="small" x="578" y="205">累加</text>
+  <text class="code" x="190" y="420">for oh -> for ow -> sum=0 -> for r -> for s -> MAC -> write out</text>
+</svg>

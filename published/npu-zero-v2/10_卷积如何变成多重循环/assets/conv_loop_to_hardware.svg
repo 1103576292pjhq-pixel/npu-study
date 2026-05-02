@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="300" viewBox="0 0 760 300">
+  <rect width="760" height="300" fill="#ffffff"/>
+  <style>
+    .box{fill:#eef6ff;stroke:#2b6cb0;stroke-width:2;rx:8}
+    .hw{fill:#f2fbf2;stroke:#2f855a;stroke-width:2;rx:8}
+    .txt{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:16px;fill:#1a202c}
+    .small{font-size:13px;fill:#2d3748}
+    .arrow{stroke:#4a5568;stroke-width:2;marker-end:url(#arrow)}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4a5568"/>
+    </marker>
+  </defs>
+  <rect x="30" y="35" width="155" height="80" class="box"/>
+  <text x="108" y="66" text-anchor="middle" class="txt">oh / ow</text>
+  <text x="108" y="91" text-anchor="middle" class="small">定位输出格子</text>
+  <rect x="30" y="180" width="155" height="80" class="box"/>
+  <text x="108" y="211" text-anchor="middle" class="txt">r / s</text>
+  <text x="108" y="236" text-anchor="middle" class="small">枚举核内偏移</text>
+  <rect x="285" y="35" width="190" height="80" class="hw"/>
+  <text x="380" y="66" text-anchor="middle" class="txt">地址发生器</text>
+  <text x="380" y="91" text-anchor="middle" class="small">input[oh+r][ow+s]</text>
+  <rect x="285" y="180" width="190" height="80" class="hw"/>
+  <text x="380" y="211" text-anchor="middle" class="txt">MAC 与部分和</text>
+  <text x="380" y="236" text-anchor="middle" class="small">sum += input * weight</text>
+  <rect x="575" y="108" width="145" height="84" class="hw"/>
+  <text x="648" y="140" text-anchor="middle" class="txt">输出写回</text>
+  <text x="648" y="165" text-anchor="middle" class="small">out[oh][ow]</text>
+  <line x1="185" y1="75" x2="285" y2="75" class="arrow"/>
+  <line x1="185" y1="220" x2="285" y2="220" class="arrow"/>
+  <line x1="475" y1="75" x2="575" y2="135" class="arrow"/>
+  <line x1="475" y1="220" x2="575" y2="165" class="arrow"/>
+  <text x="380" y="285" text-anchor="middle" class="small">公式决定算什么；循环变量决定每拍读哪里、乘什么、累到哪里、何时写回。</text>
+</svg>

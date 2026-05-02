@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="470" viewBox="0 0 960 470" role="img" aria-labelledby="title desc">
+  <title id="title">七重循环把 batch 放在外层</title>
+  <desc id="desc">展示 batch 维度 n 如何包住每个样本自己的六重卷积循环，不会把不同样本的部分和相加。</desc>
+  <defs>
+    <style>
+      .bg { fill: #f7fbfc; }
+      .batch { fill: #e9f7e8; stroke: #4b8a4e; stroke-width: 2; rx: 18; }
+      .sample { fill: #ffffff; stroke: #2f4a52; stroke-width: 1.8; rx: 14; }
+      .loop { fill: #fef0d6; stroke: #ad7021; stroke-width: 1.6; rx: 12; }
+      .out { fill: #ffe1e1; stroke: #a64a4a; stroke-width: 1.6; rx: 12; }
+      .label { font: 20px "Microsoft YaHei", Arial, sans-serif; fill: #1d3036; }
+      .small { font: 15px "Microsoft YaHei", Arial, sans-serif; fill: #2f454b; }
+      .code { font: 15px Consolas, "Microsoft YaHei", monospace; fill: #17282d; }
+      .arrow { stroke: #2f454b; stroke-width: 2.2; marker-end: url(#arrow); fill: none; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#2f454b"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="960" height="470"/>
+  <text class="label" x="42" y="44">七重循环：n 只是独立样本外层，不参与通道累加</text>
+
+  <rect class="batch" x="45" y="75" width="870" height="330"/>
+  <text class="code" x="82" y="113">for n in 0..N-1</text>
+  <text class="small" x="255" y="113">每个 n 都有自己的 input[n] 和 output[n]</text>
+
+  <rect class="sample" x="85" y="145" width="365" height="205"/>
+  <text class="label" x="120" y="182">样本 n=0</text>
+  <rect class="loop" x="120" y="210" width="285" height="58"/>
+  <text class="code" x="145" y="245">oc -> oh -> ow -> ic -> r -> s</text>
+  <rect class="out" x="150" y="292" width="225" height="38"/>
+  <text class="code" x="175" y="317">output[0][oc][oh][ow]</text>
+
+  <rect class="sample" x="510" y="145" width="365" height="205"/>
+  <text class="label" x="545" y="182">样本 n=1</text>
+  <rect class="loop" x="545" y="210" width="285" height="58"/>
+  <text class="code" x="570" y="245">oc -> oh -> ow -> ic -> r -> s</text>
+  <rect class="out" x="575" y="292" width="225" height="38"/>
+  <text class="code" x="600" y="317">output[1][oc][oh][ow]</text>
+
+  <path class="arrow" d="M450 245 C475 245, 485 245, 510 245"/>
+  <text class="small" x="370" y="430">两个样本使用同一组权重，但部分和彼此独立；不能把 batch 当成累加维度。</text>
+</svg>

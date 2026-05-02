@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400" role="img" aria-labelledby="title desc">
+  <title id="title">output tensor shape</title>
+  <desc id="desc">Output tensor has output channel, output height, and output width dimensions.</desc>
+  <style>
+    .label { font: 18px sans-serif; fill: #1f2933; }
+    .small { font: 14px sans-serif; fill: #52606d; }
+    .slice0 { fill: #e6fffa; stroke: #0987a0; stroke-width: 1.5; }
+    .slice1 { fill: #ebf8ff; stroke: #1f6feb; stroke-width: 1.5; }
+    .slice2 { fill: #fff5f5; stroke: #d64545; stroke-width: 1.5; }
+    .arrow { stroke: #4a5568; stroke-width: 2.5; marker-end: url(#arrow); }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4a5568"/>
+    </marker>
+  </defs>
+  <text x="40" y="42" class="label">Output tensor shape: C_out x OH x OW</text>
+  <g transform="translate(170 95)">
+    <rect class="slice2" x="80" y="40" width="210" height="150"/>
+    <rect class="slice1" x="40" y="20" width="210" height="150"/>
+    <rect class="slice0" x="0" y="0" width="210" height="150"/>
+    <line x1="0" y1="50" x2="210" y2="50" stroke="#0987a0" stroke-width="1"/>
+    <line x1="0" y1="100" x2="210" y2="100" stroke="#0987a0" stroke-width="1"/>
+    <line x1="70" y1="0" x2="70" y2="150" stroke="#0987a0" stroke-width="1"/>
+    <line x1="140" y1="0" x2="140" y2="150" stroke="#0987a0" stroke-width="1"/>
+    <text x="58" y="82" class="label">channel 0</text>
+    <text x="270" y="88" class="small">channel 1</text>
+    <text x="320" y="140" class="small">channel 2 ...</text>
+  </g>
+  <line x1="170" y1="270" x2="380" y2="270" class="arrow"/>
+  <text x="235" y="300" class="small">OW</text>
+  <line x1="145" y1="95" x2="145" y2="245" class="arrow"/>
+  <text x="110" y="175" class="small">OH</text>
+  <line x1="405" y1="100" x2="470" y2="135" class="arrow"/>
+  <text x="462" y="120" class="small">C_out depth</text>
+  <g transform="translate(590 105)">
+    <text x="0" y="0" class="label">Shape facts</text>
+    <text x="0" y="45" class="small">OH, OW: from stride, padding, kernel size</text>
+    <text x="0" y="82" class="small">C_out: number of kernel groups</text>
+    <text x="0" y="119" class="small">Each output channel has its own weights</text>
+    <text x="0" y="156" class="small">This layer C_out becomes next layer C_in</text>
+  </g>
+</svg>

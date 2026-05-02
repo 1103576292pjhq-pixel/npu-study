@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="360" viewBox="0 0 920 360">
+  <rect x="0" y="0" width="920" height="360" fill="#ffffff"/>
+  <rect x="34" y="42" width="210" height="92" rx="8" fill="#eef5ff" stroke="#2f5f9f" stroke-width="2"/>
+  <text x="54" y="78" font-family="Arial, sans-serif" font-size="22" fill="#17324d">06 cin_loop_psum</text>
+  <text x="54" y="112" font-family="Arial, sans-serif" font-size="17" fill="#17324d">输入 / 权重 / 中间值</text>
+  <path d="M252 88 H380" stroke="#4b5563" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="390" y="36" width="190" height="104" rx="8" fill="#fff7ed" stroke="#b45309" stroke-width="2"/>
+  <text x="412" y="76" font-family="Arial, sans-serif" font-size="21" fill="#7c2d12">计算窗口</text>
+  <text x="412" y="110" font-family="Arial, sans-serif" font-size="17" fill="#7c2d12">MAC / 比较 / 累加</text>
+  <path d="M590 88 H716" stroke="#4b5563" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="724" y="42" width="160" height="92" rx="8" fill="#ecfdf5" stroke="#047857" stroke-width="2"/>
+  <text x="748" y="78" font-family="Arial, sans-serif" font-size="21" fill="#064e3b">输出判断</text>
+  <text x="748" y="112" font-family="Arial, sans-serif" font-size="17" fill="#064e3b">shape / psum / 写回</text>
+  <rect x="80" y="190" width="760" height="86" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="108" y="226" font-family="Arial, sans-serif" font-size="20" fill="#0f172a">输入通道循环如何不断更新同一个部分和</text>
+  <text x="108" y="256" font-family="Arial, sans-serif" font-size="16" fill="#334155">读图顺序：先看数据从哪里来，再看中间值在哪里保留，最后看什么时候写回。</text>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4b5563"/>
+    </marker>
+  </defs>
+</svg>

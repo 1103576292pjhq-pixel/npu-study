@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="470" viewBox="0 0 980 470" role="img" aria-labelledby="title desc">
+  <title id="title">NCHW 与 NHWC 的内存顺序</title>
+  <desc id="desc">展示 N=1,C=3,H=2,W=2 的小张量在 NCHW 和 NHWC 下的线性内存排列。</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf6; }
+      .panel { fill: #ffffff; stroke: #2e444b; stroke-width: 2; rx: 16; }
+      .c0 { fill: #dff3e4; stroke: #4e8a5d; }
+      .c1 { fill: #dceafe; stroke: #426fad; }
+      .c2 { fill: #ffe4d8; stroke: #b35f3b; }
+      .cell { stroke-width: 1.5; rx: 6; }
+      .label { font: 20px "Microsoft YaHei", Arial, sans-serif; fill: #1e3035; }
+      .small { font: 14px "Microsoft YaHei", Arial, sans-serif; fill: #2d4248; }
+      .code { font: 13px Consolas, "Microsoft YaHei", monospace; fill: #17282d; }
+    </style>
+  </defs>
+  <rect class="bg" width="980" height="470"/>
+  <text class="label" x="42" y="44">同一个 1x3x2x2 张量：逻辑值相同，内存相邻关系不同</text>
+
+  <rect class="panel" x="45" y="78" width="890" height="145"/>
+  <text class="label" x="75" y="115">NCHW：先放完 C0 平面，再放 C1，再放 C2</text>
+  <g transform="translate(75,145)">
+    <rect class="cell c0" x="0" y="0" width="65" height="40"/><text class="code" x="10" y="25">C0_00</text>
+    <rect class="cell c0" x="65" y="0" width="65" height="40"/><text class="code" x="75" y="25">C0_01</text>
+    <rect class="cell c0" x="130" y="0" width="65" height="40"/><text class="code" x="140" y="25">C0_10</text>
+    <rect class="cell c0" x="195" y="0" width="65" height="40"/><text class="code" x="205" y="25">C0_11</text>
+    <rect class="cell c1" x="270" y="0" width="65" height="40"/><text class="code" x="280" y="25">C1_00</text>
+    <rect class="cell c1" x="335" y="0" width="65" height="40"/><text class="code" x="345" y="25">C1_01</text>
+    <rect class="cell c1" x="400" y="0" width="65" height="40"/><text class="code" x="410" y="25">C1_10</text>
+    <rect class="cell c1" x="465" y="0" width="65" height="40"/><text class="code" x="475" y="25">C1_11</text>
+    <rect class="cell c2" x="540" y="0" width="65" height="40"/><text class="code" x="550" y="25">C2_00</text>
+    <rect class="cell c2" x="605" y="0" width="65" height="40"/><text class="code" x="615" y="25">C2_01</text>
+    <rect class="cell c2" x="670" y="0" width="65" height="40"/><text class="code" x="680" y="25">C2_10</text>
+    <rect class="cell c2" x="735" y="0" width="65" height="40"/><text class="code" x="745" y="25">C2_11</text>
+  </g>
+  <text class="small" x="75" y="205">固定通道沿 W/H 扫描更连续；同一像素跨通道会跳过 H*W。</text>
+
+  <rect class="panel" x="45" y="260" width="890" height="145"/>
+  <text class="label" x="75" y="297">NHWC：按空间位置放，每个位置连续放 C0/C1/C2</text>
+  <g transform="translate(75,327)">
+    <rect class="cell c0" x="0" y="0" width="65" height="40"/><text class="code" x="10" y="25">C0_00</text>
+    <rect class="cell c1" x="65" y="0" width="65" height="40"/><text class="code" x="75" y="25">C1_00</text>
+    <rect class="cell c2" x="130" y="0" width="65" height="40"/><text class="code" x="140" y="25">C2_00</text>
+    <rect class="cell c0" x="215" y="0" width="65" height="40"/><text class="code" x="225" y="25">C0_01</text>
+    <rect class="cell c1" x="280" y="0" width="65" height="40"/><text class="code" x="290" y="25">C1_01</text>
+    <rect class="cell c2" x="345" y="0" width="65" height="40"/><text class="code" x="355" y="25">C2_01</text>
+    <rect class="cell c0" x="430" y="0" width="65" height="40"/><text class="code" x="440" y="25">C0_10</text>
+    <rect class="cell c1" x="495" y="0" width="65" height="40"/><text class="code" x="505" y="25">C1_10</text>
+    <rect class="cell c2" x="560" y="0" width="65" height="40"/><text class="code" x="570" y="25">C2_10</text>
+    <rect class="cell c0" x="645" y="0" width="65" height="40"/><text class="code" x="655" y="25">C0_11</text>
+    <rect class="cell c1" x="710" y="0" width="65" height="40"/><text class="code" x="720" y="25">C1_11</text>
+    <rect class="cell c2" x="775" y="0" width="65" height="40"/><text class="code" x="785" y="25">C2_11</text>
+  </g>
+  <text class="small" x="75" y="388">同一像素的多个通道连续；固定通道沿 W 扫描会按 C 跳步。</text>
+</svg>

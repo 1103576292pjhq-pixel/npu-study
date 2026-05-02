@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="390" viewBox="0 0 960 390">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#2b5c7a"/>
+    </marker>
+    <style>
+      .title { font: 700 25px sans-serif; fill: #183247; }
+      .label { font: 600 18px sans-serif; fill: #183247; }
+      .small { font: 14px sans-serif; fill: #34495e; }
+      .mem { fill: #f7ebff; stroke: #6c3a8a; stroke-width: 2; rx: 14; }
+      .buf { fill: #eaf8ed; stroke: #27733a; stroke-width: 2; rx: 14; }
+      .pe { fill: #eef6ff; stroke: #2b5c7a; stroke-width: 2; rx: 14; }
+      .bad { fill: #fff1f0; stroke: #b23b3b; stroke-width: 2; rx: 14; }
+      .arrow { stroke: #2b5c7a; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .thin { stroke: #b23b3b; stroke-width: 5; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="960" height="390" fill="#ffffff"/>
+  <text x="40" y="45" class="title">带宽瓶颈：计算阵列吃得比存储系统供得快</text>
+
+  <rect x="60" y="120" width="180" height="110" class="mem"/>
+  <text x="112" y="160" class="label">外部内存</text>
+  <text x="94" y="190" class="small">可用带宽：4 B/cycle</text>
+
+  <rect x="360" y="120" width="180" height="110" class="buf"/>
+  <text x="410" y="160" class="label">片上 buffer</text>
+  <text x="395" y="190" class="small">暂存输入和权重</text>
+
+  <rect x="670" y="105" width="220" height="140" class="pe"/>
+  <text x="735" y="145" class="label">MAC 阵列</text>
+  <text x="706" y="175" class="small">需求：8 B/cycle</text>
+  <text x="707" y="202" class="small">供不够时 PE 空等</text>
+
+  <path d="M240 175 H352" class="thin"/>
+  <path d="M540 175 H662" class="arrow"/>
+
+  <rect x="230" y="285" width="500" height="58" class="bad"/>
+  <text x="260" y="321" class="label">需要带宽大于可用带宽，峰值 TOPS 无法兑现</text>
+</svg>

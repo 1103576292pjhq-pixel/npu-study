@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420">
+  <rect width="960" height="420" fill="#f8fafc"/>
+  <rect x="28" y="28" width="904" height="364" rx="10" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="40" y="72" font-size="28" font-family="Arial, sans-serif" font-weight="700" fill="#0f172a">学习 NPU 的四层递进</text>
+  <text x="40" y="110" font-size="22" fill="#1f2937">1. 数字层：能手算一个输出值来自哪些输入和权重</text>
+<text x="40" y="152" font-size="22" fill="#1f2937">2. 算子层：把乘加规则写成卷积、GEMM、激活或池化</text>
+<text x="40" y="194" font-size="22" fill="#1f2937">3. 循环层：把算子展开成可调度的多重循环</text>
+<text x="40" y="236" font-size="22" fill="#1f2937">4. 硬件层：用 PE、buffer、DMA 和 dataflow 提升复用</text>
+</svg>

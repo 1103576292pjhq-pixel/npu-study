@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="380" viewBox="0 0 940 380" role="img" aria-labelledby="title desc">
+  <title id="title">卷积中的三类数据复用</title>
+  <desc id="desc">输入、权重和部分和分别有不同的复用方式。</desc>
+  <rect width="940" height="380" fill="#f8fafc"/>
+  <text x="470" y="42" text-anchor="middle" font-size="26" font-family="Arial, sans-serif" fill="#0f172a">卷积里的复用不是一种，而是三种主线</text>
+  <rect x="60" y="90" width="250" height="220" rx="18" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <rect x="345" y="90" width="250" height="220" rx="18" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <rect x="630" y="90" width="250" height="220" rx="18" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <g font-family="Arial, sans-serif" fill="#1f2937">
+    <text x="185" y="132" text-anchor="middle" font-size="24">输入复用</text>
+    <text x="185" y="172" text-anchor="middle" font-size="17">相邻窗口重叠</text>
+    <text x="185" y="205" text-anchor="middle" font-size="17">同一输入参加多个输出</text>
+    <text x="185" y="252" text-anchor="middle" font-size="16" fill="#475569">行 buffer / 输入 tile</text>
+    <text x="470" y="132" text-anchor="middle" font-size="24">权重复用</text>
+    <text x="470" y="172" text-anchor="middle" font-size="17">同一 kernel 滑过全图</text>
+    <text x="470" y="205" text-anchor="middle" font-size="17">同一权重参加多个位置</text>
+    <text x="470" y="252" text-anchor="middle" font-size="16" fill="#475569">权重 buffer / PE 本地</text>
+    <text x="755" y="132" text-anchor="middle" font-size="24">部分和复用</text>
+    <text x="755" y="172" text-anchor="middle" font-size="17">同一输出多次累加</text>
+    <text x="755" y="205" text-anchor="middle" font-size="17">sum 留在本地直到完成</text>
+    <text x="755" y="252" text-anchor="middle" font-size="16" fill="#475569">寄存器 / 输出 buffer</text>
+  </g>
+</svg>

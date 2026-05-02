@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="310" viewBox="0 0 760 310">
+  <rect width="760" height="310" fill="#ffffff"/>
+  <style>
+    .mem{fill:#eef2ff;stroke:#4c51bf;stroke-width:2;rx:8}
+    .cost{fill:#fff5f5;stroke:#c53030;stroke-width:2;rx:8}
+    .ok{fill:#f0fff4;stroke:#2f855a;stroke-width:2;rx:8}
+    .txt{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:16px;fill:#1a202c}
+    .small{font-size:13px;fill:#2d3748}
+    .arrow{stroke:#4a5568;stroke-width:2;marker-end:url(#arrow)}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4a5568"/>
+    </marker>
+  </defs>
+  <rect x="35" y="55" width="150" height="80" class="mem"/>
+  <text x="110" y="86" text-anchor="middle" class="txt">NCHW</text>
+  <text x="110" y="111" text-anchor="middle" class="small">空间连续</text>
+  <rect x="305" y="40" width="160" height="110" class="cost"/>
+  <text x="385" y="75" text-anchor="middle" class="txt">Transpose</text>
+  <text x="385" y="100" text-anchor="middle" class="small">读一遍</text>
+  <text x="385" y="123" text-anchor="middle" class="small">重排再写一遍</text>
+  <rect x="575" y="55" width="150" height="80" class="mem"/>
+  <text x="650" y="86" text-anchor="middle" class="txt">NHWC</text>
+  <text x="650" y="111" text-anchor="middle" class="small">通道连续</text>
+  <line x1="185" y1="95" x2="305" y2="95" class="arrow"/>
+  <line x1="465" y1="95" x2="575" y2="95" class="arrow"/>
+  <rect x="85" y="205" width="225" height="65" class="ok"/>
+  <text x="198" y="232" text-anchor="middle" class="txt">后续算子收益</text>
+  <text x="198" y="254" text-anchor="middle" class="small">更连续 / 向量 lane 更满</text>
+  <rect x="450" y="205" width="225" height="65" class="cost"/>
+  <text x="563" y="232" text-anchor="middle" class="txt">转换成本</text>
+  <text x="563" y="254" text-anchor="middle" class="small">额外带宽 / 延迟 / buffer</text>
+  <text x="380" y="295" text-anchor="middle" class="small">只有后续算子的加速收益大于转换成本，layout 转换才值得。</text>
+</svg>

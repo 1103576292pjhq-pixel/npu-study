@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="360" viewBox="0 0 760 360">
+  <style>
+    text { font-family: "Microsoft YaHei", "SimHei", sans-serif; fill: #172033; }
+    .cell { fill: #f8fafc; stroke: #64748b; stroke-width: 1.5; }
+    .win { fill: none; stroke: #ef4444; stroke-width: 4; }
+    .out { fill: #ecfdf5; stroke: #16a34a; stroke-width: 2; rx: 10; }
+    .title { font-size: 22px; font-weight: 700; }
+    .num { font-size: 20px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+    .note { font-size: 15px; fill: #475569; }
+  </style>
+  <rect width="760" height="360" fill="#ffffff"/>
+  <text class="title" x="34" y="42">2x2 最大池化：每个窗口留下一个代表值</text>
+  <g transform="translate(70,82)">
+    <rect class="cell" x="0" y="0" width="58" height="58"/><text class="num" x="29" y="29">0</text>
+    <rect class="cell" x="58" y="0" width="58" height="58"/><text class="num" x="87" y="29">2</text>
+    <rect class="cell" x="116" y="0" width="58" height="58"/><text class="num" x="145" y="29">0</text>
+    <rect class="cell" x="174" y="0" width="58" height="58"/><text class="num" x="203" y="29">3</text>
+    <rect class="cell" x="0" y="58" width="58" height="58"/><text class="num" x="29" y="87">4</text>
+    <rect class="cell" x="58" y="58" width="58" height="58"/><text class="num" x="87" y="87">0</text>
+    <rect class="cell" x="116" y="58" width="58" height="58"/><text class="num" x="145" y="87">1</text>
+    <rect class="cell" x="174" y="58" width="58" height="58"/><text class="num" x="203" y="87">0</text>
+    <rect class="cell" x="0" y="116" width="58" height="58"/><text class="num" x="29" y="145">0</text>
+    <rect class="cell" x="58" y="116" width="58" height="58"/><text class="num" x="87" y="145">5</text>
+    <rect class="cell" x="116" y="116" width="58" height="58"/><text class="num" x="145" y="145">0</text>
+    <rect class="cell" x="174" y="116" width="58" height="58"/><text class="num" x="203" y="145">2</text>
+    <rect class="cell" x="0" y="174" width="58" height="58"/><text class="num" x="29" y="203">1</text>
+    <rect class="cell" x="58" y="174" width="58" height="58"/><text class="num" x="87" y="203">0</text>
+    <rect class="cell" x="116" y="174" width="58" height="58"/><text class="num" x="145" y="203">2</text>
+    <rect class="cell" x="174" y="174" width="58" height="58"/><text class="num" x="203" y="203">6</text>
+    <rect class="win" x="0" y="0" width="116" height="116"/>
+  </g>
+  <text class="note" x="78" y="335">红框窗口 max(0,2,4,0)=4；其他窗口同理。</text>
+  <path d="M350 190 L450 190" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#334155"/>
+    </marker>
+  </defs>
+  <g transform="translate(490,132)">
+    <rect class="out" x="0" y="0" width="72" height="72"/><text class="num" x="36" y="36">4</text>
+    <rect class="out" x="72" y="0" width="72" height="72"/><text class="num" x="108" y="36">3</text>
+    <rect class="out" x="0" y="72" width="72" height="72"/><text class="num" x="36" y="108">5</text>
+    <rect class="out" x="72" y="72" width="72" height="72"/><text class="num" x="108" y="108">6</text>
+  </g>
+</svg>

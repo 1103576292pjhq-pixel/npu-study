@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="410" viewBox="0 0 960 410">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#2b5c7a"/>
+    </marker>
+    <style>
+      .title { font: 700 25px sans-serif; fill: #183247; }
+      .label { font: 600 17px sans-serif; fill: #183247; }
+      .small { font: 14px sans-serif; fill: #34495e; }
+      .stage { fill: #f4fbff; stroke: #2b5c7a; stroke-width: 2; rx: 14; }
+      .good { fill: #eaf8ed; stroke: #27733a; stroke-width: 2; rx: 14; }
+      .wait { fill: #fff1f0; stroke: #b23b3b; stroke-width: 2; rx: 14; }
+      .arrow { stroke: #2b5c7a; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="960" height="410" fill="#ffffff"/>
+  <text x="40" y="45" class="title">带宽调度：让搬运和计算重叠，减少等待</text>
+
+  <rect x="80" y="110" width="170" height="88" class="stage"/>
+  <text x="122" y="144" class="label">搬入 tile N</text>
+  <text x="112" y="171" class="small">DMA 成块搬运</text>
+
+  <rect x="315" y="110" width="170" height="88" class="good"/>
+  <text x="354" y="144" class="label">计算 tile N</text>
+  <text x="342" y="171" class="small">PE 阵列持续工作</text>
+
+  <rect x="550" y="110" width="170" height="88" class="stage"/>
+  <text x="588" y="144" class="label">搬入 tile N+1</text>
+  <text x="588" y="171" class="small">与计算重叠</text>
+
+  <rect x="785" y="110" width="120" height="88" class="good"/>
+  <text x="812" y="144" class="label">写回</text>
+  <text x="807" y="171" class="small">输出 tile</text>
+
+  <path d="M250 154 H307" class="arrow"/>
+  <path d="M485 154 H542" class="arrow"/>
+  <path d="M720 154 H777" class="arrow"/>
+
+  <rect x="160" y="270" width="640" height="70" class="wait"/>
+  <text x="190" y="302" class="label">如果下一块数据没有提前到达，计算阶段会出现气泡</text>
+  <text x="190" y="327" class="small">优化目标：少搬、连续搬、提前搬，并让当前计算覆盖下一次搬运时间。</text>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="380" viewBox="0 0 900 380" role="img" aria-labelledby="title desc">
+  <title id="title">channel accumulation trace</title>
+  <desc id="desc">Trace of accumulating contributions from input channels into one output value.</desc>
+  <style>
+    .label { font: 18px sans-serif; fill: #1f2933; }
+    .small { font: 14px sans-serif; fill: #52606d; }
+    .box { fill: #ffffff; stroke: #4a5568; stroke-width: 1.5; rx: 8; }
+    .acc { fill: #e6fffa; stroke: #0987a0; stroke-width: 2; rx: 8; }
+    .arrow { stroke: #1f6feb; stroke-width: 3; marker-end: url(#arrow); }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f6feb"/>
+    </marker>
+  </defs>
+  <text x="42" y="42" class="label">One output value across channels</text>
+  <g transform="translate(60 95)">
+    <rect class="acc" x="0" y="0" width="95" height="58"/>
+    <text x="19" y="36" class="label">sum=0</text>
+  </g>
+  <line x1="165" y1="124" x2="230" y2="124" class="arrow"/>
+  <g transform="translate(245 80)">
+    <rect class="box" x="0" y="0" width="150" height="88"/>
+    <text x="20" y="32" class="label">channel 0</text>
+    <text x="18" y="62" class="small">R*S MACs -> +5</text>
+  </g>
+  <line x1="405" y1="124" x2="470" y2="124" class="arrow"/>
+  <g transform="translate(485 80)">
+    <rect class="box" x="0" y="0" width="150" height="88"/>
+    <text x="20" y="32" class="label">channel 1</text>
+    <text x="18" y="62" class="small">R*S MACs -> +2</text>
+  </g>
+  <line x1="645" y1="124" x2="710" y2="124" class="arrow"/>
+  <g transform="translate(725 95)">
+    <rect class="acc" x="0" y="0" width="115" height="58"/>
+    <text x="21" y="36" class="label">out=7</text>
+  </g>
+  <g transform="translate(245 230)">
+    <rect class="acc" x="0" y="0" width="150" height="58"/>
+    <text x="18" y="36" class="label">sum: 0 -> 5</text>
+  </g>
+  <g transform="translate(485 230)">
+    <rect class="acc" x="0" y="0" width="150" height="58"/>
+    <text x="18" y="36" class="label">sum: 5 -> 7</text>
+  </g>
+  <text x="60" y="345" class="small">The accumulator must stay alive until all input channels for this output are processed.</text>
+</svg>

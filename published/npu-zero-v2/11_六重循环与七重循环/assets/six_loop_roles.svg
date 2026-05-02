@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="480" viewBox="0 0 960 480" role="img" aria-labelledby="title desc">
+  <title id="title">六重循环的角色分层</title>
+  <desc id="desc">将 oc、oh、ow 标为输出定位循环，将 ic、r、s 标为累加循环。</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfaf6; }
+      .outer { fill: #ffe6d6; stroke: #a9572a; stroke-width: 2; rx: 16; }
+      .inner { fill: #e2f0ff; stroke: #3268a8; stroke-width: 2; rx: 16; }
+      .psum { fill: #fff3bf; stroke: #8a6a00; stroke-width: 2; rx: 16; }
+      .label { font: 20px "Microsoft YaHei", Arial, sans-serif; fill: #1e2e33; }
+      .small { font: 15px "Microsoft YaHei", Arial, sans-serif; fill: #2d444b; }
+      .code { font: 15px Consolas, "Microsoft YaHei", monospace; fill: #17272d; }
+      .arrow { stroke: #2d444b; stroke-width: 2.2; marker-end: url(#arrow); fill: none; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#2d444b"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="960" height="480"/>
+  <text class="label" x="40" y="44">六重循环：三层定位输出，三层累加成这个输出</text>
+
+  <rect class="outer" x="55" y="85" width="240" height="265"/>
+  <text class="label" x="92" y="125">输出定位循环</text>
+  <text class="code" x="90" y="170">for oc</text>
+  <text class="small" x="165" y="170">选输出通道</text>
+  <text class="code" x="90" y="215">for oh</text>
+  <text class="small" x="165" y="215">选输出行</text>
+  <text class="code" x="90" y="260">for ow</text>
+  <text class="small" x="165" y="260">选输出列</text>
+  <text class="small" x="87" y="315">共同定位 output[oc][oh][ow]</text>
+
+  <rect class="psum" x="360" y="125" width="225" height="185"/>
+  <text class="label" x="420" y="165">部分和</text>
+  <text class="code" x="405" y="210">psum = bias[oc]</text>
+  <text class="code" x="405" y="245">psum += input*weight</text>
+  <text class="small" x="405" y="280">直到 ic/r/s 全部走完</text>
+
+  <rect class="inner" x="650" y="85" width="250" height="265"/>
+  <text class="label" x="702" y="125">累加循环</text>
+  <text class="code" x="690" y="170">for ic</text>
+  <text class="small" x="765" y="170">输入通道</text>
+  <text class="code" x="690" y="215">for r</text>
+  <text class="small" x="765" y="215">核内行</text>
+  <text class="code" x="690" y="260">for s</text>
+  <text class="small" x="765" y="260">核内列</text>
+  <text class="small" x="688" y="315">共同决定乘积集合</text>
+
+  <path class="arrow" d="M295 218 C325 218, 335 218, 360 218"/>
+  <path class="arrow" d="M650 218 C620 218, 610 218, 585 218"/>
+  <path class="arrow" d="M472 310 L472 385 L730 385"/>
+  <text class="small" x="500" y="410">判断 cue：改变 oc/oh/ow 会换输出；改变 ic/r/s 只是在同一个输出内继续累加。</text>
+</svg>

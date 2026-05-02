@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420">
+  <rect width="960" height="420" fill="#f8fafc"/>
+  <rect x="28" y="28" width="904" height="364" rx="10" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="40" y="72" font-size="28" font-family="Arial, sans-serif" font-weight="700" fill="#0f172a">每章学习闸门</text>
+  <text x="40" y="110" font-size="22" fill="#1f2937">能回答：它解决什么问题</text>
+<text x="40" y="152" font-size="22" fill="#1f2937">能复算：最小例题的输入、输出和中间量</text>
+<text x="40" y="194" font-size="22" fill="#1f2937">能映射：对应哪个硬件或软件部件</text>
+<text x="40" y="236" font-size="22" fill="#1f2937">能纠错：知道最容易误用在哪里</text>
+</svg>

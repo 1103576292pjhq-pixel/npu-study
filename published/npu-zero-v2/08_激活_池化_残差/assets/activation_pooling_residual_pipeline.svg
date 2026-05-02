@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="260" viewBox="0 0 920 260">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#334155"/>
+    </marker>
+    <style>
+      text { font-family: "Microsoft YaHei", "SimHei", sans-serif; fill: #172033; }
+      .box { fill: #eff6ff; stroke: #2563eb; stroke-width: 2; rx: 14; }
+      .small { font-size: 16px; }
+      .title { font-size: 22px; font-weight: 700; }
+      .note { font-size: 14px; fill: #475569; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="920" height="260" fill="#fbfdff"/>
+  <text class="title" x="36" y="44">卷积主计算之后，激活、池化、残差继续改变数据流</text>
+  <rect class="box" x="45" y="86" width="130" height="86"/>
+  <text class="small" x="82" y="121">卷积</text>
+  <text class="note" x="68" y="148">窗口乘加</text>
+  <line x1="180" y1="129" x2="250" y2="129" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect class="box" x="255" y="86" width="130" height="86"/>
+  <text class="small" x="294" y="121">激活</text>
+  <text class="note" x="278" y="148">逐元素筛选</text>
+  <line x1="390" y1="129" x2="460" y2="129" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect class="box" x="465" y="86" width="130" height="86"/>
+  <text class="small" x="504" y="121">池化</text>
+  <text class="note" x="487" y="148">局部汇总</text>
+  <line x1="600" y1="129" x2="670" y2="129" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect class="box" x="675" y="86" width="160" height="86"/>
+  <text class="small" x="717" y="121">残差相加</text>
+  <text class="note" x="704" y="148">旁路 + 主路</text>
+  <path d="M105 184 C210 235, 595 235, 750 180" fill="none" stroke="#f97316" stroke-width="3" marker-end="url(#arrow)"/>
+  <text class="note" x="346" y="226">旁路数据需要保存或重新读取</text>
+</svg>

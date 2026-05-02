@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420" role="img" aria-labelledby="title desc">
+  <title id="title">输出 tile 与输入 halo</title>
+  <desc id="desc">2x2 输出 tile 在 2x2 kernel 下需要 3x3 输入区域。</desc>
+  <rect width="900" height="420" fill="#fff7ed"/>
+  <text x="450" y="42" text-anchor="middle" font-size="26" font-family="Arial, sans-serif" fill="#7c2d12">2x2 输出 tile 需要 3x3 输入 tile</text>
+  <g transform="translate(85,90)" font-family="Arial, sans-serif">
+    <text x="120" y="-18" text-anchor="middle" font-size="20" fill="#1f2937">输入区域</text>
+    <g stroke="#64748b" stroke-width="2">
+      <rect x="0" y="0" width="80" height="80" fill="#bfdbfe"/>
+      <rect x="80" y="0" width="80" height="80" fill="#bfdbfe"/>
+      <rect x="160" y="0" width="80" height="80" fill="#dbeafe"/>
+      <rect x="0" y="80" width="80" height="80" fill="#bfdbfe"/>
+      <rect x="80" y="80" width="80" height="80" fill="#bfdbfe"/>
+      <rect x="160" y="80" width="80" height="80" fill="#dbeafe"/>
+      <rect x="0" y="160" width="80" height="80" fill="#dbeafe"/>
+      <rect x="80" y="160" width="80" height="80" fill="#dbeafe"/>
+      <rect x="160" y="160" width="80" height="80" fill="#dbeafe"/>
+    </g>
+    <text x="120" y="275" text-anchor="middle" font-size="16" fill="#334155">浅蓝部分是 kernel 扩展出的 halo</text>
+  </g>
+  <path d="M365 205 H505" stroke="#9a3412" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="435" y="185" text-anchor="middle" font-size="18" font-family="Arial, sans-serif" fill="#9a3412">计算</text>
+  <g transform="translate(560,130)" font-family="Arial, sans-serif">
+    <text x="90" y="-18" text-anchor="middle" font-size="20" fill="#1f2937">输出 tile</text>
+    <g stroke="#64748b" stroke-width="2">
+      <rect x="0" y="0" width="90" height="90" fill="#bbf7d0"/>
+      <rect x="90" y="0" width="90" height="90" fill="#bbf7d0"/>
+      <rect x="0" y="90" width="90" height="90" fill="#bbf7d0"/>
+      <rect x="90" y="90" width="90" height="90" fill="#bbf7d0"/>
+    </g>
+    <text x="45" y="52" text-anchor="middle" font-size="18" fill="#166534">out00</text>
+    <text x="135" y="52" text-anchor="middle" font-size="18" fill="#166534">out01</text>
+    <text x="45" y="142" text-anchor="middle" font-size="18" fill="#166534">out10</text>
+    <text x="135" y="142" text-anchor="middle" font-size="18" fill="#166534">out11</text>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L8,3 z" fill="#9a3412"/>
+    </marker>
+  </defs>
+</svg>

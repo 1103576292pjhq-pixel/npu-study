@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="300" viewBox="0 0 760 300">
+  <rect width="760" height="300" fill="#ffffff"/>
+  <style>
+    .part{fill:#eef6ff;stroke:#2b6cb0;stroke-width:2;rx:8}
+    .sram{fill:#f0fff4;stroke:#2f855a;stroke-width:2;rx:8}
+    .txt{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:16px;fill:#1a202c}
+    .small{font-size:13px;fill:#2d3748}
+    .arrow{stroke:#4a5568;stroke-width:2;marker-end:url(#arrow)}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4a5568"/>
+    </marker>
+  </defs>
+  <text x="380" y="28" text-anchor="middle" class="txt">tile 的第一道硬门槛：working set 放得进 SRAM</text>
+  <rect x="35" y="70" width="130" height="70" class="part"/><text x="100" y="100" text-anchor="middle" class="txt">输入 tile</text><text x="100" y="122" text-anchor="middle" class="small">含 halo</text>
+  <rect x="190" y="70" width="130" height="70" class="part"/><text x="255" y="100" text-anchor="middle" class="txt">权重 tile</text><text x="255" y="122" text-anchor="middle" class="small">oc/ic/r/s</text>
+  <rect x="345" y="70" width="130" height="70" class="part"/><text x="410" y="100" text-anchor="middle" class="txt">psum tile</text><text x="410" y="122" text-anchor="middle" class="small">累加中间值</text>
+  <rect x="500" y="70" width="130" height="70" class="part"/><text x="565" y="100" text-anchor="middle" class="txt">临时空间</text><text x="565" y="122" text-anchor="middle" class="small">layout / DMA</text>
+  <line x1="100" y1="140" x2="365" y2="190" class="arrow"/>
+  <line x1="255" y1="140" x2="380" y2="190" class="arrow"/>
+  <line x1="410" y1="140" x2="395" y2="190" class="arrow"/>
+  <line x1="565" y1="140" x2="410" y2="190" class="arrow"/>
+  <rect x="250" y="190" width="260" height="70" class="sram"/>
+  <text x="380" y="220" text-anchor="middle" class="txt">片上 SRAM 可用容量</text>
+  <text x="380" y="243" text-anchor="middle" class="small">不等式不成立时，tile 必须缩小或换 dataflow</text>
+  <text x="380" y="285" text-anchor="middle" class="small">输入 + 权重 + psum + 临时空间 &lt;= 可用 SRAM</text>
+</svg>
