@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="430" viewBox="0 0 960 430" role="img" aria-labelledby="title desc">
+  <title id="title">脉动阵列的 fill steady drain 周期</title>
+  <desc id="desc">展示 4x4 脉动阵列从填充到稳定再到排空的时间线，小 tile 的 fill drain 会降低有效利用率。</desc>
+  <rect width="960" height="430" fill="#fbfbf8"/>
+  <style>
+    .txt{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:18px;fill:#1f2933}
+    .small{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:14px;fill:#394b59}
+    .fill{fill:#fce7c8;stroke:#b46b00;stroke-width:2}
+    .steady{fill:#dff3e4;stroke:#287a3e;stroke-width:2}
+    .drain{fill:#e3e8ff;stroke:#4f46e5;stroke-width:2}
+    .grid{fill:#ffffff;stroke:#64748b;stroke-width:1.5}
+    .active{fill:#7dd3fc;stroke:#0369a1;stroke-width:1.5}
+    .arrow{stroke:#334155;stroke-width:2.5;fill:none;marker-end:url(#arrow)}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+  <text x="480" y="36" text-anchor="middle" class="txt" font-weight="700">脉动阵列不是一启动就满：先 fill，再 steady，最后 drain</text>
+  <g transform="translate(80 86)">
+    <rect x="0" y="0" width="230" height="74" class="fill"/>
+    <rect x="230" y="0" width="330" height="74" class="steady"/>
+    <rect x="560" y="0" width="230" height="74" class="drain"/>
+    <text x="115" y="32" text-anchor="middle" class="txt">fill</text>
+    <text x="115" y="56" text-anchor="middle" class="small">波前逐步填满阵列</text>
+    <text x="395" y="32" text-anchor="middle" class="txt">steady state</text>
+    <text x="395" y="56" text-anchor="middle" class="small">大多数 PE 持续有效 MAC</text>
+    <text x="675" y="32" text-anchor="middle" class="txt">drain</text>
+    <text x="675" y="56" text-anchor="middle" class="small">最后数据离开并写回</text>
+    <path d="M0 100 L790 100" class="arrow"/>
+    <text x="790" y="126" text-anchor="end" class="small">cycle</text>
+  </g>
+  <g transform="translate(95 230)">
+    <text x="80" y="-22" text-anchor="middle" class="small">cycle 0：左上角先工作</text>
+    <rect x="0" y="0" width="36" height="36" class="active"/>
+    <rect x="40" y="0" width="36" height="36" class="grid"/>
+    <rect x="80" y="0" width="36" height="36" class="grid"/>
+    <rect x="120" y="0" width="36" height="36" class="grid"/>
+    <rect x="0" y="40" width="36" height="36" class="grid"/>
+    <rect x="40" y="40" width="36" height="36" class="grid"/>
+    <rect x="80" y="40" width="36" height="36" class="grid"/>
+    <rect x="120" y="40" width="36" height="36" class="grid"/>
+    <rect x="0" y="80" width="36" height="36" class="grid"/>
+    <rect x="40" y="80" width="36" height="36" class="grid"/>
+    <rect x="80" y="80" width="36" height="36" class="grid"/>
+    <rect x="120" y="80" width="36" height="36" class="grid"/>
+    <rect x="0" y="120" width="36" height="36" class="grid"/>
+    <rect x="40" y="120" width="36" height="36" class="grid"/>
+    <rect x="80" y="120" width="36" height="36" class="grid"/>
+    <rect x="120" y="120" width="36" height="36" class="grid"/>
+  </g>
+  <g transform="translate(395 230)">
+    <text x="80" y="-22" text-anchor="middle" class="small">steady：波前覆盖多数 PE</text>
+    <rect x="0" y="0" width="36" height="36" class="active"/>
+    <rect x="40" y="0" width="36" height="36" class="active"/>
+    <rect x="80" y="0" width="36" height="36" class="active"/>
+    <rect x="120" y="0" width="36" height="36" class="active"/>
+    <rect x="0" y="40" width="36" height="36" class="active"/>
+    <rect x="40" y="40" width="36" height="36" class="active"/>
+    <rect x="80" y="40" width="36" height="36" class="active"/>
+    <rect x="120" y="40" width="36" height="36" class="active"/>
+    <rect x="0" y="80" width="36" height="36" class="active"/>
+    <rect x="40" y="80" width="36" height="36" class="active"/>
+    <rect x="80" y="80" width="36" height="36" class="active"/>
+    <rect x="120" y="80" width="36" height="36" class="active"/>
+    <rect x="0" y="120" width="36" height="36" class="active"/>
+    <rect x="40" y="120" width="36" height="36" class="active"/>
+    <rect x="80" y="120" width="36" height="36" class="active"/>
+    <rect x="120" y="120" width="36" height="36" class="active"/>
+  </g>
+  <g transform="translate(700 230)">
+    <text x="80" y="-22" text-anchor="middle" class="small">drain：右下角最后完成</text>
+    <rect x="0" y="0" width="36" height="36" class="grid"/>
+    <rect x="40" y="0" width="36" height="36" class="grid"/>
+    <rect x="80" y="0" width="36" height="36" class="grid"/>
+    <rect x="120" y="0" width="36" height="36" class="grid"/>
+    <rect x="0" y="40" width="36" height="36" class="grid"/>
+    <rect x="40" y="40" width="36" height="36" class="grid"/>
+    <rect x="80" y="40" width="36" height="36" class="grid"/>
+    <rect x="120" y="40" width="36" height="36" class="grid"/>
+    <rect x="0" y="80" width="36" height="36" class="grid"/>
+    <rect x="40" y="80" width="36" height="36" class="grid"/>
+    <rect x="80" y="80" width="36" height="36" class="active"/>
+    <rect x="120" y="80" width="36" height="36" class="active"/>
+    <rect x="0" y="120" width="36" height="36" class="grid"/>
+    <rect x="40" y="120" width="36" height="36" class="grid"/>
+    <rect x="80" y="120" width="36" height="36" class="active"/>
+    <rect x="120" y="120" width="36" height="36" class="active"/>
+  </g>
+  <text x="480" y="410" text-anchor="middle" class="small">小 tile 的有效周期少，fill/drain 占比高；大 tile 更容易长时间保持 steady state。</text>
+</svg>

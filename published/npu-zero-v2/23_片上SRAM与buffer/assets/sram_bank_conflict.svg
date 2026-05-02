@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="430" viewBox="0 0 940 430" role="img" aria-labelledby="title desc">
+  <title id="title">SRAM bank 冲突会让 PE 等待</title>
+  <desc id="desc">对比四个 PE 同时访问同一 bank 与分散访问四个 bank 的情况，说明容量够不代表带宽够。</desc>
+  <rect width="940" height="430" fill="#fbfbf8"/>
+  <style>
+    .txt{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:18px;fill:#1f2933}
+    .small{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:14px;fill:#394b59}
+    .pe{fill:#e0f2fe;stroke:#0369a1;stroke-width:2;rx:6}
+    .bank{fill:#ffffff;stroke:#334155;stroke-width:2;rx:6}
+    .hot{fill:#ffe4e6;stroke:#be123c;stroke-width:2;rx:6}
+    .ok{fill:#dcfce7;stroke:#15803d;stroke-width:2;rx:6}
+    .arrow{stroke:#64748b;stroke-width:2;fill:none;marker-end:url(#arrow)}
+    .red{stroke:#be123c;stroke-width:2.5;fill:none;marker-end:url(#redArrow)}
+    .green{stroke:#15803d;stroke-width:2.5;fill:none;marker-end:url(#greenArrow)}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#64748b"/></marker>
+    <marker id="redArrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#be123c"/></marker>
+    <marker id="greenArrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#15803d"/></marker>
+  </defs>
+  <text x="470" y="34" text-anchor="middle" class="txt" font-weight="700">容量够只是第一关：同一拍还要避开 bank 冲突</text>
+  <text x="240" y="76" text-anchor="middle" class="txt">冲突访问</text>
+  <text x="700" y="76" text-anchor="middle" class="txt">分散访问</text>
+  <g transform="translate(70 105)">
+    <rect x="0" y="0" width="72" height="42" class="pe"/><text x="36" y="27" text-anchor="middle" class="small">PE0</text>
+    <rect x="0" y="55" width="72" height="42" class="pe"/><text x="36" y="82" text-anchor="middle" class="small">PE1</text>
+    <rect x="0" y="110" width="72" height="42" class="pe"/><text x="36" y="137" text-anchor="middle" class="small">PE2</text>
+    <rect x="0" y="165" width="72" height="42" class="pe"/><text x="36" y="192" text-anchor="middle" class="small">PE3</text>
+    <rect x="260" y="0" width="90" height="42" class="hot"/><text x="305" y="27" text-anchor="middle" class="small">bank0</text>
+    <rect x="260" y="55" width="90" height="42" class="bank"/><text x="305" y="82" text-anchor="middle" class="small">bank1</text>
+    <rect x="260" y="110" width="90" height="42" class="bank"/><text x="305" y="137" text-anchor="middle" class="small">bank2</text>
+    <rect x="260" y="165" width="90" height="42" class="bank"/><text x="305" y="192" text-anchor="middle" class="small">bank3</text>
+    <path d="M72 21 C135 18,185 18,260 21" class="red"/>
+    <path d="M72 76 C135 62,185 35,260 24" class="red"/>
+    <path d="M72 131 C135 100,185 50,260 27" class="red"/>
+    <path d="M72 186 C135 138,185 65,260 30" class="red"/>
+    <text x="175" y="245" text-anchor="middle" class="small">4 个请求争用 1 个 bank，PE 排队等待</text>
+  </g>
+  <g transform="translate(535 105)">
+    <rect x="0" y="0" width="72" height="42" class="pe"/><text x="36" y="27" text-anchor="middle" class="small">PE0</text>
+    <rect x="0" y="55" width="72" height="42" class="pe"/><text x="36" y="82" text-anchor="middle" class="small">PE1</text>
+    <rect x="0" y="110" width="72" height="42" class="pe"/><text x="36" y="137" text-anchor="middle" class="small">PE2</text>
+    <rect x="0" y="165" width="72" height="42" class="pe"/><text x="36" y="192" text-anchor="middle" class="small">PE3</text>
+    <rect x="260" y="0" width="90" height="42" class="ok"/><text x="305" y="27" text-anchor="middle" class="small">bank0</text>
+    <rect x="260" y="55" width="90" height="42" class="ok"/><text x="305" y="82" text-anchor="middle" class="small">bank1</text>
+    <rect x="260" y="110" width="90" height="42" class="ok"/><text x="305" y="137" text-anchor="middle" class="small">bank2</text>
+    <rect x="260" y="165" width="90" height="42" class="ok"/><text x="305" y="192" text-anchor="middle" class="small">bank3</text>
+    <path d="M72 21 L260 21" class="green"/>
+    <path d="M72 76 L260 76" class="green"/>
+    <path d="M72 131 L260 131" class="green"/>
+    <path d="M72 186 L260 186" class="green"/>
+    <text x="175" y="245" text-anchor="middle" class="small">4 个请求落到 4 个 bank，可并行服务</text>
+  </g>
+  <text x="470" y="400" text-anchor="middle" class="small">判断线索：working set 解决容量，bank/端口/地址映射解决同周期带宽。</text>
+</svg>

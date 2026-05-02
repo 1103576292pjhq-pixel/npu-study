@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="390" viewBox="0 0 960 390">
+  <rect width="960" height="390" fill="#fbfaf6"/>
+  <text x="42" y="44" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#263238">双缓冲时间线：搬运和计算交叠</text>
+  <line x1="110" y1="100" x2="880" y2="100" stroke="#546e7a" stroke-width="2"/>
+  <line x1="110" y1="190" x2="880" y2="190" stroke="#546e7a" stroke-width="2"/>
+  <line x1="110" y1="280" x2="880" y2="280" stroke="#546e7a" stroke-width="2"/>
+  <text x="42" y="106" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#37474f">DMA</text>
+  <text x="46" y="196" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#37474f">PE</text>
+  <text x="34" y="286" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#37474f">Buffer</text>
+  <rect x="130" y="76" width="130" height="48" rx="8" fill="#f4c678" stroke="#b77a16"/>
+  <text x="158" y="106" font-family="Arial, sans-serif" font-size="15" fill="#6d4205">load tile0</text>
+  <rect x="282" y="76" width="130" height="48" rx="8" fill="#f4c678" stroke="#b77a16"/>
+  <text x="310" y="106" font-family="Arial, sans-serif" font-size="15" fill="#6d4205">load tile1</text>
+  <rect x="434" y="76" width="130" height="48" rx="8" fill="#f4c678" stroke="#b77a16"/>
+  <text x="462" y="106" font-family="Arial, sans-serif" font-size="15" fill="#6d4205">load tile2</text>
+  <rect x="586" y="76" width="130" height="48" rx="8" fill="#d99b8d" stroke="#9b4b39"/>
+  <text x="612" y="106" font-family="Arial, sans-serif" font-size="15" fill="#773222">store tile0</text>
+  <rect x="282" y="166" width="130" height="48" rx="8" fill="#a8d8a8" stroke="#4d8f52"/>
+  <text x="298" y="196" font-family="Arial, sans-serif" font-size="15" fill="#24552a">compute tile0</text>
+  <rect x="434" y="166" width="130" height="48" rx="8" fill="#a8d8a8" stroke="#4d8f52"/>
+  <text x="450" y="196" font-family="Arial, sans-serif" font-size="15" fill="#24552a">compute tile1</text>
+  <rect x="586" y="166" width="130" height="48" rx="8" fill="#a8d8a8" stroke="#4d8f52"/>
+  <text x="602" y="196" font-family="Arial, sans-serif" font-size="15" fill="#24552a">compute tile2</text>
+  <rect x="130" y="256" width="130" height="48" rx="8" fill="#e3f2fd" stroke="#4b7fbd"/>
+  <text x="158" y="286" font-family="Arial, sans-serif" font-size="15" fill="#25527e">ping ready</text>
+  <rect x="282" y="256" width="130" height="48" rx="8" fill="#fff3e0" stroke="#b77a16"/>
+  <text x="304" y="286" font-family="Arial, sans-serif" font-size="15" fill="#6d4205">pong fill</text>
+  <rect x="434" y="256" width="130" height="48" rx="8" fill="#e3f2fd" stroke="#4b7fbd"/>
+  <text x="462" y="286" font-family="Arial, sans-serif" font-size="15" fill="#25527e">ping fill</text>
+  <rect x="586" y="256" width="130" height="48" rx="8" fill="#fff3e0" stroke="#b77a16"/>
+  <text x="608" y="286" font-family="Arial, sans-serif" font-size="15" fill="#6d4205">pong used</text>
+  <text x="146" y="344" font-family="Arial, sans-serif" font-size="16" fill="#37474f">关键点：计算 tile n 时，DMA 准备 tile n+1；角色在 done 信号后交换。</text>
+</svg>

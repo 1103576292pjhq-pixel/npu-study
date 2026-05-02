@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="520" viewBox="0 0 940 520" role="img" aria-labelledby="title desc">
+  <title id="title">脉动阵列中的波前流动</title>
+  <desc id="desc">展示 A 数据从左向右、B 数据从上向下流过 3x3 PE 网格，计算波前沿对角线推进。</desc>
+  <defs>
+    <marker id="arrowA" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2b6cb0" />
+    </marker>
+    <marker id="arrowB" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#c05621" />
+    </marker>
+    <style>
+      .bg { fill: #f8fafb; stroke: #d6e1e7; }
+      .pe { fill: #ffffff; stroke: #405f6c; stroke-width: 2; rx: 12; }
+      .active { fill: #e6fffa; stroke: #268f83; stroke-width: 2.5; rx: 12; }
+      .title { font-family: "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; fill: #1f333b; font-size: 22px; font-weight: 700; }
+      .text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; fill: #243942; font-size: 16px; }
+      .small { font-family: "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; fill: #445a64; font-size: 13px; }
+      .a { stroke: #2b6cb0; stroke-width: 3; fill: none; marker-end: url(#arrowA); }
+      .b { stroke: #c05621; stroke-width: 3; fill: none; marker-end: url(#arrowB); }
+      .wave { fill: none; stroke: #805ad5; stroke-width: 3; stroke-dasharray: 8 6; }
+    </style>
+  </defs>
+  <rect x="25" y="25" width="890" height="470" class="bg"/>
+  <text x="470" y="65" text-anchor="middle" class="title">A 向右流，B 向下流，计算波前沿对角线推进</text>
+
+  <g transform="translate(330 135)">
+    <rect x="0" y="0" width="82" height="68" class="active"/>
+    <rect x="110" y="0" width="82" height="68" class="pe"/>
+    <rect x="220" y="0" width="82" height="68" class="pe"/>
+    <rect x="0" y="95" width="82" height="68" class="pe"/>
+    <rect x="110" y="95" width="82" height="68" class="active"/>
+    <rect x="220" y="95" width="82" height="68" class="pe"/>
+    <rect x="0" y="190" width="82" height="68" class="pe"/>
+    <rect x="110" y="190" width="82" height="68" class="pe"/>
+    <rect x="220" y="190" width="82" height="68" class="active"/>
+    <text x="41" y="40" text-anchor="middle" class="text">PE</text>
+    <text x="151" y="40" text-anchor="middle" class="text">PE</text>
+    <text x="261" y="40" text-anchor="middle" class="text">PE</text>
+    <text x="41" y="135" text-anchor="middle" class="text">PE</text>
+    <text x="151" y="135" text-anchor="middle" class="text">PE</text>
+    <text x="261" y="135" text-anchor="middle" class="text">PE</text>
+    <text x="41" y="230" text-anchor="middle" class="text">PE</text>
+    <text x="151" y="230" text-anchor="middle" class="text">PE</text>
+    <text x="261" y="230" text-anchor="middle" class="text">PE</text>
+  </g>
+
+  <path d="M105 168 L330 168" class="a"/>
+  <path d="M105 263 L330 263" class="a"/>
+  <path d="M105 358 L330 358" class="a"/>
+  <text x="105" y="140" class="text" fill="#2b6cb0">A 行数据</text>
+
+  <path d="M371 95 L371 135" class="b"/>
+  <path d="M481 95 L481 135" class="b"/>
+  <path d="M591 95 L591 135" class="b"/>
+  <text x="625" y="103" class="text" fill="#c05621">B 列数据</text>
+  <path d="M412 168 L440 168" class="a"/>
+  <path d="M522 263 L550 263" class="a"/>
+  <path d="M632 358 L675 358" class="a"/>
+  <path d="M371 203 L371 230" class="b"/>
+  <path d="M481 298 L481 325" class="b"/>
+  <path d="M591 393 L591 435" class="b"/>
+
+  <path d="M330 135 L632 393" class="wave"/>
+  <text x="707" y="250" class="small">同一时刻活跃 PE 常呈现对角线波前；大型阵列会在填满后稳定输出。</text>
+  <text x="470" y="455" text-anchor="middle" class="small">脉动阵列的关键：数据进入阵列后沿相邻 PE 逐拍移动，并在沿途被复用。</text>
+</svg>

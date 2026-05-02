@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="420" viewBox="0 0 920 420" role="img" aria-labelledby="title desc">
+  <title id="title">PE 内部数值路径和控制信号</title>
+  <desc id="desc">展示 int8 输入和权重进入乘法器、扩展到更宽乘积、累加到 int32 accumulator，并受 valid ready clear writeback 控制。</desc>
+  <rect width="920" height="420" fill="#fbfbf8"/>
+  <style>
+    .box{fill:#ffffff;stroke:#2f4f4f;stroke-width:2;rx:6}
+    .ctrl{fill:#e8f4ff;stroke:#286aa6;stroke-width:2;rx:6}
+    .warn{fill:#fff2df;stroke:#b46b00;stroke-width:2;rx:6}
+    .txt{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:18px;fill:#1f2933}
+    .small{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:14px;fill:#394b59}
+    .arrow{stroke:#34495e;stroke-width:2.5;fill:none;marker-end:url(#arrow)}
+    .dash{stroke:#286aa6;stroke-width:2;fill:none;stroke-dasharray:7 5;marker-end:url(#arrowBlue)}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#34495e"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#286aa6"/>
+    </marker>
+  </defs>
+  <text x="460" y="36" text-anchor="middle" class="txt" font-weight="700">MAC 公式很短，PE 必须定义数值路径、状态和握手</text>
+  <rect x="50" y="95" width="145" height="90" class="box"/>
+  <text x="122" y="130" text-anchor="middle" class="txt">input x</text>
+  <text x="122" y="158" text-anchor="middle" class="small">int8 / fp16</text>
+  <rect x="50" y="235" width="145" height="90" class="box"/>
+  <text x="122" y="270" text-anchor="middle" class="txt">weight w</text>
+  <text x="122" y="298" text-anchor="middle" class="small">int8 / fp16</text>
+  <rect x="260" y="165" width="145" height="90" class="box"/>
+  <text x="332" y="200" text-anchor="middle" class="txt">乘法器</text>
+  <text x="332" y="228" text-anchor="middle" class="small">x * w</text>
+  <rect x="470" y="165" width="145" height="90" class="warn"/>
+  <text x="542" y="197" text-anchor="middle" class="txt">乘积扩展</text>
+  <text x="542" y="226" text-anchor="middle" class="small">int8*int8 约需 16 bit</text>
+  <rect x="675" y="140" width="175" height="130" class="box"/>
+  <text x="762" y="180" text-anchor="middle" class="txt">accumulator</text>
+  <text x="762" y="210" text-anchor="middle" class="small">psum / int32 常见</text>
+  <text x="762" y="238" text-anchor="middle" class="small">acc_next = acc + product</text>
+  <path d="M195 140 C220 140,230 190,260 198" class="arrow"/>
+  <path d="M195 280 C220 280,230 230,260 220" class="arrow"/>
+  <path d="M405 210 L470 210" class="arrow"/>
+  <path d="M615 210 L675 210" class="arrow"/>
+  <rect x="260" y="315" width="145" height="62" class="ctrl"/>
+  <text x="332" y="352" text-anchor="middle" class="txt">valid / ready</text>
+  <rect x="470" y="315" width="145" height="62" class="ctrl"/>
+  <text x="542" y="352" text-anchor="middle" class="txt">clear / enable</text>
+  <rect x="675" y="315" width="175" height="62" class="ctrl"/>
+  <text x="762" y="352" text-anchor="middle" class="txt">writeback / saturate</text>
+  <path d="M332 315 L332 255" class="dash"/>
+  <path d="M542 315 L542 255" class="dash"/>
+  <path d="M762 315 L762 270" class="dash"/>
+  <text x="460" y="402" text-anchor="middle" class="small">判断线索：单 PE 先核对握手、清零、累加位宽、写回缩放，再扩到阵列。</text>
+</svg>

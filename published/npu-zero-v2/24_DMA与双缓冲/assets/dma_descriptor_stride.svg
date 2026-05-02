@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="420" viewBox="0 0 940 420" role="img" aria-labelledby="title desc">
+  <title id="title">DMA 描述符把二维 tile 搬运变成规则事务</title>
+  <desc id="desc">展示 DMA 描述符中的源地址、目的地址、长度、stride 和 count 如何搬运二维 tile，并进入 ping pong buffer。</desc>
+  <rect width="940" height="420" fill="#fbfbf8"/>
+  <style>
+    .txt{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:18px;fill:#1f2933}
+    .small{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:14px;fill:#394b59}
+    .mem{fill:#fff7ed;stroke:#c2410c;stroke-width:2;rx:8}
+    .desc{fill:#eef2ff;stroke:#4f46e5;stroke-width:2;rx:8}
+    .buf{fill:#dcfce7;stroke:#15803d;stroke-width:2;rx:8}
+    .row{fill:#ffffff;stroke:#64748b;stroke-width:1.5}
+    .tile{fill:#bae6fd;stroke:#0284c7;stroke-width:2}
+    .arrow{stroke:#334155;stroke-width:2.5;fill:none;marker-end:url(#arrow)}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#334155"/>
+    </marker>
+  </defs>
+  <text x="470" y="34" text-anchor="middle" class="txt" font-weight="700">DMA 不是逐元素搬：descriptor 描述规则块、stride 和重复次数</text>
+  <rect x="50" y="78" width="250" height="260" class="mem"/>
+  <text x="175" y="110" text-anchor="middle" class="txt">外部 DRAM 张量</text>
+  <g transform="translate(85 135)">
+    <rect x="0" y="0" width="180" height="28" class="row"/>
+    <rect x="0" y="38" width="180" height="28" class="row"/>
+    <rect x="0" y="76" width="180" height="28" class="row"/>
+    <rect x="0" y="114" width="180" height="28" class="row"/>
+    <rect x="0" y="152" width="180" height="28" class="row"/>
+    <rect x="42" y="38" width="88" height="28" class="tile"/>
+    <rect x="42" y="76" width="88" height="28" class="tile"/>
+    <rect x="42" y="114" width="88" height="28" class="tile"/>
+    <text x="86" y="99" text-anchor="middle" class="small">tile</text>
+    <text x="162" y="59" class="small">stride</text>
+    <path d="M150 52 L150 90" class="arrow"/>
+  </g>
+  <rect x="365" y="86" width="220" height="245" class="desc"/>
+  <text x="475" y="120" text-anchor="middle" class="txt">DMA descriptor</text>
+  <text x="395" y="160" class="small">src_base = DRAM tile 起点</text>
+  <text x="395" y="192" class="small">dst_base = ping/pong 起点</text>
+  <text x="395" y="224" class="small">length = 每行 byte 数</text>
+  <text x="395" y="256" class="small">src_stride = 下一行跨度</text>
+  <text x="395" y="288" class="small">count = 行数 / 块数</text>
+  <rect x="655" y="84" width="230" height="110" class="buf"/>
+  <text x="770" y="120" text-anchor="middle" class="txt">ping buffer</text>
+  <text x="770" y="152" text-anchor="middle" class="small">当前供 PE 计算</text>
+  <rect x="655" y="222" width="230" height="110" class="buf"/>
+  <text x="770" y="258" text-anchor="middle" class="txt">pong buffer</text>
+  <text x="770" y="290" text-anchor="middle" class="small">DMA 预取下一块</text>
+  <path d="M300 210 L365 210" class="arrow"/>
+  <path d="M585 210 C620 200,630 150,655 140" class="arrow"/>
+  <path d="M585 230 C620 245,630 275,655 275" class="arrow"/>
+  <text x="470" y="382" text-anchor="middle" class="small">判断线索：连续块用 length，二维/三维规则块用 stride/count；碎片化越强，DMA 效率越低。</text>
+</svg>

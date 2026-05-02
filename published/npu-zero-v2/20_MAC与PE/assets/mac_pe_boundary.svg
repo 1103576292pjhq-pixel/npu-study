@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="460" viewBox="0 0 920 460" role="img" aria-labelledby="title desc">
+  <title id="title">MAC 单元和 PE 的边界</title>
+  <desc id="desc">图中展示 PE 内部包含输入寄存器、MAC datapath、累加器、本地控制和相邻通信端口，强调 MAC 是 PE 的核心但不是完整 PE。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#34515e" />
+    </marker>
+    <style>
+      .box { fill: #f8fbfc; stroke: #2f5f73; stroke-width: 2; rx: 12; }
+      .inner { fill: #ffffff; stroke: #5f8798; stroke-width: 1.5; rx: 10; }
+      .mac { fill: #ffe8cc; stroke: #c76f00; stroke-width: 2; rx: 10; }
+      .ctrl { fill: #e4f3e8; stroke: #318252; stroke-width: 1.5; rx: 10; }
+      .port { fill: #edf2ff; stroke: #5267a8; stroke-width: 1.5; rx: 8; }
+      .label { font-family: "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; fill: #20323a; font-size: 18px; }
+      .small { font-family: "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; fill: #38525c; font-size: 14px; }
+      .wire { stroke: #34515e; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect x="40" y="45" width="840" height="350" class="box"/>
+  <text x="460" y="82" text-anchor="middle" class="label" font-weight="700">PE：可被调度的局部计算格子</text>
+
+  <rect x="85" y="140" width="130" height="70" class="port"/>
+  <text x="150" y="170" text-anchor="middle" class="label">输入寄存器</text>
+  <text x="150" y="193" text-anchor="middle" class="small">x / activation</text>
+
+  <rect x="85" y="250" width="130" height="70" class="port"/>
+  <text x="150" y="280" text-anchor="middle" class="label">权重寄存器</text>
+  <text x="150" y="303" text-anchor="middle" class="small">w / weight</text>
+
+  <rect x="330" y="145" width="230" height="170" class="mac"/>
+  <text x="445" y="177" text-anchor="middle" class="label" font-weight="700">MAC datapath</text>
+  <text x="445" y="210" text-anchor="middle" class="small">乘法器：x * w</text>
+  <text x="445" y="238" text-anchor="middle" class="small">加法器：acc + product</text>
+  <text x="445" y="266" text-anchor="middle" class="small">可流水化 / 可多精度</text>
+
+  <rect x="640" y="155" width="150" height="70" class="inner"/>
+  <text x="715" y="186" text-anchor="middle" class="label">累加器</text>
+  <text x="715" y="209" text-anchor="middle" class="small">partial sum</text>
+
+  <rect x="635" y="260" width="165" height="70" class="ctrl"/>
+  <text x="717" y="291" text-anchor="middle" class="label">本地控制</text>
+  <text x="717" y="314" text-anchor="middle" class="small">clear / valid / write</text>
+
+  <text x="45" y="242" class="small">来自 buffer 或相邻 PE</text>
+  <path d="M215 175 L330 195" class="wire"/>
+  <path d="M215 285 L330 255" class="wire"/>
+  <path d="M560 205 L640 190" class="wire"/>
+  <path d="M715 225 C715 245,620 250,560 245" class="wire"/>
+  <path d="M790 190 L860 190" class="wire"/>
+  <text x="818" y="178" class="small">输出 / 传递</text>
+
+  <path d="M716 260 L717 225" class="wire"/>
+  <text x="460" y="370" text-anchor="middle" class="small">要点：MAC 负责乘后累加；PE 还负责输入暂存、部分和状态、控制节拍和阵列通信。</text>
+</svg>

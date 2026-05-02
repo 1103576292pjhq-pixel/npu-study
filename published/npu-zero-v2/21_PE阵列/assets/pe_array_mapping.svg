@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="500" viewBox="0 0 940 500" role="img" aria-labelledby="title desc">
+  <title id="title">PE 阵列把输出 tile 映射到空间</title>
+  <desc id="desc">展示 2x2 输出 tile 映射到 2x2 PE 阵列，每个 PE 保存自己的部分和并产生一个输出。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#41545d" />
+    </marker>
+    <style>
+      .panel { fill: #f6f8f9; stroke: #d6e0e5; stroke-width: 1.5; rx: 16; }
+      .tile { fill: #fff7e6; stroke: #c87900; stroke-width: 2; rx: 10; }
+      .pe { fill: #eaf3ff; stroke: #315e9b; stroke-width: 2; rx: 12; }
+      .text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; fill: #21343d; font-size: 16px; }
+      .small { font-family: "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; fill: #425a63; font-size: 13px; }
+      .title { font-family: "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; fill: #1e3038; font-size: 22px; font-weight: 700; }
+      .wire { stroke: #41545d; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect x="30" y="30" width="880" height="430" class="panel"/>
+  <text x="470" y="70" text-anchor="middle" class="title">输出 tile 到 PE 阵列的空间映射</text>
+
+  <text x="185" y="115" text-anchor="middle" class="text" font-weight="700">逻辑输出 tile</text>
+  <rect x="90" y="145" width="85" height="70" class="tile"/>
+  <rect x="185" y="145" width="85" height="70" class="tile"/>
+  <rect x="90" y="225" width="85" height="70" class="tile"/>
+  <rect x="185" y="225" width="85" height="70" class="tile"/>
+  <text x="132" y="185" text-anchor="middle" class="text">O00</text>
+  <text x="227" y="185" text-anchor="middle" class="text">O01</text>
+  <text x="132" y="265" text-anchor="middle" class="text">O10</text>
+  <text x="227" y="265" text-anchor="middle" class="text">O11</text>
+
+  <text x="705" y="115" text-anchor="middle" class="text" font-weight="700">物理 2x2 PE 阵列</text>
+  <rect x="600" y="145" width="95" height="78" class="pe"/>
+  <rect x="715" y="145" width="95" height="78" class="pe"/>
+  <rect x="600" y="245" width="95" height="78" class="pe"/>
+  <rect x="715" y="245" width="95" height="78" class="pe"/>
+  <text x="647" y="174" text-anchor="middle" class="text">PE(0,0)</text>
+  <text x="647" y="202" text-anchor="middle" class="small">psum00</text>
+  <text x="762" y="174" text-anchor="middle" class="text">PE(0,1)</text>
+  <text x="762" y="202" text-anchor="middle" class="small">psum01</text>
+  <text x="647" y="274" text-anchor="middle" class="text">PE(1,0)</text>
+  <text x="647" y="302" text-anchor="middle" class="small">psum10</text>
+  <text x="762" y="274" text-anchor="middle" class="text">PE(1,1)</text>
+  <text x="762" y="302" text-anchor="middle" class="small">psum11</text>
+
+  <path d="M275 180 C395 140,490 140,600 180" class="wire"/>
+  <path d="M275 195 C410 170,520 165,715 185" class="wire"/>
+  <path d="M275 260 C410 300,495 300,600 285" class="wire"/>
+  <path d="M275 275 C420 340,555 335,715 295" class="wire"/>
+
+  <text x="470" y="390" text-anchor="middle" class="small">输出枚举维度映射到空间；归约维度通常在每个 PE 内按时间累加。</text>
+  <text x="470" y="418" text-anchor="middle" class="small">关键不是 PE 数量本身，而是每个 PE 的输出归属、数据供给和 partial sum 保存。</text>
+</svg>

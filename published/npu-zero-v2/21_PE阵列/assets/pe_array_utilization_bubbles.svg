@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="460" viewBox="0 0 920 460" role="img" aria-labelledby="title desc">
+  <title id="title">PE 阵列边界 tile 的利用率空泡</title>
+  <desc id="desc">展示 4x4 PE 阵列只有 10 个有效输出时，6 个 PE 成为空泡，并给出利用率计算。</desc>
+  <rect width="920" height="460" fill="#fbfbf8"/>
+  <style>
+    .pe{stroke:#264653;stroke-width:2;rx:8}
+    .busy{fill:#dff3e4}
+    .idle{fill:#f7e1df}
+    .txt{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:18px;fill:#1f2933}
+    .small{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:14px;fill:#394b59}
+    .axis{stroke:#4b5563;stroke-width:2;marker-end:url(#arrow)}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#4b5563"/>
+    </marker>
+  </defs>
+  <text x="460" y="36" text-anchor="middle" class="txt" font-weight="700">4x4 阵列处理 10 个输出：峰值不等于有效吞吐</text>
+  <text x="135" y="92" class="small">阵列列</text>
+  <path d="M195 88 L610 88" class="axis"/>
+  <text x="72" y="175" class="small" transform="rotate(-90 72 175)">阵列行</text>
+  <path d="M92 125 L92 370" class="axis"/>
+  <g transform="translate(160 115)">
+    <rect x="0" y="0" width="88" height="62" class="pe busy"/><text x="44" y="37" text-anchor="middle" class="txt">有效</text>
+    <rect x="102" y="0" width="88" height="62" class="pe busy"/><text x="146" y="37" text-anchor="middle" class="txt">有效</text>
+    <rect x="204" y="0" width="88" height="62" class="pe busy"/><text x="248" y="37" text-anchor="middle" class="txt">有效</text>
+    <rect x="306" y="0" width="88" height="62" class="pe busy"/><text x="350" y="37" text-anchor="middle" class="txt">有效</text>
+    <rect x="0" y="76" width="88" height="62" class="pe busy"/><text x="44" y="113" text-anchor="middle" class="txt">有效</text>
+    <rect x="102" y="76" width="88" height="62" class="pe busy"/><text x="146" y="113" text-anchor="middle" class="txt">有效</text>
+    <rect x="204" y="76" width="88" height="62" class="pe busy"/><text x="248" y="113" text-anchor="middle" class="txt">有效</text>
+    <rect x="306" y="76" width="88" height="62" class="pe busy"/><text x="350" y="113" text-anchor="middle" class="txt">有效</text>
+    <rect x="0" y="152" width="88" height="62" class="pe busy"/><text x="44" y="189" text-anchor="middle" class="txt">有效</text>
+    <rect x="102" y="152" width="88" height="62" class="pe busy"/><text x="146" y="189" text-anchor="middle" class="txt">有效</text>
+    <rect x="204" y="152" width="88" height="62" class="pe idle"/><text x="248" y="189" text-anchor="middle" class="txt">空泡</text>
+    <rect x="306" y="152" width="88" height="62" class="pe idle"/><text x="350" y="189" text-anchor="middle" class="txt">空泡</text>
+    <rect x="0" y="228" width="88" height="62" class="pe idle"/><text x="44" y="265" text-anchor="middle" class="txt">空泡</text>
+    <rect x="102" y="228" width="88" height="62" class="pe idle"/><text x="146" y="265" text-anchor="middle" class="txt">空泡</text>
+    <rect x="204" y="228" width="88" height="62" class="pe idle"/><text x="248" y="265" text-anchor="middle" class="txt">空泡</text>
+    <rect x="306" y="228" width="88" height="62" class="pe idle"/><text x="350" y="265" text-anchor="middle" class="txt">空泡</text>
+  </g>
+  <rect x="620" y="120" width="230" height="220" fill="#ffffff" stroke="#64748b" stroke-width="2" rx="8"/>
+  <text x="735" y="158" text-anchor="middle" class="txt" font-weight="700">利用率计算</text>
+  <text x="650" y="205" class="txt">总 PE：16</text>
+  <text x="650" y="245" class="txt">有效 PE：10</text>
+  <text x="650" y="285" class="txt">空泡：6</text>
+  <text x="650" y="325" class="txt">利用率：62.5%</text>
+  <text x="460" y="425" text-anchor="middle" class="small">排查顺序：tile 形状 -> mask/valid -> buffer 供数 -> psum 归约 -> 写回地址。</text>
+</svg>

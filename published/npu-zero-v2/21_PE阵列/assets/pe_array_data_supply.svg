@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="500" viewBox="0 0 940 500" role="img" aria-labelledby="title desc">
+  <title id="title">PE 阵列的数据供给与瓶颈</title>
+  <desc id="desc">展示输入 buffer、权重 buffer 和输出 buffer 如何连接到 PE 阵列，并指出供数不足会让 PE 空等。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#3f515a" />
+    </marker>
+    <style>
+      .buf { fill: #fff4de; stroke: #b7791f; stroke-width: 2; rx: 12; }
+      .array { fill: #edf6ff; stroke: #2d6496; stroke-width: 2; rx: 16; }
+      .pe { fill: #ffffff; stroke: #4c7fac; stroke-width: 1.5; rx: 8; }
+      .out { fill: #e8f7ed; stroke: #2f855a; stroke-width: 2; rx: 12; }
+      .warn { fill: #fff1f0; stroke: #c53030; stroke-width: 1.5; rx: 10; }
+      .text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; fill: #21343d; font-size: 16px; }
+      .small { font-family: "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; fill: #415861; font-size: 13px; }
+      .title { font-family: "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; fill: #1e3038; font-size: 22px; font-weight: 700; }
+      .wire { stroke: #3f515a; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .thin { stroke: #c53030; stroke-width: 2; stroke-dasharray: 6 6; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect x="25" y="25" width="890" height="445" fill="#f8fafb" stroke="#d7e2e7"/>
+  <text x="470" y="65" text-anchor="middle" class="title">阵列吞吐取决于 PE 和数据供给一起匹配</text>
+
+  <rect x="70" y="115" width="190" height="70" class="buf"/>
+  <text x="165" y="145" text-anchor="middle" class="text">输入 buffer</text>
+  <text x="165" y="168" text-anchor="middle" class="small">activation tile</text>
+
+  <rect x="70" y="225" width="190" height="70" class="buf"/>
+  <text x="165" y="255" text-anchor="middle" class="text">权重 buffer</text>
+  <text x="165" y="278" text-anchor="middle" class="small">weight tile</text>
+
+  <rect x="365" y="110" width="240" height="210" class="array"/>
+  <text x="485" y="142" text-anchor="middle" class="text" font-weight="700">PE 阵列</text>
+  <g transform="translate(395 165)">
+    <rect x="0" y="0" width="42" height="38" class="pe"/><rect x="52" y="0" width="42" height="38" class="pe"/><rect x="104" y="0" width="42" height="38" class="pe"/><rect x="156" y="0" width="42" height="38" class="pe"/>
+    <rect x="0" y="48" width="42" height="38" class="pe"/><rect x="52" y="48" width="42" height="38" class="pe"/><rect x="104" y="48" width="42" height="38" class="pe"/><rect x="156" y="48" width="42" height="38" class="pe"/>
+    <rect x="0" y="96" width="42" height="38" class="pe"/><rect x="52" y="96" width="42" height="38" class="pe"/><rect x="104" y="96" width="42" height="38" class="pe"/><rect x="156" y="96" width="42" height="38" class="pe"/>
+    <text x="99" y="78" text-anchor="middle" class="small">PE x 12</text>
+  </g>
+
+  <rect x="695" y="150" width="170" height="80" class="out"/>
+  <text x="780" y="182" text-anchor="middle" class="text">输出 buffer</text>
+  <text x="780" y="206" text-anchor="middle" class="small">output / psum</text>
+
+  <rect x="690" y="280" width="180" height="82" class="warn"/>
+  <text x="780" y="312" text-anchor="middle" class="text">供数不足</text>
+  <text x="780" y="337" text-anchor="middle" class="small">PE 空等，利用率下降</text>
+
+  <path d="M260 150 L365 175" class="wire"/>
+  <path d="M260 260 L365 245" class="wire"/>
+  <path d="M605 190 L695 190" class="wire"/>
+  <path d="M605 250 C650 270,665 295,690 320" class="thin"/>
+
+  <text x="470" y="410" text-anchor="middle" class="small">PE 阵列的有效吞吐 = 峰值吞吐 x 利用率；利用率由 tile、buffer、带宽、控制和 dataflow 共同决定。</text>
+</svg>
