@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="410" viewBox="0 0 980 410" role="img" aria-label="大阵列因利用率低导致性能和能量变差">
+  <rect width="980" height="410" fill="#fcfcfb"/>
+  <text x="40" y="46" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#222">峰值更高，不代表真实更好</text>
+  <g font-family="Arial, sans-serif">
+    <rect x="70" y="105" width="360" height="230" rx="18" fill="#f0f8f1" stroke="#4a9a63" stroke-width="2"/>
+    <text x="250" y="138" font-size="20" font-weight="700" text-anchor="middle" fill="#1d5c34">方案 A：中等阵列</text>
+    <text x="105" y="176" font-size="16" fill="#333">峰值：64 MAC/cycle</text>
+    <text x="105" y="207" font-size="16" fill="#333">利用率：80%</text>
+    <text x="105" y="238" font-size="16" fill="#333">有效：51.2 MAC/cycle</text>
+    <text x="105" y="269" font-size="16" fill="#333">时间：5.76 us</text>
+    <text x="105" y="300" font-size="16" fill="#333">能量：1.152 uJ</text>
+    <rect x="550" y="105" width="360" height="230" rx="18" fill="#fff0e8" stroke="#d1794f" stroke-width="2"/>
+    <text x="730" y="138" font-size="20" font-weight="700" text-anchor="middle" fill="#6d2d13">方案 B：大阵列</text>
+    <text x="585" y="176" font-size="16" fill="#333">峰值：128 MAC/cycle</text>
+    <text x="585" y="207" font-size="16" fill="#333">利用率：35%</text>
+    <text x="585" y="238" font-size="16" fill="#333">有效：44.8 MAC/cycle</text>
+    <text x="585" y="269" font-size="16" fill="#333">时间：6.58 us</text>
+    <text x="585" y="300" font-size="16" fill="#333">能量：2.106 uJ</text>
+  </g>
+  <path d="M450 220 L530 220" stroke="#777" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="490" y="205" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#555">如果喂不饱</text>
+  <rect x="120" y="356" width="740" height="34" rx="9" fill="#f3f0eb" stroke="#d0c7ba"/>
+  <text x="140" y="378" font-family="Arial, sans-serif" font-size="15" fill="#333">PPA 判断要看有效吞吐和能量，而不是只看峰值 MAC 数。</text>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#777"/>
+    </marker>
+  </defs>
+</svg>

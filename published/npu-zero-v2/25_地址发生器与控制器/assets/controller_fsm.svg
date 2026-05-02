@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420">
+  <rect width="900" height="420" fill="#fbfaf6"/>
+  <text x="42" y="44" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#263238">控制器状态机：按完成信号推进执行</text>
+  <g font-family="Arial, sans-serif" font-size="18" font-weight="700">
+    <rect x="70" y="112" width="112" height="56" rx="14" fill="#eceff1" stroke="#607d8b" stroke-width="2"/>
+    <text x="104" y="147" fill="#37474f">IDLE</text>
+    <rect x="238" y="112" width="112" height="56" rx="14" fill="#fff3e0" stroke="#b77a16" stroke-width="2"/>
+    <text x="268" y="147" fill="#704608">LOAD</text>
+    <rect x="406" y="112" width="138" height="56" rx="14" fill="#e8f5e9" stroke="#4c8a5a" stroke-width="2"/>
+    <text x="434" y="147" fill="#285839">COMPUTE</text>
+    <rect x="610" y="112" width="116" height="56" rx="14" fill="#fbe9e7" stroke="#b56a58" stroke-width="2"/>
+    <text x="638" y="147" fill="#7c3929">STORE</text>
+    <rect x="392" y="272" width="142" height="56" rx="14" fill="#e3f2fd" stroke="#4779b2" stroke-width="2"/>
+    <text x="416" y="307" fill="#25527e">NEXT TILE</text>
+    <rect x="664" y="272" width="112" height="56" rx="14" fill="#ede7f6" stroke="#7e57c2" stroke-width="2"/>
+    <text x="694" y="307" fill="#5e35b1">DONE</text>
+  </g>
+  <path d="M182 140 H238" stroke="#2d4059" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M350 140 H406" stroke="#2d4059" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M544 140 H610" stroke="#2d4059" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M668 168 C650 228 560 270 534 292" fill="none" stroke="#2d4059" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M392 300 C260 300 244 192 272 168" fill="none" stroke="#2d4059" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M534 300 H664" stroke="#2d4059" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="190" y="126" font-family="Arial, sans-serif" font-size="13" fill="#2d4059">start</text>
+  <text x="352" y="126" font-family="Arial, sans-serif" font-size="13" fill="#2d4059">dma_done</text>
+  <text x="548" y="126" font-family="Arial, sans-serif" font-size="13" fill="#2d4059">compute_done</text>
+  <text x="592" y="236" font-family="Arial, sans-serif" font-size="13" fill="#2d4059">store_done</text>
+  <text x="270" y="340" font-family="Arial, sans-serif" font-size="13" fill="#2d4059">more tiles</text>
+  <text x="556" y="288" font-family="Arial, sans-serif" font-size="13" fill="#2d4059">no more</text>
+  <text x="92" y="382" font-family="Arial, sans-serif" font-size="16" fill="#37474f">控制器的重点不是计算乘法，而是保证顺序、握手和 buffer 所有权正确。</text>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2d4059"/>
+    </marker>
+  </defs>
+</svg>

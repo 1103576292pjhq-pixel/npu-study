@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="380" viewBox="0 0 940 380">
+  <rect width="940" height="380" fill="#fbfaf6"/>
+  <text x="42" y="44" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#263238">地址发生器：循环计数器到真实地址</text>
+  <rect x="58" y="104" width="220" height="170" rx="18" fill="#e3f2fd" stroke="#4779b2" stroke-width="2"/>
+  <text x="108" y="138" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#25527e">Loop Counters</text>
+  <text x="92" y="174" font-family="Arial, sans-serif" font-size="16" fill="#25527e">oc, oh, ow</text>
+  <text x="92" y="204" font-family="Arial, sans-serif" font-size="16" fill="#25527e">ic, r, s</text>
+  <text x="92" y="234" font-family="Arial, sans-serif" font-size="16" fill="#25527e">tile_id</text>
+  <rect x="360" y="86" width="240" height="206" rx="18" fill="#f8e7bd" stroke="#b77a16" stroke-width="2"/>
+  <text x="404" y="122" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#704608">Address Generator</text>
+  <text x="396" y="158" font-family="Arial, sans-serif" font-size="16" fill="#704608">base + offset * bytes</text>
+  <text x="396" y="188" font-family="Arial, sans-serif" font-size="16" fill="#704608">layout: NCHW/NHWC</text>
+  <text x="396" y="218" font-family="Arial, sans-serif" font-size="16" fill="#704608">stride / shape / mask</text>
+  <rect x="694" y="94" width="188" height="74" rx="14" fill="#dff0df" stroke="#4c8a5a" stroke-width="2"/>
+  <text x="748" y="124" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#285839">input_addr</text>
+  <text x="742" y="148" font-family="Arial, sans-serif" font-size="14" fill="#285839">读 input buffer</text>
+  <rect x="694" y="190" width="188" height="74" rx="14" fill="#efe2f5" stroke="#8c5aa8" stroke-width="2"/>
+  <text x="740" y="220" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#5d3474">weight_addr</text>
+  <text x="738" y="244" font-family="Arial, sans-serif" font-size="14" fill="#5d3474">读 weight buffer</text>
+  <rect x="694" y="286" width="188" height="58" rx="14" fill="#f5e0dc" stroke="#b56a58" stroke-width="2"/>
+  <text x="740" y="321" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#7c3929">psum_addr</text>
+  <path d="M278 188 H360" stroke="#2d4059" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M600 142 H694" stroke="#2d4059" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M600 214 H694" stroke="#2d4059" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M600 274 C640 300 654 315 694 315" fill="none" stroke="#2d4059" stroke-width="4" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2d4059"/>
+    </marker>
+  </defs>
+</svg>

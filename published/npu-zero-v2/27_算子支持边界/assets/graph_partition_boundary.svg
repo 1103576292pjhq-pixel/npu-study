@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="360" viewBox="0 0 960 360" role="img" aria-label="模型图被算子支持边界切成多个子图">
+  <rect width="960" height="360" fill="#fcfcfb"/>
+  <text x="36" y="44" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#252525">边界外节点会切断 NPU 子图</text>
+  <g font-family="Arial, sans-serif" font-size="15" text-anchor="middle">
+    <rect x="58" y="135" width="110" height="64" rx="14" fill="#dff7e8" stroke="#4a9a63" stroke-width="2"/>
+    <text x="113" y="162" font-weight="700">Conv</text><text x="113" y="184">NPU</text>
+    <rect x="218" y="135" width="110" height="64" rx="14" fill="#dff7e8" stroke="#4a9a63" stroke-width="2"/>
+    <text x="273" y="162" font-weight="700">Relu</text><text x="273" y="184">NPU</text>
+    <rect x="378" y="135" width="124" height="64" rx="14" fill="#ffe3d5" stroke="#d1794f" stroke-width="2"/>
+    <text x="440" y="162" font-weight="700">Resize</text><text x="440" y="184">CPU/DSP</text>
+    <rect x="552" y="135" width="110" height="64" rx="14" fill="#dff7e8" stroke="#4a9a63" stroke-width="2"/>
+    <text x="607" y="162" font-weight="700">Conv1x1</text><text x="607" y="184">NPU</text>
+    <rect x="712" y="135" width="124" height="64" rx="14" fill="#ffe3d5" stroke="#d1794f" stroke-width="2"/>
+    <text x="774" y="162" font-weight="700">Softmax</text><text x="774" y="184">CPU/DSP</text>
+  </g>
+  <g stroke="#606060" stroke-width="2" marker-end="url(#arrow)">
+    <path d="M168 167 L214 167"/>
+    <path d="M328 167 L374 167"/>
+    <path d="M502 167 L548 167"/>
+    <path d="M662 167 L708 167"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="14" fill="#555">
+    <path d="M350 100 L350 245" stroke="#b5542f" stroke-dasharray="6 6" stroke-width="2"/>
+    <path d="M525 100 L525 245" stroke="#b5542f" stroke-dasharray="6 6" stroke-width="2"/>
+    <path d="M685 100 L685 245" stroke="#b5542f" stroke-dasharray="6 6" stroke-width="2"/>
+    <text x="344" y="274">写出/读入</text>
+    <text x="520" y="274">写出/读入</text>
+    <text x="680" y="274">写出/读入</text>
+  </g>
+  <rect x="78" y="286" width="780" height="42" rx="10" fill="#f3f0eb" stroke="#d0c7ba"/>
+  <text x="96" y="312" font-family="Arial, sans-serif" font-size="15" fill="#333">目标：让主干 NPU 子图尽量长，让 fallback 靠后、靠小张量、少切换。</text>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#606060"/>
+    </marker>
+  </defs>
+</svg>

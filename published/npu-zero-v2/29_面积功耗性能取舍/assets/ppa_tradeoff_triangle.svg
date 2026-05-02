@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="420" viewBox="0 0 920 420" role="img" aria-label="PPA 面积功耗性能三角取舍">
+  <rect width="920" height="420" fill="#fbfaf7"/>
+  <text x="42" y="48" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#222">PPA：三个指标互相牵制</text>
+  <polygon points="460,92 205,335 715,335" fill="#eef5ff" stroke="#4b83c3" stroke-width="4"/>
+  <circle cx="460" cy="92" r="50" fill="#fff0cf" stroke="#d28b1e" stroke-width="3"/>
+  <text x="460" y="88" font-family="Arial, sans-serif" font-size="19" font-weight="700" text-anchor="middle" fill="#4f3200">性能</text>
+  <text x="460" y="112" font-family="Arial, sans-serif" font-size="13" text-anchor="middle" fill="#4f3200">latency / TOPS</text>
+  <circle cx="205" cy="335" r="50" fill="#dff7e8" stroke="#4a9a63" stroke-width="3"/>
+  <text x="205" y="331" font-family="Arial, sans-serif" font-size="19" font-weight="700" text-anchor="middle" fill="#1d5c34">面积</text>
+  <text x="205" y="355" font-family="Arial, sans-serif" font-size="13" text-anchor="middle" fill="#1d5c34">MAC / SRAM</text>
+  <circle cx="715" cy="335" r="50" fill="#ffe3d5" stroke="#d1794f" stroke-width="3"/>
+  <text x="715" y="331" font-family="Arial, sans-serif" font-size="19" font-weight="700" text-anchor="middle" fill="#6d2d13">功耗</text>
+  <text x="715" y="355" font-family="Arial, sans-serif" font-size="13" text-anchor="middle" fill="#6d2d13">power / energy</text>
+  <text x="350" y="235" font-family="Arial, sans-serif" font-size="17" text-anchor="middle" fill="#333">更多资源</text>
+  <text x="570" y="235" font-family="Arial, sans-serif" font-size="17" text-anchor="middle" fill="#333">更高频率</text>
+  <text x="460" y="350" font-family="Arial, sans-serif" font-size="17" text-anchor="middle" fill="#333">目标场景决定平衡点</text>
+</svg>

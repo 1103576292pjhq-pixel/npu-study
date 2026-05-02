@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="420" viewBox="0 0 920 420" role="img" aria-label="算子支持边界三层圈">
+  <rect width="920" height="420" fill="#fbfaf7"/>
+  <text x="40" y="48" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#2a2a2a">算子支持边界不是简单名单</text>
+  <circle cx="460" cy="230" r="150" fill="#e8f3ff" stroke="#4b83c3" stroke-width="3"/>
+  <circle cx="460" cy="230" r="105" fill="#dff7e8" stroke="#4a9a63" stroke-width="3"/>
+  <circle cx="460" cy="230" r="60" fill="#fff0cf" stroke="#d28b1e" stroke-width="3"/>
+  <text x="412" y="223" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#4f3200">核心快路径</text>
+  <text x="406" y="248" font-family="Arial, sans-serif" font-size="14" fill="#4f3200">Conv / MatMul / Relu</text>
+  <text x="374" y="142" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#1d5c34">可改写或可融合路径</text>
+  <text x="378" y="168" font-family="Arial, sans-serif" font-size="14" fill="#1d5c34">BN fold / Conv+Relu / split</text>
+  <text x="350" y="92" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#244e7c">边界内但可能不满速</text>
+  <text x="334" y="320" font-family="Arial, sans-serif" font-size="16" fill="#244e7c">受 dtype / shape / layout / 属性约束</text>
+  <rect x="42" y="115" width="215" height="188" rx="14" fill="#ffffff" stroke="#c8c1b5"/>
+  <text x="62" y="148" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#2a2a2a">判断一个 op_config</text>
+  <text x="62" y="183" font-family="Arial, sans-serif" font-size="14" fill="#444">op_type</text>
+  <text x="62" y="210" font-family="Arial, sans-serif" font-size="14" fill="#444">dtype</text>
+  <text x="62" y="237" font-family="Arial, sans-serif" font-size="14" fill="#444">shape / layout</text>
+  <text x="62" y="264" font-family="Arial, sans-serif" font-size="14" fill="#444">stride / padding / groups</text>
+  <path d="M260 210 L330 210" stroke="#6c6c6c" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="663" y="115" width="215" height="188" rx="14" fill="#fff7f2" stroke="#d5a083"/>
+  <text x="683" y="148" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#2a2a2a">边界外处理</text>
+  <text x="683" y="183" font-family="Arial, sans-serif" font-size="14" fill="#444">rewrite</text>
+  <text x="683" y="210" font-family="Arial, sans-serif" font-size="14" fill="#444">fallback</text>
+  <text x="683" y="237" font-family="Arial, sans-serif" font-size="14" fill="#444">layout convert</text>
+  <text x="683" y="264" font-family="Arial, sans-serif" font-size="14" fill="#444">reject or ask model change</text>
+  <path d="M590 210 L660 210" stroke="#6c6c6c" stroke-width="2" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#6c6c6c"/>
+    </marker>
+  </defs>
+</svg>

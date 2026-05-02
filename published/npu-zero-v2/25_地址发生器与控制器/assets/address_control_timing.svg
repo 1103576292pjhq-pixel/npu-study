@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="360" viewBox="0 0 920 360" role="img" aria-labelledby="title desc">
+  <title id="title">Address generator and controller timing</title>
+  <desc id="desc">Loop counters feed address generation, DMA fills buffer, controller waits for ready, then PE consumes data and writes output.</desc>
+  <style>
+    text { font-family: Arial, sans-serif; font-size: 15px; fill: #172033; }
+    .box { fill: #f7fafc; stroke: #2f6f9f; stroke-width: 2; rx: 8; }
+    .state { fill: #fff7ed; stroke: #c2410c; stroke-width: 2; rx: 8; }
+    .arrow { stroke: #334155; stroke-width: 2; marker-end: url(#arrow); fill: none; }
+    .small { font-size: 13px; fill: #475569; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#334155" />
+    </marker>
+  </defs>
+  <rect class="box" x="40" y="42" width="150" height="82" />
+  <text x="115" y="76" text-anchor="middle" font-weight="bold">Loop counters</text>
+  <text class="small" x="115" y="101" text-anchor="middle">n, oc, oh, ow, ic, kh, kw</text>
+  <rect class="box" x="260" y="42" width="170" height="82" />
+  <text x="345" y="75" text-anchor="middle" font-weight="bold">Address generator</text>
+  <text class="small" x="345" y="101" text-anchor="middle">base + strides + mask</text>
+  <rect class="box" x="510" y="42" width="150" height="82" />
+  <text x="585" y="75" text-anchor="middle" font-weight="bold">Buffer banks</text>
+  <text class="small" x="585" y="101" text-anchor="middle">input / weight / psum</text>
+  <rect class="box" x="730" y="42" width="140" height="82" />
+  <text x="800" y="76" text-anchor="middle" font-weight="bold">PE array</text>
+  <text class="small" x="800" y="101" text-anchor="middle">MAC when valid</text>
+  <path class="arrow" d="M190 83 H260" />
+  <path class="arrow" d="M430 83 H510" />
+  <path class="arrow" d="M660 83 H730" />
+  <rect class="state" x="110" y="210" width="120" height="54" />
+  <text x="170" y="243" text-anchor="middle">LOAD</text>
+  <rect class="state" x="290" y="210" width="120" height="54" />
+  <text x="350" y="243" text-anchor="middle">WAIT_READY</text>
+  <rect class="state" x="470" y="210" width="120" height="54" />
+  <text x="530" y="243" text-anchor="middle">COMPUTE</text>
+  <rect class="state" x="650" y="210" width="120" height="54" />
+  <text x="710" y="243" text-anchor="middle">STORE</text>
+  <path class="arrow" d="M230 237 H290" />
+  <path class="arrow" d="M410 237 H470" />
+  <path class="arrow" d="M590 237 H650" />
+  <path class="arrow" d="M350 210 C350 160 585 160 585 124" />
+  <path class="arrow" d="M530 210 C530 165 800 165 800 124" />
+  <text class="small" x="460" y="318" text-anchor="middle">A correct controller changes state only after ownership, ready/valid, and done conditions are true.</text>
+</svg>

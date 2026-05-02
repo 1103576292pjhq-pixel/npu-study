@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="370" viewBox="0 0 940 370" role="img" aria-labelledby="title desc">
+  <title id="title">PPA design decision flow</title>
+  <desc id="desc">A PPA decision starts from workload, maps to compute and memory resources, then checks utilization, area, power, and failure signals.</desc>
+  <style>
+    text { font-family: Arial, sans-serif; font-size: 15px; fill: #172033; }
+    .box { fill: #f0fdf4; stroke: #16a34a; stroke-width: 2; rx: 8; }
+    .warn { fill: #fff7ed; stroke: #ea580c; stroke-width: 2; rx: 8; }
+    .arrow { stroke: #334155; stroke-width: 2; marker-end: url(#arrow); fill: none; }
+    .small { font-size: 13px; fill: #475569; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#334155" />
+    </marker>
+  </defs>
+  <rect class="box" x="50" y="70" width="135" height="70" />
+  <text x="117" y="100" text-anchor="middle" font-weight="bold">Workload</text>
+  <text class="small" x="117" y="123" text-anchor="middle">shape, ops, dtype</text>
+  <rect class="box" x="235" y="70" width="135" height="70" />
+  <text x="302" y="100" text-anchor="middle" font-weight="bold">PE count</text>
+  <text class="small" x="302" y="123" text-anchor="middle">peak MAC/cycle</text>
+  <rect class="box" x="420" y="70" width="135" height="70" />
+  <text x="487" y="100" text-anchor="middle" font-weight="bold">SRAM + DMA</text>
+  <text class="small" x="487" y="123" text-anchor="middle">reuse and bandwidth</text>
+  <rect class="box" x="605" y="70" width="135" height="70" />
+  <text x="672" y="100" text-anchor="middle" font-weight="bold">Frequency</text>
+  <text class="small" x="672" y="123" text-anchor="middle">timing and voltage</text>
+  <rect class="box" x="790" y="70" width="105" height="70" />
+  <text x="842" y="100" text-anchor="middle" font-weight="bold">PPA</text>
+  <text class="small" x="842" y="123" text-anchor="middle">accept?</text>
+  <path class="arrow" d="M185 105 H235" />
+  <path class="arrow" d="M370 105 H420" />
+  <path class="arrow" d="M555 105 H605" />
+  <path class="arrow" d="M740 105 H790" />
+  <rect class="warn" x="170" y="235" width="170" height="58" />
+  <text x="255" y="258" text-anchor="middle">low utilization</text>
+  <text class="small" x="255" y="280" text-anchor="middle">PE waits for data</text>
+  <rect class="warn" x="385" y="235" width="170" height="58" />
+  <text x="470" y="258" text-anchor="middle">area leakage</text>
+  <text class="small" x="470" y="280" text-anchor="middle">SRAM too large</text>
+  <rect class="warn" x="600" y="235" width="170" height="58" />
+  <text x="685" y="258" text-anchor="middle">thermal failure</text>
+  <text class="small" x="685" y="280" text-anchor="middle">power budget exceeded</text>
+  <path class="arrow" d="M255 235 C255 185 302 180 302 140" />
+  <path class="arrow" d="M470 235 C470 185 487 180 487 140" />
+  <path class="arrow" d="M685 235 C685 185 672 180 672 140" />
+  <text class="small" x="470" y="338" text-anchor="middle">A good NPU point is the smallest resource set that meets latency, energy, and operator-coverage targets.</text>
+</svg>

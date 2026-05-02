@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="390" viewBox="0 0 980 390">
+  <rect width="980" height="390" fill="#fbfaf6"/>
+  <text x="42" y="44" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#263238">卷积 layer 的 tile 时间线</text>
+  <text x="58" y="106" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#37474f">DMA</text>
+  <text x="58" y="186" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#37474f">PE</text>
+  <text x="40" y="266" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#37474f">Psum</text>
+  <line x1="110" y1="100" x2="900" y2="100" stroke="#546e7a" stroke-width="2"/>
+  <line x1="110" y1="180" x2="900" y2="180" stroke="#546e7a" stroke-width="2"/>
+  <line x1="110" y1="260" x2="900" y2="260" stroke="#546e7a" stroke-width="2"/>
+  <rect x="130" y="78" width="130" height="44" rx="8" fill="#fff3e0" stroke="#b77a16"/>
+  <text x="152" y="106" font-family="Arial, sans-serif" font-size="14" fill="#704608">load IC tile0</text>
+  <rect x="290" y="78" width="130" height="44" rx="8" fill="#fff3e0" stroke="#b77a16"/>
+  <text x="312" y="106" font-family="Arial, sans-serif" font-size="14" fill="#704608">load IC tile1</text>
+  <rect x="450" y="78" width="130" height="44" rx="8" fill="#fbe9e7" stroke="#b56a58"/>
+  <text x="476" y="106" font-family="Arial, sans-serif" font-size="14" fill="#7c3929">store output</text>
+  <rect x="290" y="158" width="130" height="44" rx="8" fill="#e8f5e9" stroke="#4c8a5a"/>
+  <text x="308" y="186" font-family="Arial, sans-serif" font-size="14" fill="#285839">compute tile0</text>
+  <rect x="450" y="158" width="130" height="44" rx="8" fill="#e8f5e9" stroke="#4c8a5a"/>
+  <text x="468" y="186" font-family="Arial, sans-serif" font-size="14" fill="#285839">compute tile1</text>
+  <rect x="290" y="238" width="130" height="44" rx="8" fill="#ede7f6" stroke="#7e57c2"/>
+  <text x="314" y="266" font-family="Arial, sans-serif" font-size="14" fill="#5e35b1">psum 更新</text>
+  <rect x="450" y="238" width="130" height="44" rx="8" fill="#ede7f6" stroke="#7e57c2"/>
+  <text x="312" y="320" font-family="Arial, sans-serif" font-size="15" fill="#37474f">IC tile0 后还是 partial sum；IC tile1 完成后才成为 output。</text>
+  <text x="474" y="266" font-family="Arial, sans-serif" font-size="14" fill="#5e35b1">psum 完成</text>
+  <path d="M260 100 H290" stroke="#2d4059" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M420 180 H450" stroke="#2d4059" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M580 180 C620 180 630 125 580 105" fill="none" stroke="#2d4059" stroke-width="3" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2d4059"/>
+    </marker>
+  </defs>
+</svg>

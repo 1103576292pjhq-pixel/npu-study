@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="390" viewBox="0 0 980 390" role="img" aria-label="int8 MAC 到 int32 累加再 requantize 的流水">
+  <rect width="980" height="390" fill="#fcfcfb"/>
+  <text x="42" y="46" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#222">低位宽输入，高位宽累加，再缩放输出</text>
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <rect x="70" y="135" width="130" height="72" rx="14" fill="#e8f3ff" stroke="#4b83c3" stroke-width="2"/>
+    <text x="135" y="164" font-size="18" font-weight="700">int8 input</text>
+    <text x="135" y="188" font-size="14">x_q</text>
+    <rect x="250" y="135" width="130" height="72" rx="14" fill="#e8f3ff" stroke="#4b83c3" stroke-width="2"/>
+    <text x="315" y="164" font-size="18" font-weight="700">int8 weight</text>
+    <text x="315" y="188" font-size="14">w_q</text>
+    <rect x="430" y="128" width="140" height="86" rx="14" fill="#fff0cf" stroke="#d28b1e" stroke-width="2"/>
+    <text x="500" y="160" font-size="18" font-weight="700">MAC</text>
+    <text x="500" y="185" font-size="14">x_q * w_q</text>
+    <rect x="620" y="128" width="142" height="86" rx="14" fill="#dff7e8" stroke="#4a9a63" stroke-width="2"/>
+    <text x="691" y="160" font-size="18" font-weight="700">int32 acc</text>
+    <text x="691" y="185" font-size="14">partial sum</text>
+    <rect x="812" y="128" width="128" height="86" rx="14" fill="#f5e8ff" stroke="#8a61aa" stroke-width="2"/>
+    <text x="876" y="160" font-size="18" font-weight="700">requantize</text>
+    <text x="876" y="185" font-size="14">int8 output</text>
+  </g>
+  <g stroke="#606060" stroke-width="2" marker-end="url(#arrow)">
+    <path d="M200 171 L246 171"/>
+    <path d="M380 171 L426 171"/>
+    <path d="M570 171 L616 171"/>
+    <path d="M762 171 L808 171"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="15" fill="#333">
+    <rect x="84" y="260" width="810" height="72" rx="12" fill="#f3f0eb" stroke="#d0c7ba"/>
+    <text x="110" y="290">示例：x_q=[2,-3,7]，w_q=[10,-8,2]</text>
+    <text x="110" y="316">acc = 2*10 + (-3)*(-8) + 7*2 = 58，真实值约为 x_scale*w_scale*acc。</text>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#606060"/>
+    </marker>
+  </defs>
+</svg>

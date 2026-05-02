@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="360" viewBox="0 0 920 360" role="img" aria-labelledby="title desc">
+  <title id="title">Operator fallback cost</title>
+  <desc id="desc">An unsupported operator splits an otherwise NPU-resident graph and forces tensor movement through memory or CPU fallback.</desc>
+  <style>
+    text { font-family: Arial, sans-serif; font-size: 15px; fill: #172033; }
+    .npu { fill: #ecfdf5; stroke: #059669; stroke-width: 2; rx: 8; }
+    .cpu { fill: #fff1f2; stroke: #e11d48; stroke-width: 2; rx: 8; }
+    .mem { fill: #f8fafc; stroke: #64748b; stroke-width: 2; rx: 8; }
+    .arrow { stroke: #334155; stroke-width: 2; marker-end: url(#arrow); fill: none; }
+    .small { font-size: 13px; fill: #475569; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#334155" />
+    </marker>
+  </defs>
+  <rect class="npu" x="55" y="70" width="130" height="62" />
+  <text x="120" y="106" text-anchor="middle">Conv</text>
+  <rect class="npu" x="230" y="70" width="130" height="62" />
+  <text x="295" y="106" text-anchor="middle">ReLU</text>
+  <rect class="cpu" x="405" y="70" width="130" height="62" />
+  <text x="470" y="96" text-anchor="middle">Unsupported</text>
+  <text class="small" x="470" y="117" text-anchor="middle">shape / dtype / op</text>
+  <rect class="npu" x="580" y="70" width="130" height="62" />
+  <text x="645" y="106" text-anchor="middle">Conv</text>
+  <rect class="npu" x="755" y="70" width="130" height="62" />
+  <text x="820" y="106" text-anchor="middle">Add</text>
+  <path class="arrow" d="M185 101 H230" />
+  <path class="arrow" d="M360 101 H405" />
+  <path class="arrow" d="M535 101 H580" />
+  <path class="arrow" d="M710 101 H755" />
+  <rect class="mem" x="250" y="230" width="420" height="60" />
+  <text x="460" y="255" text-anchor="middle" font-weight="bold">Fallback cost</text>
+  <text class="small" x="460" y="278" text-anchor="middle">write tensor out, convert layout/dtype, run elsewhere, copy back</text>
+  <path class="arrow" d="M470 132 C470 178 380 188 330 230" />
+  <path class="arrow" d="M470 132 C470 178 555 188 610 230" />
+  <text class="small" x="460" y="332" text-anchor="middle">Supported-op lists must include operator, attributes, shape range, layout, dtype, and memory access assumptions.</text>
+</svg>

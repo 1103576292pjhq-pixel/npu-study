@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="390" viewBox="0 0 980 390">
+  <rect width="980" height="390" fill="#fbfaf6"/>
+  <text x="42" y="44" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#263238">单层卷积完整执行链</text>
+  <g font-family="Arial, sans-serif" font-size="15" font-weight="700">
+    <rect x="48" y="126" width="112" height="70" rx="12" fill="#eceff1" stroke="#607d8b" stroke-width="2"/>
+    <text x="76" y="156" fill="#37474f">Layer</text>
+    <text x="68" y="178" fill="#37474f">参数</text>
+    <rect x="194" y="126" width="112" height="70" rx="12" fill="#e3f2fd" stroke="#4779b2" stroke-width="2"/>
+    <text x="222" y="156" fill="#25527e">Tiling</text>
+    <text x="218" y="178" fill="#25527e">拆块</text>
+    <rect x="340" y="126" width="112" height="70" rx="12" fill="#fff3e0" stroke="#b77a16" stroke-width="2"/>
+    <text x="372" y="156" fill="#704608">DMA</text>
+    <text x="360" y="178" fill="#704608">搬入/写回</text>
+    <rect x="486" y="126" width="126" height="70" rx="12" fill="#dff0df" stroke="#4c8a5a" stroke-width="2"/>
+    <text x="520" y="156" fill="#285839">Buffer</text>
+    <text x="506" y="178" fill="#285839">输入/权重/psum</text>
+    <rect x="646" y="126" width="112" height="70" rx="12" fill="#ede7f6" stroke="#7e57c2" stroke-width="2"/>
+    <text x="684" y="156" fill="#5e35b1">PE</text>
+    <text x="666" y="178" fill="#5e35b1">MAC 阵列</text>
+    <rect x="792" y="126" width="130" height="70" rx="12" fill="#fbe9e7" stroke="#b56a58" stroke-width="2"/>
+    <text x="822" y="156" fill="#7c3929">Output</text>
+    <text x="810" y="178" fill="#7c3929">完成/写回</text>
+  </g>
+  <path d="M160 161 H194" stroke="#2d4059" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M306 161 H340" stroke="#2d4059" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M452 161 H486" stroke="#2d4059" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M612 161 H646" stroke="#2d4059" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M758 161 H792" stroke="#2d4059" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="310" y="262" width="360" height="56" rx="16" fill="#263238"/>
+  <text x="338" y="297" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#ffffff">控制器 + 地址发生器贯穿 DMA、buffer 和 PE</text>
+  <path d="M490 262 V198" stroke="#263238" stroke-width="3" marker-end="url(#arrowDark)"/>
+  <text x="66" y="252" font-family="Arial, sans-serif" font-size="16" fill="#37474f">输入、权重、部分和、输出四类数据沿链路移动；任何一环等待都会影响整层。</text>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2d4059"/>
+    </marker>
+    <marker id="arrowDark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#263238"/>
+    </marker>
+  </defs>
+</svg>
