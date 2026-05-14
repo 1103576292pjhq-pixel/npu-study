@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="430" viewBox="0 0 1040 430" role="img" aria-labelledby="title desc">
+  <title id="title">Task descriptor lifecycle</title>
+  <desc id="desc">A compiler-generated task descriptor is bound by runtime, submitted through driver, executed by NPU hardware, and checked by profiling.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+    <style>
+      .box { fill:#eef6ff; stroke:#2563eb; stroke-width:2; }
+      .rt { fill:#f0fdf4; stroke:#16a34a; stroke-width:2; }
+      .drv { fill:#fff7ed; stroke:#ea580c; stroke-width:2; }
+      .hw { fill:#fdf2f8; stroke:#be185d; stroke-width:2; }
+      .txt { font-family:Arial, sans-serif; font-size:18px; fill:#0f172a; font-weight:700; }
+      .sub { font-family:Arial, sans-serif; font-size:14px; fill:#334155; }
+      .line { stroke:#334155; stroke-width:2; marker-end:url(#arrow); }
+      .small { font-family:Arial, sans-serif; font-size:13px; fill:#475569; }
+    </style>
+  </defs>
+  <text x="520" y="34" text-anchor="middle" class="txt">任务描述的生命周期：编译器到 runtime、driver、硬件</text>
+
+  <rect x="45" y="90" width="180" height="105" rx="12" class="box"/>
+  <text x="135" y="122" text-anchor="middle" class="txt">编译器产物</text>
+  <text x="135" y="150" text-anchor="middle" class="sub">tile / loop / DMA</text>
+  <text x="135" y="174" text-anchor="middle" class="small">还没有真实地址</text>
+
+  <line x1="225" y1="143" x2="280" y2="143" class="line"/>
+  <rect x="280" y="90" width="180" height="105" rx="12" class="rt"/>
+  <text x="370" y="122" text-anchor="middle" class="txt">runtime 绑定</text>
+  <text x="370" y="150" text-anchor="middle" class="sub">输入 / 权重 / 输出</text>
+  <text x="370" y="174" text-anchor="middle" class="small">分配 buffer 与队列</text>
+
+  <line x1="460" y1="143" x2="515" y2="143" class="line"/>
+  <rect x="515" y="90" width="180" height="105" rx="12" class="drv"/>
+  <text x="605" y="122" text-anchor="middle" class="txt">driver 提交</text>
+  <text x="605" y="150" text-anchor="middle" class="sub">寄存器 / 描述符</text>
+  <text x="605" y="174" text-anchor="middle" class="small">DMA 与中断管理</text>
+
+  <line x1="695" y1="143" x2="750" y2="143" class="line"/>
+  <rect x="750" y="90" width="220" height="105" rx="12" class="hw"/>
+  <text x="860" y="122" text-anchor="middle" class="txt">NPU 执行</text>
+  <text x="860" y="150" text-anchor="middle" class="sub">PE / SRAM / DMA</text>
+  <text x="860" y="174" text-anchor="middle" class="small">完成后写回并通知</text>
+
+  <rect x="130" y="275" width="210" height="72" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="235" y="304" text-anchor="middle" class="sub">编译器能保证什么</text>
+  <text x="235" y="329" text-anchor="middle" class="small">计划结构、tile、依赖、后端格式</text>
+
+  <rect x="415" y="275" width="210" height="72" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="520" y="304" text-anchor="middle" class="sub">runtime/driver 负责什么</text>
+  <text x="520" y="329" text-anchor="middle" class="small">真实地址、提交、同步、错误处理</text>
+
+  <rect x="700" y="275" width="210" height="72" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="805" y="304" text-anchor="middle" class="sub">profiling 检查什么</text>
+  <text x="805" y="329" text-anchor="middle" class="small">compute / DMA / fallback / wait</text>
+</svg>

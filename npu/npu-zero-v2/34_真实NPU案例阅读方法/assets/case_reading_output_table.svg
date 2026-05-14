@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="540" viewBox="0 0 1080 540" role="img" aria-labelledby="title desc">
+  <title id="title">案例阅读输出表</title>
+  <desc id="desc">案例阅读最终输出应包含事实、推断、风险和下一步验证。</desc>
+  <style>
+    .bg { fill: #f8fafc; }
+    .box { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; }
+    .head { fill: #e0f2fe; stroke: #0284c7; stroke-width: 2; }
+    .risk { fill: #ffe4e6; stroke: #fb7185; stroke-width: 2; }
+    .next { fill: #dcfce7; stroke: #22c55e; stroke-width: 2; }
+    .title { font: 700 24px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+    .text { font: 600 17px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+    .small { font: 14px 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+  </style>
+  <rect class="bg" width="1080" height="540"/>
+  <text class="title" x="38" y="44">读完案例要输出可复查表，而不是产品摘要</text>
+
+  <rect class="head" x="78" y="92" width="924" height="70" rx="8"/>
+  <text class="text" x="116" y="122">案例对象</text>
+  <text class="small" x="270" y="122">资料类型、目标模型、版本、输入 shape、测量边界</text>
+
+  <rect class="box" x="78" y="190" width="270" height="190" rx="8"/>
+  <text class="text" x="118" y="224">已确认事实</text>
+  <text class="small" x="112" y="256">支持算子</text>
+  <text class="small" x="112" y="284">量化要求</text>
+  <text class="small" x="112" y="312">runtime 路径</text>
+  <text class="small" x="112" y="340">benchmark 条件</text>
+
+  <rect class="box" x="406" y="190" width="270" height="190" rx="8"/>
+  <text class="text" x="446" y="224">关键推断</text>
+  <text class="small" x="440" y="256">可能 fallback</text>
+  <text class="small" x="440" y="284">可能 memory-bound</text>
+  <text class="small" x="440" y="312">可能首帧 compile</text>
+  <text class="small" x="440" y="340">需要标注待验证</text>
+
+  <rect class="risk" x="734" y="190" width="270" height="190" rx="8"/>
+  <text class="text" x="774" y="224">主要风险</text>
+  <text class="small" x="768" y="256">unsupported op</text>
+  <text class="small" x="768" y="284">NPU/CPU copy</text>
+  <text class="small" x="768" y="312">benchmark 口径不清</text>
+  <text class="small" x="768" y="340">精度/功耗未验证</text>
+
+  <rect class="next" x="168" y="424" width="744" height="62" rx="8"/>
+  <text class="text" x="208" y="458">下一步验证</text>
+  <text class="small" x="356" y="459">查编译日志、跑最小模型、打开 profiler、同时报 latency/copy/fallback/accuracy。</text>
+</svg>

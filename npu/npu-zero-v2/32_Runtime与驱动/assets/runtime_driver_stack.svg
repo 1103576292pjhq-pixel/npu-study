@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="560" viewBox="0 0 980 560" role="img" aria-labelledby="title desc">
+  <title id="title">Runtime 与驱动栈分层</title>
+  <desc id="desc">从应用、推理引擎、runtime、driver 到 NPU 硬件的职责边界。</desc>
+  <style>
+    .bg { fill: #f8fafc; }
+    .layer { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; }
+    .runtime { fill: #e0f2fe; stroke: #0284c7; stroke-width: 2; }
+    .driver { fill: #dcfce7; stroke: #22c55e; stroke-width: 2; }
+    .device { fill: #fef3c7; stroke: #f59e0b; stroke-width: 2; }
+    .title { font: 700 24px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+    .text { font: 600 18px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+    .small { font: 14px 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+  </style>
+  <rect class="bg" width="980" height="560"/>
+  <text class="title" x="36" y="44">一次推理跨过四层：模型语义逐步变成设备动作</text>
+
+  <rect class="layer" x="120" y="82" width="740" height="70" rx="8"/>
+  <text class="text" x="154" y="113">应用 / 推理引擎</text>
+  <text class="small" x="154" y="136">发起 infer，准备输入，读取输出，关注端到端体验</text>
+
+  <rect class="runtime" x="120" y="182" width="740" height="86" rx="8"/>
+  <text class="text" x="154" y="216">Runtime / Device Plugin</text>
+  <text class="small" x="154" y="240">compiled model、infer request、执行上下文、buffer 池、同步/异步提交</text>
+
+  <rect class="driver" x="120" y="298" width="740" height="86" rx="8"/>
+  <text class="text" x="154" y="332">Driver / Firmware 接口</text>
+  <text class="small" x="154" y="356">设备初始化、DMA/IOMMU 映射、队列、doorbell、中断、错误恢复、电源</text>
+
+  <rect class="device" x="120" y="414" width="740" height="86" rx="8"/>
+  <text class="text" x="154" y="448">NPU 硬件</text>
+  <text class="small" x="154" y="472">命令解析、DMA 搬运、PE 阵列计算、状态寄存器、完成/错误信号</text>
+
+  <text class="small" x="650" y="114">越靠上：模型和请求</text>
+  <text class="small" x="650" y="472">越靠下：寄存器和设备状态</text>
+</svg>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="620" viewBox="0 0 1080 620" role="img" aria-labelledby="title desc">
+  <title id="title">可复现 benchmark 协议</title>
+  <desc id="desc">从固定模型和环境，到 warmup、测量、统计、精度验证和报告输出。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#273447"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .box { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; }
+      .prep { fill: #e0f2fe; stroke: #0284c7; stroke-width: 2; }
+      .run { fill: #dcfce7; stroke: #22c55e; stroke-width: 2; }
+      .report { fill: #fef3c7; stroke: #f59e0b; stroke-width: 2; }
+      .title { font: 700 24px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .text { font: 600 16px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .small { font: 13px 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+      .arrow { stroke: #273447; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect class="bg" width="1080" height="620"/>
+  <text class="title" x="36" y="44">可复现 benchmark：先固定条件，再统计结果</text>
+
+  <rect class="prep" x="54" y="104" width="178" height="86" rx="8"/>
+  <text class="text" x="88" y="136">1. 固定模型</text>
+  <text class="small" x="82" y="160">版本 / shape / dtype</text>
+  <rect class="prep" x="278" y="104" width="178" height="86" rx="8"/>
+  <text class="text" x="312" y="136">2. 固定环境</text>
+  <text class="small" x="304" y="160">编译器/runtime/driver</text>
+  <rect class="prep" x="502" y="104" width="178" height="86" rx="8"/>
+  <text class="text" x="536" y="136">3. 固定输入</text>
+  <text class="small" x="532" y="160">数据集 / 分布 / batch</text>
+  <rect class="prep" x="726" y="104" width="178" height="86" rx="8"/>
+  <text class="text" x="760" y="136">4. 固定功耗</text>
+  <text class="small" x="754" y="160">频率 / 温度 / 电源模式</text>
+
+  <path class="arrow" d="M232 147 H278"/>
+  <path class="arrow" d="M456 147 H502"/>
+  <path class="arrow" d="M680 147 H726"/>
+
+  <rect class="run" x="184" y="282" width="190" height="92" rx="8"/>
+  <text class="text" x="232" y="314">5. warmup</text>
+  <text class="small" x="220" y="338">不计入稳定结果</text>
+  <text class="small" x="220" y="359">但可单独报告首帧</text>
+
+  <rect class="run" x="444" y="282" width="190" height="92" rx="8"/>
+  <text class="text" x="500" y="314">6. measure</text>
+  <text class="small" x="478" y="338">重复 N 次，记录 timeline</text>
+  <text class="small" x="478" y="359">端到端 + device time</text>
+
+  <rect class="report" x="704" y="282" width="190" height="92" rx="8"/>
+  <text class="text" x="748" y="314">7. 统计与验精度</text>
+  <text class="small" x="734" y="338">avg / P90 / P99</text>
+  <text class="small" x="734" y="359">accuracy delta</text>
+
+  <path class="arrow" d="M815 190 C810 248 374 238 279 282"/>
+  <path class="arrow" d="M374 328 H444"/>
+  <path class="arrow" d="M634 328 H704"/>
+
+  <rect class="box" x="130" y="472" width="820" height="68" rx="8"/>
+  <text class="small" x="166" y="503">输出报告必须能让别人复现实验：模型、输入、版本、warmup、measure、统计、功耗温度、精度、是否包含 pre/post 和 fallback。</text>
+</svg>

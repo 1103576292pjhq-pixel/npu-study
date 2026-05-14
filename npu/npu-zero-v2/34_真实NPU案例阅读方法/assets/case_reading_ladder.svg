@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="560" viewBox="0 0 980 560" role="img" aria-labelledby="title desc">
+  <title id="title">真实 NPU 案例阅读四层楼梯</title>
+  <desc id="desc">从资料入口逐步走到模型负载、软件栈、硬件约束和测量证据。</desc>
+  <style>
+    .bg { fill: #f8fafc; }
+    .step { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; }
+    .one { fill: #e0f2fe; stroke: #0284c7; stroke-width: 2; }
+    .two { fill: #dcfce7; stroke: #22c55e; stroke-width: 2; }
+    .three { fill: #fef3c7; stroke: #f59e0b; stroke-width: 2; }
+    .four { fill: #ffe4e6; stroke: #fb7185; stroke-width: 2; }
+    .title { font: 700 24px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+    .text { font: 600 18px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+    .small { font: 14px 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+  </style>
+  <rect class="bg" width="980" height="560"/>
+  <text class="title" x="38" y="44">读案例不是背品牌，而是逐层收集证据</text>
+
+  <rect class="one" x="90" y="390" width="780" height="76" rx="8"/>
+  <text class="text" x="126" y="423">1. 模型负载层</text>
+  <text class="small" x="340" y="423">模型结构、输入 shape、batch、算子分布、数据集</text>
+
+  <rect class="two" x="170" y="300" width="700" height="76" rx="8"/>
+  <text class="text" x="206" y="333">2. 软件栈层</text>
+  <text class="small" x="420" y="333">编译器、runtime、driver、日志、fallback</text>
+
+  <rect class="three" x="250" y="210" width="620" height="76" rx="8"/>
+  <text class="text" x="286" y="243">3. 硬件约束层</text>
+  <text class="small" x="508" y="243">PE、SRAM、DMA、精度、带宽</text>
+
+  <rect class="four" x="330" y="120" width="540" height="76" rx="8"/>
+  <text class="text" x="366" y="153">4. 测量证据层</text>
+  <text class="small" x="590" y="153">latency、throughput、power、accuracy</text>
+
+  <text class="small" x="98" y="512">每层都要写清来源：官方文档、编译日志、profile、benchmark，还是仍待验证的工程推断。</text>
+</svg>

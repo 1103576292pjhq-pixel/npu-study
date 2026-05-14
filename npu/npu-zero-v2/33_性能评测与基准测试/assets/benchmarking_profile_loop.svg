@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="560" viewBox="0 0 1080 560" role="img" aria-labelledby="title desc">
+  <title id="title">profiling 归因到优化闭环</title>
+  <desc id="desc">把 benchmark 结果归因到 compute、memory、runtime、power、accuracy，再反馈设计修改。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#273447"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .box { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; }
+      .metric { fill: #e0f2fe; stroke: #0284c7; stroke-width: 2; }
+      .fix { fill: #dcfce7; stroke: #22c55e; stroke-width: 2; }
+      .title { font: 700 24px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .text { font: 600 16px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .small { font: 13px 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+      .arrow { stroke: #273447; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect class="bg" width="1080" height="560"/>
+  <text class="title" x="38" y="44">benchmark 的价值是定位瓶颈，再回到设计修改</text>
+
+  <rect class="metric" x="80" y="110" width="190" height="82" rx="8"/>
+  <text class="text" x="124" y="141">Compute</text>
+  <text class="small" x="108" y="165">PE utilization 低</text>
+
+  <rect class="metric" x="318" y="110" width="190" height="82" rx="8"/>
+  <text class="text" x="366" y="141">Memory</text>
+  <text class="small" x="344" y="165">DRAM bytes 高</text>
+
+  <rect class="metric" x="556" y="110" width="190" height="82" rx="8"/>
+  <text class="text" x="602" y="141">Runtime</text>
+  <text class="small" x="582" y="165">submit / queue 慢</text>
+
+  <rect class="metric" x="794" y="110" width="190" height="82" rx="8"/>
+  <text class="text" x="842" y="141">Power</text>
+  <text class="small" x="822" y="165">热降频 / 能耗高</text>
+
+  <rect class="box" x="184" y="252" width="712" height="82" rx="8"/>
+  <text class="text" x="376" y="284">Profiler timeline / counters</text>
+  <text class="small" x="262" y="309">preprocess, copy, submit, queue wait, NPU execute, DMA, fallback, postprocess</text>
+
+  <rect class="fix" x="120" y="414" width="220" height="80" rx="8"/>
+  <text class="text" x="166" y="445">改编译器</text>
+  <text class="small" x="150" y="468">fusion / tile / layout</text>
+  <rect class="fix" x="430" y="414" width="220" height="80" rx="8"/>
+  <text class="text" x="478" y="445">改系统路径</text>
+  <text class="small" x="462" y="468">buffer / queue / async</text>
+  <rect class="fix" x="740" y="414" width="220" height="80" rx="8"/>
+  <text class="text" x="788" y="445">改硬件取舍</text>
+  <text class="small" x="770" y="468">SRAM / DMA / PE / DVFS</text>
+
+  <path class="arrow" d="M175 192 C230 230 300 246 420 252"/>
+  <path class="arrow" d="M413 192 C448 226 476 240 520 252"/>
+  <path class="arrow" d="M651 192 C638 224 612 240 568 252"/>
+  <path class="arrow" d="M889 192 C850 232 770 248 660 252"/>
+  <path class="arrow" d="M420 334 C338 370 278 392 230 414"/>
+  <path class="arrow" d="M540 334 V414"/>
+  <path class="arrow" d="M660 334 C738 370 800 392 850 414"/>
+</svg>

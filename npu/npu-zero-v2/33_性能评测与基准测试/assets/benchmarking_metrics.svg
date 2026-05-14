@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="560" viewBox="0 0 1040 560" role="img" aria-labelledby="title desc">
+  <title id="title">NPU 评测指标关系</title>
+  <desc id="desc">展示 latency、throughput、utilization、bandwidth、power、energy、accuracy 的关系。</desc>
+  <style>
+    .bg { fill: #f8fafc; }
+    .box { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; }
+    .perf { fill: #e0f2fe; stroke: #0284c7; stroke-width: 2; }
+    .energy { fill: #dcfce7; stroke: #22c55e; stroke-width: 2; }
+    .check { fill: #fef3c7; stroke: #f59e0b; stroke-width: 2; }
+    .title { font: 700 24px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+    .text { font: 600 17px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+    .small { font: 14px 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+  </style>
+  <rect class="bg" width="1040" height="560"/>
+  <text class="title" x="38" y="44">性能不是一个数字：速度、稳定性、能耗和正确性要一起看</text>
+
+  <rect class="box" x="70" y="92" width="900" height="380" rx="10"/>
+  <rect class="perf" x="112" y="132" width="190" height="90" rx="8"/>
+  <text class="text" x="148" y="164">Latency</text>
+  <text class="small" x="136" y="188">单次请求多久完成</text>
+  <text class="small" x="136" y="209">avg / median / P99</text>
+
+  <rect class="perf" x="324" y="132" width="190" height="90" rx="8"/>
+  <text class="text" x="352" y="164">Throughput</text>
+  <text class="small" x="348" y="188">单位时间完成数量</text>
+  <text class="small" x="348" y="209">samples/s, requests/s</text>
+
+  <rect class="perf" x="536" y="132" width="190" height="90" rx="8"/>
+  <text class="text" x="570" y="164">Utilization</text>
+  <text class="small" x="566" y="188">PE / DMA 是否忙</text>
+  <text class="small" x="566" y="209">有效周期占比</text>
+
+  <rect class="perf" x="748" y="132" width="190" height="90" rx="8"/>
+  <text class="text" x="784" y="164">Bandwidth</text>
+  <text class="small" x="780" y="188">DRAM / SRAM bytes</text>
+  <text class="small" x="780" y="209">是否喂得饱计算</text>
+
+  <rect class="energy" x="218" y="278" width="220" height="96" rx="8"/>
+  <text class="text" x="272" y="311">Power</text>
+  <text class="small" x="250" y="336">运行平均功率 W</text>
+  <text class="small" x="250" y="357">影响热和续航</text>
+
+  <rect class="energy" x="466" y="278" width="220" height="96" rx="8"/>
+  <text class="text" x="510" y="311">Energy</text>
+  <text class="small" x="498" y="336">Energy = Power * Time</text>
+  <text class="small" x="498" y="357">单次推理能耗</text>
+
+  <rect class="check" x="714" y="278" width="170" height="96" rx="8"/>
+  <text class="text" x="758" y="311">Accuracy</text>
+  <text class="small" x="744" y="336">快了以后是否还对</text>
+  <text class="small" x="744" y="357">delta / top-1 / error</text>
+
+  <text class="small" x="116" y="432">报告原则：同一张表里标清测量边界、输入、版本、warmup、measure、功耗模式和精度口径。</text>
+</svg>

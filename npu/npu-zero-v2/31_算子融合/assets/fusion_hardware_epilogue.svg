@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="540" viewBox="0 0 980 540" role="img" aria-labelledby="title desc">
+  <title id="title">NPU 硬件 epilogue 融合路径</title>
+  <desc id="desc">主计算产生 partial sum 后，硬件后处理路径执行 bias、scale、round、clamp 和激活。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#273447"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .box { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; }
+      .pe { fill: #e0f2fe; stroke: #0284c7; stroke-width: 2; }
+      .epi { fill: #dcfce7; stroke: #22c55e; stroke-width: 2; }
+      .mem { fill: #fef3c7; stroke: #f59e0b; stroke-width: 2; }
+      .bad { fill: #ffe4e6; stroke: #fb7185; stroke-width: 2; }
+      .title { font: 700 24px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .text { font: 600 17px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .small { font: 14px 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+      .arrow { stroke: #273447; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect class="bg" width="980" height="540"/>
+  <text class="title" x="36" y="44">融合最终要落到后端能执行的 epilogue</text>
+
+  <rect class="box" x="44" y="82" width="892" height="164" rx="8"/>
+  <rect class="pe" x="80" y="128" width="142" height="66" rx="6"/>
+  <text class="text" x="113" y="156">PE 阵列</text>
+  <text class="small" x="105" y="178">int32 psum</text>
+  <rect class="epi" x="286" y="112" width="118" height="96" rx="6"/>
+  <text class="text" x="329" y="143">Bias</text>
+  <text class="small" x="312" y="169">per-channel</text>
+  <rect class="epi" x="454" y="112" width="118" height="96" rx="6"/>
+  <text class="text" x="496" y="143">Scale</text>
+  <text class="small" x="478" y="169">requantize</text>
+  <rect class="epi" x="622" y="112" width="118" height="96" rx="6"/>
+  <text class="text" x="655" y="143">Clamp</text>
+  <text class="small" x="646" y="169">int8 范围</text>
+  <rect class="epi" x="790" y="112" width="118" height="96" rx="6"/>
+  <text class="text" x="828" y="143">ReLU</text>
+  <text class="small" x="816" y="169">Clip/Act</text>
+  <path class="arrow" d="M222 161 H286"/>
+  <path class="arrow" d="M404 161 H454"/>
+  <path class="arrow" d="M572 161 H622"/>
+  <path class="arrow" d="M740 161 H790"/>
+
+  <rect class="mem" x="380" y="288" width="220" height="74" rx="8"/>
+  <text class="text" x="430" y="318">最终输出 Y</text>
+  <text class="small" x="420" y="342">只在末端写回 DRAM</text>
+  <path class="arrow" d="M849 208 C840 274 686 324 600 324"/>
+
+  <rect class="bad" x="70" y="410" width="252" height="72" rx="8"/>
+  <text class="text" x="98" y="439">后端不支持时</text>
+  <text class="small" x="96" y="463">拆任务、回退、或引入额外搬运</text>
+  <rect class="box" x="374" y="410" width="536" height="72" rx="8"/>
+  <text class="text" x="404" y="439">编译器必须查询能力表</text>
+  <text class="small" x="404" y="463">activation 种类、dtype、scale 表达、rounding、buffer 上限、命令格式都要匹配。</text>
+</svg>

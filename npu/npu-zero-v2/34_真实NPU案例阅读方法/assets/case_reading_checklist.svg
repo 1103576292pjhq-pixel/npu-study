@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="620" viewBox="0 0 1080 620" role="img" aria-labelledby="title desc">
+  <title id="title">真实 NPU 案例阅读检查表</title>
+  <desc id="desc">七层证据表：Model、Ops、Quant、Compiler、Runtime、Memory、Evidence。</desc>
+  <style>
+    .bg { fill: #f8fafc; }
+    .cell { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; }
+    .head { fill: #e0f2fe; stroke: #0284c7; stroke-width: 2; }
+    .title { font: 700 24px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+    .text { font: 600 16px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+    .small { font: 13px 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+  </style>
+  <rect class="bg" width="1080" height="620"/>
+  <text class="title" x="38" y="44">七层证据表：每个案例都按同一组问题读</text>
+
+  <rect class="head" x="70" y="86" width="940" height="52" rx="8"/>
+  <text class="text" x="104" y="119">层级</text>
+  <text class="text" x="270" y="119">要收集什么</text>
+  <text class="text" x="710" y="119">缺失时的风险</text>
+
+  <g>
+    <rect class="cell" x="70" y="148" width="160" height="54"/><text class="text" x="104" y="182">Model</text>
+    <rect class="cell" x="230" y="148" width="420" height="54"/><text class="small" x="254" y="181">模型结构、input shape、batch、数据分布</text>
+    <rect class="cell" x="650" y="148" width="360" height="54"/><text class="small" x="674" y="181">不知道负载，无法解释性能</text>
+
+    <rect class="cell" x="70" y="212" width="160" height="54"/><text class="text" x="104" y="246">Ops</text>
+    <rect class="cell" x="230" y="212" width="420" height="54"/><text class="small" x="254" y="245">支持算子、unsupported op、fallback</text>
+    <rect class="cell" x="650" y="212" width="360" height="54"/><text class="small" x="674" y="245">推理成功也可能大量回退 CPU</text>
+
+    <rect class="cell" x="70" y="276" width="160" height="54"/><text class="text" x="104" y="310">Quant</text>
+    <rect class="cell" x="230" y="276" width="420" height="54"/><text class="small" x="254" y="309">int8/fp16、校准、per-channel、Q/DQ</text>
+    <rect class="cell" x="650" y="276" width="360" height="54"/><text class="small" x="674" y="309">精度路径错会导致性能或准确率异常</text>
+
+    <rect class="cell" x="70" y="340" width="160" height="54"/><text class="text" x="104" y="374">Compiler</text>
+    <rect class="cell" x="230" y="340" width="420" height="54"/><text class="small" x="254" y="373">切图、fusion、layout、tile、编译日志</text>
+    <rect class="cell" x="650" y="340" width="360" height="54"/><text class="small" x="674" y="373">看不到图如何落到 NPU</text>
+
+    <rect class="cell" x="70" y="404" width="160" height="54"/><text class="text" x="104" y="438">Runtime</text>
+    <rect class="cell" x="230" y="404" width="420" height="54"/><text class="small" x="254" y="437">infer request、buffer、queue、sync、driver</text>
+    <rect class="cell" x="650" y="404" width="360" height="54"/><text class="small" x="674" y="437">提交/同步/copy 开销会被隐藏</text>
+
+    <rect class="cell" x="70" y="468" width="160" height="54"/><text class="text" x="104" y="502">Memory</text>
+    <rect class="cell" x="230" y="468" width="420" height="54"/><text class="small" x="254" y="501">SRAM、DRAM、DMA、feature map、copy</text>
+    <rect class="cell" x="650" y="468" width="360" height="54"/><text class="small" x="674" y="501">无法判断是否 memory-bound</text>
+
+    <rect class="cell" x="70" y="532" width="160" height="54"/><text class="text" x="104" y="566">Evidence</text>
+    <rect class="cell" x="230" y="532" width="420" height="54"/><text class="small" x="254" y="565">benchmark、profile、accuracy、版本</text>
+    <rect class="cell" x="650" y="532" width="360" height="54"/><text class="small" x="674" y="565">结论无法复查</text>
+  </g>
+</svg>

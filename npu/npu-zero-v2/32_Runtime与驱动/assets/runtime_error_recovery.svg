@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="520" viewBox="0 0 1080 520" role="img" aria-labelledby="title desc">
+  <title id="title">runtime/driver 错误定位时间线</title>
+  <desc id="desc">把推理失败定位到 load、buffer、submit、execute、complete 或 fallback 阶段。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#273447"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .stage { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; }
+      .risk { fill: #ffe4e6; stroke: #fb7185; stroke-width: 2; }
+      .ok { fill: #dcfce7; stroke: #22c55e; stroke-width: 2; }
+      .title { font: 700 24px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .text { font: 600 15px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .small { font: 13px 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+      .arrow { stroke: #273447; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect class="bg" width="1080" height="520"/>
+  <text class="title" x="36" y="44">推理失败要定位到生命周期阶段，不要笼统说“模型不支持”</text>
+
+  <rect class="stage" x="40" y="116" width="138" height="70" rx="8"/>
+  <text class="text" x="68" y="146">load/compile</text>
+  <text class="small" x="62" y="168">artifact / op</text>
+  <rect class="stage" x="216" y="116" width="138" height="70" rx="8"/>
+  <text class="text" x="248" y="146">buffer</text>
+  <text class="small" x="236" y="168">shape / map</text>
+  <rect class="stage" x="392" y="116" width="138" height="70" rx="8"/>
+  <text class="text" x="428" y="146">submit</text>
+  <text class="small" x="414" y="168">queue / doorbell</text>
+  <rect class="stage" x="568" y="116" width="138" height="70" rx="8"/>
+  <text class="text" x="604" y="146">execute</text>
+  <text class="small" x="590" y="168">DMA / opcode</text>
+  <rect class="stage" x="744" y="116" width="138" height="70" rx="8"/>
+  <text class="text" x="780" y="146">complete</text>
+  <text class="small" x="766" y="168">IRQ / event</text>
+  <rect class="stage" x="920" y="116" width="118" height="70" rx="8"/>
+  <text class="text" x="950" y="146">return</text>
+  <text class="small" x="942" y="168">output / status</text>
+  <path class="arrow" d="M178 151 H216"/>
+  <path class="arrow" d="M354 151 H392"/>
+  <path class="arrow" d="M530 151 H568"/>
+  <path class="arrow" d="M706 151 H744"/>
+  <path class="arrow" d="M882 151 H920"/>
+
+  <rect class="risk" x="216" y="274" width="138" height="72" rx="8"/>
+  <text class="text" x="249" y="304">DMA fault</text>
+  <text class="small" x="234" y="326">地址/权限/cache</text>
+  <rect class="risk" x="392" y="274" width="138" height="72" rx="8"/>
+  <text class="text" x="431" y="304">queue full</text>
+  <text class="small" x="415" y="326">设备忙/长度非法</text>
+  <rect class="risk" x="568" y="274" width="138" height="72" rx="8"/>
+  <text class="text" x="606" y="304">timeout</text>
+  <text class="small" x="595" y="326">busy bit 不退</text>
+  <rect class="risk" x="744" y="274" width="138" height="72" rx="8"/>
+  <text class="text" x="782" y="304">IRQ lost</text>
+  <text class="small" x="768" y="326">完成未唤醒</text>
+
+  <rect class="ok" x="104" y="402" width="872" height="54" rx="8"/>
+  <text class="small" x="136" y="434">排查顺序：先看命令是否入队，再看 doorbell，再看 DMA/status register，再看 interrupt count，最后看 runtime 是否收到 event。</text>
+</svg>

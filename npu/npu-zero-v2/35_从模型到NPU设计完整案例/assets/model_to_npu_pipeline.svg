@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="560" viewBox="0 0 1120 560" role="img" aria-labelledby="title desc">
+  <title id="title">从模型到 NPU 的端到端闭环</title>
+  <desc id="desc">模型图经过量化、编译映射、tile、PE/DMA/runtime 和 benchmark，形成反馈闭环。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#273447"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .box { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; }
+      .model { fill: #e0f2fe; stroke: #0284c7; stroke-width: 2; }
+      .hw { fill: #dcfce7; stroke: #22c55e; stroke-width: 2; }
+      .measure { fill: #fef3c7; stroke: #f59e0b; stroke-width: 2; }
+      .title { font: 700 24px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .text { font: 600 15px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .small { font: 13px 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+      .arrow { stroke: #273447; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect class="bg" width="1120" height="560"/>
+  <text class="title" x="38" y="44">完整案例闭环：每一步都要有输入、输出和验证</text>
+  <rect class="model" x="52" y="112" width="140" height="70" rx="8"/><text class="text" x="86" y="143">模型图</text><text class="small" x="76" y="165">shape / ops</text>
+  <rect class="model" x="232" y="112" width="140" height="70" rx="8"/><text class="text" x="270" y="143">量化</text><text class="small" x="258" y="165">int8 / scale</text>
+  <rect class="model" x="412" y="112" width="140" height="70" rx="8"/><text class="text" x="446" y="143">编译映射</text><text class="small" x="442" y="165">fusion / tile</text>
+  <rect class="hw" x="592" y="112" width="140" height="70" rx="8"/><text class="text" x="628" y="143">PE 阵列</text><text class="small" x="624" y="165">空间/时间映射</text>
+  <rect class="hw" x="772" y="112" width="140" height="70" rx="8"/><text class="text" x="808" y="143">DMA/SRAM</text><text class="small" x="806" y="165">tile 搬运</text>
+  <rect class="hw" x="952" y="112" width="120" height="70" rx="8"/><text class="text" x="986" y="143">Runtime</text><text class="small" x="980" y="165">submit / sync</text>
+  <path class="arrow" d="M192 147 H232"/><path class="arrow" d="M372 147 H412"/><path class="arrow" d="M552 147 H592"/><path class="arrow" d="M732 147 H772"/><path class="arrow" d="M912 147 H952"/>
+  <rect class="measure" x="392" y="328" width="336" height="92" rx="8"/>
+  <text class="text" x="470" y="360">Benchmark / Profile</text>
+  <text class="small" x="430" y="384">latency, utilization, DRAM bytes, fallback, accuracy, energy</text>
+  <path class="arrow" d="M1012 182 C1012 300 760 338 728 360"/>
+  <path class="arrow" d="M392 374 C250 370 128 310 122 182"/>
+  <text class="small" x="116" y="474">反馈路径：如果慢，回头改模型、量化、编译器、tile、buffer、DMA、PE 或 runtime，而不是只改一个模块。</text>
+</svg>

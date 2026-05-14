@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="620" viewBox="0 0 980 620" role="img" aria-labelledby="title desc">
+  <title id="title">算子融合决策树</title>
+  <desc id="desc">融合候选需要依次检查依赖、语义、元数据、后端能力和收益。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#273447"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .node { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; }
+      .pass { fill: #dcfce7; stroke: #22c55e; stroke-width: 2; }
+      .fail { fill: #ffe4e6; stroke: #fb7185; stroke-width: 2; }
+      .text { font: 600 17px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .small { font: 14px 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+      .title { font: 700 24px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .arrow { stroke: #273447; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect class="bg" width="980" height="620"/>
+  <text class="title" x="38" y="44">融合候选不能只看“相邻”，要过五道门</text>
+
+  <rect class="node" x="350" y="80" width="280" height="58" rx="8"/>
+  <text class="text" x="405" y="114">候选 pattern 匹配</text>
+
+  <rect class="node" x="350" y="178" width="280" height="66" rx="8"/>
+  <text class="text" x="392" y="205">依赖是否局部？</text>
+  <text class="small" x="386" y="228">无额外消费者或能保留原输出</text>
+
+  <rect class="node" x="350" y="284" width="280" height="66" rx="8"/>
+  <text class="text" x="382" y="311">数值语义是否等价？</text>
+  <text class="small" x="383" y="334">BN folding / 激活 / 饱和要一致</text>
+
+  <rect class="node" x="350" y="390" width="280" height="66" rx="8"/>
+  <text class="text" x="392" y="417">元数据是否兼容？</text>
+  <text class="small" x="374" y="440">shape / layout / dtype / scale 对齐</text>
+
+  <rect class="node" x="350" y="496" width="280" height="66" rx="8"/>
+  <text class="text" x="390" y="523">后端能否执行且有收益？</text>
+  <text class="small" x="374" y="546">epilogue 支持，buffer 压力不过界</text>
+
+  <rect class="pass" x="704" y="496" width="190" height="66" rx="8"/>
+  <text class="text" x="752" y="525">生成 fused task</text>
+  <text class="small" x="734" y="548">并记录验证口径</text>
+
+  <rect class="fail" x="92" y="178" width="190" height="66" rx="8"/>
+  <text class="text" x="135" y="205">不融合</text>
+  <text class="small" x="116" y="228">保护分支语义</text>
+
+  <rect class="fail" x="92" y="284" width="190" height="66" rx="8"/>
+  <text class="text" x="127" y="311">保留原图</text>
+  <text class="small" x="111" y="334">避免精度漂移</text>
+
+  <rect class="fail" x="92" y="390" width="190" height="66" rx="8"/>
+  <text class="text" x="127" y="417">先做布局规划</text>
+  <text class="small" x="108" y="440">避免额外 conversion</text>
+
+  <rect class="fail" x="92" y="496" width="190" height="66" rx="8"/>
+  <text class="text" x="127" y="523">拆成多个任务</text>
+  <text class="small" x="105" y="546">或交给 CPU / 其他后端</text>
+
+  <path class="arrow" d="M490 138 V178"/>
+  <path class="arrow" d="M490 244 V284"/>
+  <path class="arrow" d="M490 350 V390"/>
+  <path class="arrow" d="M490 456 V496"/>
+  <path class="arrow" d="M630 529 H704"/>
+  <path class="arrow" d="M350 211 H282"/>
+  <path class="arrow" d="M350 317 H282"/>
+  <path class="arrow" d="M350 423 H282"/>
+  <path class="arrow" d="M350 529 H282"/>
+  <text class="small" x="305" y="201">否</text>
+  <text class="small" x="305" y="307">否</text>
+  <text class="small" x="305" y="413">否</text>
+  <text class="small" x="305" y="519">否</text>
+  <text class="small" x="512" y="164">是</text>
+  <text class="small" x="512" y="270">是</text>
+  <text class="small" x="512" y="376">是</text>
+  <text class="small" x="658" y="518">是</text>
+</svg>

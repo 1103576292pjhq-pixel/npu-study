@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="600" viewBox="0 0 1080 600" role="img" aria-labelledby="title desc">
+  <title id="title">DMA、寄存器与中断生命周期</title>
+  <desc id="desc">展示 buffer 映射、cache 同步、DMA 读写、状态寄存器和中断完成的关系。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#273447"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .box { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; }
+      .cpu { fill: #e0f2fe; stroke: #0284c7; stroke-width: 2; }
+      .mem { fill: #fef3c7; stroke: #f59e0b; stroke-width: 2; }
+      .npu { fill: #dcfce7; stroke: #22c55e; stroke-width: 2; }
+      .bad { fill: #ffe4e6; stroke: #fb7185; stroke-width: 2; }
+      .title { font: 700 24px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .text { font: 600 17px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .small { font: 14px 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+      .arrow { stroke: #273447; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect class="bg" width="1080" height="600"/>
+  <text class="title" x="36" y="44">CPU 指针变成 NPU 可访问数据，要经过映射和一致性处理</text>
+
+  <rect class="cpu" x="72" y="112" width="190" height="86" rx="8"/>
+  <text class="text" x="112" y="146">CPU buffer</text>
+  <text class="small" x="100" y="170">virtual address</text>
+  <rect class="box" x="330" y="112" width="190" height="86" rx="8"/>
+  <text class="text" x="370" y="146">map / pin</text>
+  <text class="small" x="360" y="170">IOMMU / device addr</text>
+  <rect class="mem" x="588" y="112" width="190" height="86" rx="8"/>
+  <text class="text" x="628" y="146">cache flush</text>
+  <text class="small" x="620" y="170">输入写回内存</text>
+  <rect class="npu" x="846" y="112" width="190" height="86" rx="8"/>
+  <text class="text" x="890" y="146">DMA read</text>
+  <text class="small" x="872" y="170">NPU 读取输入/权重</text>
+  <path class="arrow" d="M262 155 H330"/>
+  <path class="arrow" d="M520 155 H588"/>
+  <path class="arrow" d="M778 155 H846"/>
+
+  <rect class="npu" x="846" y="292" width="190" height="86" rx="8"/>
+  <text class="text" x="886" y="326">DMA write</text>
+  <text class="small" x="882" y="350">输出写回内存</text>
+  <rect class="mem" x="588" y="292" width="190" height="86" rx="8"/>
+  <text class="text" x="628" y="326">invalidate</text>
+  <text class="small" x="616" y="350">CPU 重新读输出</text>
+  <rect class="box" x="330" y="292" width="190" height="86" rx="8"/>
+  <text class="text" x="366" y="326">status reg</text>
+  <text class="small" x="363" y="350">completed / error</text>
+  <rect class="cpu" x="72" y="292" width="190" height="86" rx="8"/>
+  <text class="text" x="112" y="326">interrupt</text>
+  <text class="small" x="100" y="350">唤醒等待线程</text>
+  <path class="arrow" d="M941 198 V292"/>
+  <path class="arrow" d="M846 335 H778"/>
+  <path class="arrow" d="M588 335 H520"/>
+  <path class="arrow" d="M330 335 H262"/>
+
+  <rect class="bad" x="186" y="462" width="708" height="70" rx="8"/>
+  <text class="text" x="224" y="491">失败信号</text>
+  <text class="small" x="322" y="492">未映射 -> DMA fault；未 flush -> NPU 读旧输入；未 invalidate -> CPU 读旧输出；中断丢失 -> wait timeout。</text>
+</svg>

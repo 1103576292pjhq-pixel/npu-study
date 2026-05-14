@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="560" viewBox="0 0 1080 560" role="img" aria-labelledby="title desc">
+  <title id="title">ToyCamNet tile、DMA 与 PE 时间线</title>
+  <desc id="desc">展示单缓冲和双缓冲下 DMA 与计算的重叠关系。</desc>
+  <style>
+    .bg { fill: #f8fafc; }
+    .axis { stroke: #273447; stroke-width: 2; }
+    .dma { fill: #fef3c7; stroke: #f59e0b; stroke-width: 2; }
+    .compute { fill: #e0f2fe; stroke: #0284c7; stroke-width: 2; }
+    .store { fill: #dcfce7; stroke: #22c55e; stroke-width: 2; }
+    .title { font: 700 24px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+    .text { font: 600 16px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+    .small { font: 13px 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+  </style>
+  <rect class="bg" width="1080" height="560"/>
+  <text class="title" x="38" y="44">tile 不是只看容量，还要看 DMA 能否和 PE 计算重叠</text>
+
+  <text class="text" x="78" y="120">单缓冲</text>
+  <line class="axis" x1="180" y1="116" x2="980" y2="116"/>
+  <rect class="dma" x="200" y="86" width="130" height="52" rx="6"/><text class="small" x="232" y="117">load tile0</text>
+  <rect class="compute" x="340" y="86" width="210" height="52" rx="6"/><text class="small" x="402" y="117">compute tile0</text>
+  <rect class="store" x="560" y="86" width="110" height="52" rx="6"/><text class="small" x="588" y="117">store</text>
+  <rect class="dma" x="690" y="86" width="130" height="52" rx="6"/><text class="small" x="722" y="117">load tile1</text>
+  <rect class="compute" x="830" y="86" width="140" height="52" rx="6"/><text class="small" x="858" y="117">compute...</text>
+
+  <text class="text" x="78" y="270">双缓冲</text>
+  <line class="axis" x1="180" y1="266" x2="980" y2="266"/>
+  <rect class="dma" x="200" y="236" width="130" height="52" rx="6"/><text class="small" x="232" y="267">load tile0</text>
+  <rect class="compute" x="340" y="236" width="210" height="52" rx="6"/><text class="small" x="402" y="267">compute tile0</text>
+  <rect class="dma" x="360" y="300" width="130" height="42" rx="6"/><text class="small" x="390" y="326">prefetch 1</text>
+  <rect class="compute" x="560" y="236" width="210" height="52" rx="6"/><text class="small" x="622" y="267">compute tile1</text>
+  <rect class="dma" x="580" y="300" width="130" height="42" rx="6"/><text class="small" x="610" y="326">prefetch 2</text>
+  <rect class="store" x="780" y="236" width="110" height="52" rx="6"/><text class="small" x="808" y="267">store</text>
+
+  <text class="small" x="184" y="430">单缓冲近似：T_tile = load + compute + store。双缓冲稳定阶段近似：T_tile = max(compute, DMA_next)。</text>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="560" viewBox="0 0 1080 560" role="img" aria-labelledby="title desc">
+  <title id="title">真实 NPU 资料证据地图</title>
+  <desc id="desc">区分文档事实、工程推断和实验结论。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#273447"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .fact { fill: #e0f2fe; stroke: #0284c7; stroke-width: 2; }
+      .infer { fill: #fef3c7; stroke: #f59e0b; stroke-width: 2; }
+      .exp { fill: #dcfce7; stroke: #22c55e; stroke-width: 2; }
+      .warn { fill: #ffe4e6; stroke: #fb7185; stroke-width: 2; }
+      .title { font: 700 24px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .text { font: 600 17px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .small { font: 14px 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+      .arrow { stroke: #273447; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect class="bg" width="1080" height="560"/>
+  <text class="title" x="38" y="44">每条结论都要标注证据等级</text>
+
+  <rect class="fact" x="80" y="112" width="250" height="110" rx="8"/>
+  <text class="text" x="126" y="145">文档事实</text>
+  <text class="small" x="108" y="174">官方支持表、API 文档、编译器说明</text>
+  <text class="small" x="108" y="198">作用：限定边界</text>
+
+  <rect class="infer" x="414" y="112" width="250" height="110" rx="8"/>
+  <text class="text" x="460" y="145">工程推断</text>
+  <text class="small" x="442" y="174">基于事实提出瓶颈假设</text>
+  <text class="small" x="442" y="198">作用：形成验证方向</text>
+
+  <rect class="exp" x="748" y="112" width="250" height="110" rx="8"/>
+  <text class="text" x="794" y="145">实验结论</text>
+  <text class="small" x="776" y="174">profile、benchmark、日志、精度结果</text>
+  <text class="small" x="776" y="198">作用：支撑判断</text>
+
+  <path class="arrow" d="M330 167 H414"/>
+  <path class="arrow" d="M664 167 H748"/>
+
+  <rect class="warn" x="198" y="328" width="684" height="88" rx="8"/>
+  <text class="text" x="250" y="361">禁止写法</text>
+  <text class="small" x="350" y="362">把“官方说支持 CNN”直接写成“这个模型一定能全速跑”。</text>
+  <text class="small" x="350" y="388">正确做法：先查 supported ops，再看编译日志和 profile。</text>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="560" viewBox="0 0 980 560" role="img" aria-labelledby="title desc">
+  <title id="title">ToyCamNet 映射到 2x2 PE 阵列</title>
+  <desc id="desc">2x2 输出空间 tile 映射到 2x2 PE，输出通道和卷积核循环按时间展开。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#273447"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .pe { fill: #e0f2fe; stroke: #0284c7; stroke-width: 2; }
+      .buf { fill: #dcfce7; stroke: #22c55e; stroke-width: 2; }
+      .tile { fill: #fef3c7; stroke: #f59e0b; stroke-width: 2; }
+      .title { font: 700 24px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .text { font: 600 16px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .small { font: 13px 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+      .arrow { stroke: #273447; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect class="bg" width="980" height="560"/>
+  <text class="title" x="38" y="44">2x2 输出 tile：空间维度给 PE，通道和 kernel 给时间循环</text>
+  <rect class="tile" x="74" y="112" width="230" height="116" rx="8"/>
+  <text class="text" x="112" y="146">输出 tile</text>
+  <text class="small" x="112" y="172">OH=2, OW=2, OC=2</text>
+  <text class="small" x="112" y="196">8 个输出元素</text>
+
+  <rect class="buf" x="74" y="292" width="230" height="128" rx="8"/>
+  <text class="text" x="112" y="326">片上工作集</text>
+  <text class="small" x="112" y="352">input 16 B</text>
+  <text class="small" x="112" y="376">weight 18 B</text>
+  <text class="small" x="112" y="400">psum 32 B + output 8 B</text>
+
+  <rect class="pe" x="456" y="118" width="120" height="86" rx="8"/><text class="text" x="486" y="154">PE(0,0)</text><text class="small" x="486" y="178">out 0,0</text>
+  <rect class="pe" x="608" y="118" width="120" height="86" rx="8"/><text class="text" x="638" y="154">PE(0,1)</text><text class="small" x="638" y="178">out 0,1</text>
+  <rect class="pe" x="456" y="236" width="120" height="86" rx="8"/><text class="text" x="486" y="272">PE(1,0)</text><text class="small" x="486" y="296">out 1,0</text>
+  <rect class="pe" x="608" y="236" width="120" height="86" rx="8"/><text class="text" x="638" y="272">PE(1,1)</text><text class="small" x="638" y="296">out 1,1</text>
+  <path class="arrow" d="M304 170 H456"/>
+  <path class="arrow" d="M304 356 C370 328 414 292 456 278"/>
+
+  <rect class="tile" x="790" y="150" width="140" height="138" rx="8"/>
+  <text class="text" x="822" y="184">时间循环</text>
+  <text class="small" x="818" y="212">OC: 2 轮</text>
+  <text class="small" x="818" y="236">R*S: 9 MAC</text>
+  <text class="small" x="818" y="260">ideal 18 cycles</text>
+  <path class="arrow" d="M728 220 H790"/>
+  <text class="small" x="128" y="490">结论：计算上 648 MAC / 4 PE = 162 周期，但系统上还要看 DMA、边界 tile、runtime 和写回。</text>
+</svg>

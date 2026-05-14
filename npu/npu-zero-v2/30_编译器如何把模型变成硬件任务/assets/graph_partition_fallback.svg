@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="420" viewBox="0 0 1040 420" role="img" aria-labelledby="title desc">
+  <title id="title">Graph partition and fallback</title>
+  <desc id="desc">A model graph is partitioned into an NPU subgraph and a CPU fallback subgraph according to operator, dtype, layout, shape, and attribute support.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+    <style>
+      .npu { fill:#ecfdf5; stroke:#16a34a; stroke-width:2; }
+      .cpu { fill:#fff7ed; stroke:#ea580c; stroke-width:2; }
+      .node { fill:#eff6ff; stroke:#2563eb; stroke-width:2; }
+      .bad { fill:#fee2e2; stroke:#dc2626; stroke-width:2; }
+      .txt { font-family:Arial, sans-serif; font-size:18px; fill:#0f172a; font-weight:700; }
+      .sub { font-family:Arial, sans-serif; font-size:14px; fill:#334155; }
+      .line { stroke:#334155; stroke-width:2; marker-end:url(#arrow); }
+      .dash { stroke:#64748b; stroke-width:2; stroke-dasharray:7 5; marker-end:url(#arrow); }
+    </style>
+  </defs>
+  <text x="520" y="34" text-anchor="middle" class="txt">图切分：连续 NPU 子图与 CPU fallback 边界</text>
+
+  <rect x="40" y="82" width="600" height="170" rx="16" class="npu"/>
+  <text x="340" y="115" text-anchor="middle" class="txt">NPU subgraph 0</text>
+  <rect x="80" y="150" width="95" height="52" rx="10" class="node"/>
+  <text x="128" y="182" text-anchor="middle" class="sub">Input</text>
+  <line x1="175" y1="176" x2="215" y2="176" class="line"/>
+  <rect x="215" y="150" width="105" height="52" rx="10" class="node"/>
+  <text x="268" y="182" text-anchor="middle" class="sub">Conv3x3</text>
+  <line x1="320" y1="176" x2="360" y2="176" class="line"/>
+  <rect x="360" y="150" width="95" height="52" rx="10" class="node"/>
+  <text x="408" y="182" text-anchor="middle" class="sub">ReLU</text>
+  <line x1="455" y1="176" x2="495" y2="176" class="line"/>
+  <rect x="495" y="150" width="95" height="52" rx="10" class="node"/>
+  <text x="543" y="182" text-anchor="middle" class="sub">Add</text>
+
+  <line x1="590" y1="176" x2="700" y2="176" class="dash"/>
+  <rect x="700" y="82" width="290" height="170" rx="16" class="cpu"/>
+  <text x="845" y="115" text-anchor="middle" class="txt">CPU / DSP fallback</text>
+  <rect x="790" y="150" width="110" height="52" rx="10" class="bad"/>
+  <text x="845" y="182" text-anchor="middle" class="sub">Softmax</text>
+
+  <rect x="90" y="300" width="220" height="70" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="200" y="327" text-anchor="middle" class="sub">支持判断</text>
+  <text x="200" y="352" text-anchor="middle" class="sub">op + dtype + layout + shape</text>
+
+  <rect x="410" y="300" width="220" height="70" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="520" y="327" text-anchor="middle" class="sub">边界成本</text>
+  <text x="520" y="352" text-anchor="middle" class="sub">写回 + 同步 + 重新读入</text>
+
+  <rect x="730" y="300" width="220" height="70" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="840" y="327" text-anchor="middle" class="sub">诊断线索</text>
+  <text x="840" y="352" text-anchor="middle" class="sub">子图碎片 / CPU 时间升高</text>
+</svg>

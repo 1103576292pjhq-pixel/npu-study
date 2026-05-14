@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="470" viewBox="0 0 1040 470" role="img" aria-labelledby="title desc">
+  <title id="title">Compiler tile mapping</title>
+  <desc id="desc">A convolution loop nest is mapped into tile descriptors, DMA transfers, partial sums, and PE array execution.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+    <style>
+      .panel { fill:#f8fafc; stroke:#0f172a; stroke-width:2; }
+      .tile { fill:#dbeafe; stroke:#2563eb; stroke-width:2; }
+      .buf { fill:#dcfce7; stroke:#16a34a; stroke-width:2; }
+      .pe { fill:#fee2e2; stroke:#dc2626; stroke-width:2; }
+      .txt { font-family:Arial, sans-serif; font-size:18px; fill:#0f172a; font-weight:700; }
+      .sub { font-family:Arial, sans-serif; font-size:14px; fill:#334155; }
+      .line { stroke:#334155; stroke-width:2; marker-end:url(#arrow); }
+      .thin { stroke:#94a3b8; stroke-width:1.5; }
+    </style>
+  </defs>
+  <text x="520" y="34" text-anchor="middle" class="txt">从卷积循环到 NPU tile 任务</text>
+
+  <rect x="30" y="65" width="270" height="340" rx="14" class="panel"/>
+  <text x="165" y="100" text-anchor="middle" class="txt">卷积循环</text>
+  <text x="62" y="145" class="sub">for oc in OC:</text>
+  <text x="82" y="175" class="sub">for oh in OH:</text>
+  <text x="102" y="205" class="sub">for ow in OW:</text>
+  <text x="122" y="235" class="sub">for ic,r,s:</text>
+  <text x="142" y="265" class="sub">psum += input * weight</text>
+  <line x1="60" y1="292" x2="248" y2="292" class="thin"/>
+  <text x="60" y="325" class="sub">输出维度：OC / OH / OW</text>
+  <text x="60" y="352" class="sub">归约维度：IC / R / S</text>
+
+  <line x1="300" y1="235" x2="350" y2="235" class="line"/>
+  <rect x="350" y="65" width="270" height="340" rx="14" class="panel"/>
+  <text x="485" y="100" text-anchor="middle" class="txt">编译器选择</text>
+  <rect x="390" y="130" width="190" height="54" rx="10" class="tile"/>
+  <text x="485" y="163" text-anchor="middle" class="sub">OC16 / OH4 / OW4</text>
+  <rect x="390" y="205" width="190" height="54" rx="10" class="tile"/>
+  <text x="485" y="238" text-anchor="middle" class="sub">输入窗口 16x6x6</text>
+  <rect x="390" y="280" width="190" height="54" rx="10" class="tile"/>
+  <text x="485" y="313" text-anchor="middle" class="sub">psum int32，输出后处理</text>
+  <text x="485" y="372" text-anchor="middle" class="sub">目标：放进片上 SRAM 并保持 PE 有足够工作量</text>
+
+  <line x1="620" y1="235" x2="670" y2="235" class="line"/>
+  <rect x="670" y="65" width="335" height="340" rx="14" class="panel"/>
+  <text x="837" y="100" text-anchor="middle" class="txt">NPU 任务</text>
+  <rect x="700" y="130" width="120" height="58" rx="10" class="buf"/>
+  <text x="760" y="164" text-anchor="middle" class="sub">DMA 输入</text>
+  <rect x="850" y="130" width="120" height="58" rx="10" class="buf"/>
+  <text x="910" y="164" text-anchor="middle" class="sub">DMA 权重</text>
+  <rect x="730" y="225" width="58" height="58" class="pe"/>
+  <rect x="798" y="225" width="58" height="58" class="pe"/>
+  <rect x="866" y="225" width="58" height="58" class="pe"/>
+  <rect x="730" y="293" width="58" height="58" class="pe"/>
+  <rect x="798" y="293" width="58" height="58" class="pe"/>
+  <rect x="866" y="293" width="58" height="58" class="pe"/>
+  <text x="827" y="259" text-anchor="middle" class="sub">PE 阵列</text>
+  <text x="827" y="377" text-anchor="middle" class="sub">本地累加 psum，激活/重量化后写回输出 tile</text>
+</svg>

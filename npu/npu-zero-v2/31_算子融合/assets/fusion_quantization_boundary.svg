@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520" role="img" aria-labelledby="title desc">
+  <title id="title">量化融合的数值边界</title>
+  <desc id="desc">Q/DQ 融合必须保留 scale、zero point、rounding 和 saturation 语义。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#273447"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .box { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; }
+      .blue { fill: #e0f2fe; stroke: #0284c7; stroke-width: 2; }
+      .green { fill: #dcfce7; stroke: #22c55e; stroke-width: 2; }
+      .yellow { fill: #fef3c7; stroke: #f59e0b; stroke-width: 2; }
+      .red { fill: #ffe4e6; stroke: #fb7185; stroke-width: 2; }
+      .title { font: 700 24px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .text { font: 600 17px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .small { font: 14px 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+      .mono { font: 15px Consolas, 'Microsoft YaHei', monospace; fill: #172033; }
+      .arrow { stroke: #273447; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect class="bg" width="980" height="520"/>
+  <text class="title" x="38" y="44">Q/DQ 融合：删除节点前先保留数值语义</text>
+
+  <rect class="box" x="56" y="94" width="868" height="122" rx="8"/>
+  <rect class="blue" x="86" y="132" width="130" height="48" rx="6"/>
+  <text class="text" x="117" y="163">int8 q</text>
+  <rect class="yellow" x="286" y="116" width="168" height="80" rx="6"/>
+  <text class="text" x="329" y="146">DeQuant</text>
+  <text class="small" x="305" y="172">scale, zero_point</text>
+  <rect class="green" x="520" y="132" width="118" height="48" rx="6"/>
+  <text class="text" x="558" y="163">ReLU</text>
+  <rect class="yellow" x="704" y="116" width="168" height="80" rx="6"/>
+  <text class="text" x="755" y="146">Quant</text>
+  <text class="small" x="730" y="172">round, saturate</text>
+  <path class="arrow" d="M216 156 H286"/>
+  <path class="arrow" d="M454 156 H520"/>
+  <path class="arrow" d="M638 156 H704"/>
+
+  <rect class="box" x="56" y="258" width="868" height="170" rx="8"/>
+  <text class="text" x="86" y="296">融合后的硬件表达</text>
+  <rect class="blue" x="86" y="324" width="140" height="54" rx="6"/>
+  <text class="text" x="116" y="358">q_in</text>
+  <rect class="green" x="302" y="312" width="296" height="78" rx="6"/>
+  <text class="mono" x="330" y="343">q_out = clamp(q_in, zp)</text>
+  <text class="small" x="330" y="368">ReLU 的 0 点是 zero_point，不是整数 0</text>
+  <rect class="red" x="674" y="312" width="214" height="78" rx="6"/>
+  <text class="text" x="714" y="343">禁止盲删 Q/DQ</text>
+  <text class="small" x="701" y="368">scale 不同会改变真实值</text>
+  <path class="arrow" d="M226 351 H302"/>
+  <path class="arrow" d="M598 351 H674"/>
+
+  <text class="mono" x="88" y="463">val_fp32 = scale * (q - zero_point)</text>
+  <text class="small" x="88" y="488">检查线索：融合前后比较 scale、zero_point、rounding、saturation、per-channel 参数和精度敏感层误差。</text>
+</svg>

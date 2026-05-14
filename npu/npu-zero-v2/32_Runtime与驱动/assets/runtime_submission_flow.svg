@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="560" viewBox="0 0 1080 560" role="img" aria-labelledby="title desc">
+  <title id="title">一次 NPU 任务提交流程</title>
+  <desc id="desc">runtime 绑定 buffer，driver 入队并写 doorbell，NPU 执行后通过中断通知完成。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#273447"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .box { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; }
+      .run { fill: #e0f2fe; stroke: #0284c7; stroke-width: 2; }
+      .drv { fill: #dcfce7; stroke: #22c55e; stroke-width: 2; }
+      .dev { fill: #fef3c7; stroke: #f59e0b; stroke-width: 2; }
+      .title { font: 700 24px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .text { font: 600 16px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .small { font: 13px 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+      .arrow { stroke: #273447; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect class="bg" width="1080" height="560"/>
+  <text class="title" x="36" y="44">从 infer() 到完成通知：每一步都有输入、输出和错误点</text>
+
+  <rect class="run" x="52" y="104" width="158" height="72" rx="8"/>
+  <text class="text" x="86" y="134">1. 输入绑定</text>
+  <text class="small" x="78" y="157">shape / dtype / layout</text>
+  <rect class="run" x="258" y="104" width="158" height="72" rx="8"/>
+  <text class="text" x="292" y="134">2. buffer 映射</text>
+  <text class="small" x="286" y="157">device address</text>
+  <rect class="run" x="464" y="104" width="158" height="72" rx="8"/>
+  <text class="text" x="502" y="134">3. 填命令</text>
+  <text class="small" x="500" y="157">command buffer</text>
+  <path class="arrow" d="M210 140 H258"/>
+  <path class="arrow" d="M416 140 H464"/>
+
+  <rect class="drv" x="464" y="246" width="158" height="72" rx="8"/>
+  <text class="text" x="506" y="276">4. 入队</text>
+  <text class="small" x="501" y="299">queue tail++</text>
+  <rect class="drv" x="670" y="246" width="158" height="72" rx="8"/>
+  <text class="text" x="705" y="276">5. doorbell</text>
+  <text class="small" x="699" y="299">通知硬件取命令</text>
+  <path class="arrow" d="M543 176 V246"/>
+  <path class="arrow" d="M622 282 H670"/>
+
+  <rect class="dev" x="670" y="388" width="158" height="72" rx="8"/>
+  <text class="text" x="704" y="418">6. 硬件执行</text>
+  <text class="small" x="706" y="441">DMA + PE</text>
+  <rect class="drv" x="464" y="388" width="158" height="72" rx="8"/>
+  <text class="text" x="500" y="418">7. 中断完成</text>
+  <text class="small" x="498" y="441">wake runtime</text>
+  <rect class="run" x="258" y="388" width="158" height="72" rx="8"/>
+  <text class="text" x="298" y="418">8. 返回输出</text>
+  <text class="small" x="288" y="441">release / reuse buffer</text>
+  <path class="arrow" d="M749 318 V388"/>
+  <path class="arrow" d="M670 424 H622"/>
+  <path class="arrow" d="M464 424 H416"/>
+
+  <rect class="box" x="875" y="104" width="160" height="356" rx="8"/>
+  <text class="text" x="905" y="139">排查线索</text>
+  <text class="small" x="898" y="174">buffer 是否映射</text>
+  <text class="small" x="898" y="205">queue 是否推进</text>
+  <text class="small" x="898" y="236">doorbell 是否写入</text>
+  <text class="small" x="898" y="267">DMA 是否 fault</text>
+  <text class="small" x="898" y="298">中断是否到来</text>
+  <text class="small" x="898" y="329">runtime 是否唤醒</text>
+</svg>

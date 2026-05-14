@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="560" viewBox="0 0 1080 560" role="img" aria-labelledby="title desc">
+  <title id="title">错误 benchmark 反例</title>
+  <desc id="desc">展示口径混比、未预热、隐藏 CPU fallback 和非真实输入带来的误导。</desc>
+  <style>
+    .bg { fill: #f8fafc; }
+    .bad { fill: #ffe4e6; stroke: #fb7185; stroke-width: 2; }
+    .ok { fill: #dcfce7; stroke: #22c55e; stroke-width: 2; }
+    .title { font: 700 24px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+    .text { font: 600 16px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+    .small { font: 14px 'Microsoft YaHei', Arial, sans-serif; fill: #475569; }
+  </style>
+  <rect class="bg" width="1080" height="560"/>
+  <text class="title" x="38" y="44">“快 2 倍”常常来自口径错误，而不是系统真的更快</text>
+
+  <rect class="bad" x="72" y="96" width="420" height="118" rx="8"/>
+  <text class="text" x="108" y="130">反例 1：端到端 vs kernel 混比</text>
+  <text class="small" x="108" y="158">A: end-to-end 6 ms</text>
+  <text class="small" x="108" y="182">B: device time 3 ms</text>
+
+  <rect class="bad" x="588" y="96" width="420" height="118" rx="8"/>
+  <text class="text" x="624" y="130">反例 2：未区分 cold start</text>
+  <text class="small" x="624" y="158">run1 = 30 ms</text>
+  <text class="small" x="624" y="182">run2-run100 = 5 ms</text>
+
+  <rect class="bad" x="72" y="254" width="420" height="118" rx="8"/>
+  <text class="text" x="108" y="288">反例 3：CPU fallback 被隐藏</text>
+  <text class="small" x="108" y="316">NPU 2.5 ms + CPU 4.0 ms + copy 1.0 ms</text>
+  <text class="small" x="108" y="340">总耗时慢，但瓶颈不是 PE 阵列</text>
+
+  <rect class="bad" x="588" y="254" width="420" height="118" rx="8"/>
+  <text class="text" x="624" y="288">反例 4：输入分布不真实</text>
+  <text class="small" x="624" y="316">全 0 / 固定随机 / 单张图片</text>
+  <text class="small" x="624" y="340">无法代表动态 shape 和真实数据</text>
+
+  <rect class="ok" x="172" y="426" width="736" height="72" rx="8"/>
+  <text class="text" x="214" y="456">正确做法</text>
+  <text class="small" x="312" y="457">同口径比较；冷启动和稳定态分开；打开 profiler；使用代表性数据；同时报告精度。</text>
+</svg>

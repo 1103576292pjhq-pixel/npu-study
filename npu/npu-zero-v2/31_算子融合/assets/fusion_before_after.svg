@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520" role="img" aria-labelledby="title desc">
+  <title id="title">融合前后数据搬运对比</title>
+  <desc id="desc">Conv、Bias、ReLU 分开执行会反复读写中间张量；融合后只写最终输出。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#273447"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; }
+      .title { font: 700 24px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .label { font: 600 17px 'Microsoft YaHei', Arial, sans-serif; fill: #172033; }
+      .small { font: 14px 'Microsoft YaHei', Arial, sans-serif; fill: #465568; }
+      .warn { fill: #fff1f2; stroke: #fb7185; stroke-width: 2; }
+      .ok { fill: #ecfdf5; stroke: #34d399; stroke-width: 2; }
+      .op { fill: #e0f2fe; stroke: #0284c7; stroke-width: 2; }
+      .dram { fill: #fef3c7; stroke: #f59e0b; stroke-width: 2; }
+      .arrow { stroke: #273447; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect class="bg" width="980" height="520"/>
+  <text class="title" x="36" y="44">Conv + Bias + ReLU：融合省的是中间张量往返</text>
+
+  <rect class="panel" x="36" y="78" width="430" height="370" rx="8"/>
+  <text class="label" x="60" y="112">未融合：三个独立任务</text>
+  <rect class="op" x="70" y="145" width="116" height="54" rx="6"/>
+  <text class="label" x="107" y="179">Conv</text>
+  <rect class="op" x="230" y="145" width="116" height="54" rx="6"/>
+  <text class="label" x="257" y="179">Bias</text>
+  <rect class="op" x="70" y="258" width="116" height="54" rx="6"/>
+  <text class="label" x="106" y="292">ReLU</text>
+  <rect class="dram" x="258" y="252" width="146" height="70" rx="6"/>
+  <text class="label" x="309" y="280">DRAM</text>
+  <text class="small" x="286" y="303">A/B/Y 反复进出</text>
+  <path class="arrow" d="M186 172 H230"/>
+  <path class="arrow" d="M346 172 C396 172 416 225 404 260"/>
+  <path class="arrow" d="M258 292 H186"/>
+  <path class="arrow" d="M128 258 V204"/>
+  <rect class="warn" x="72" y="348" width="338" height="58" rx="6"/>
+  <text class="small" x="92" y="373">输出相关搬运约 5 次完整张量读写</text>
+  <text class="small" x="92" y="395">Conv 写 A，Bias 读 A 写 B，ReLU 读 B 写 Y</text>
+
+  <rect class="panel" x="514" y="78" width="430" height="370" rx="8"/>
+  <text class="label" x="538" y="112">融合：一个硬件任务</text>
+  <rect class="op" x="568" y="164" width="256" height="76" rx="8"/>
+  <text class="label" x="607" y="195">Conv 累加</text>
+  <text class="small" x="607" y="218">psum 留在寄存器 / SRAM 附近</text>
+  <rect class="ok" x="568" y="276" width="256" height="74" rx="8"/>
+  <text class="label" x="620" y="306">Bias + ReLU</text>
+  <text class="small" x="615" y="329">作为 epilogue 完成</text>
+  <rect class="dram" x="690" y="390" width="132" height="46" rx="6"/>
+  <text class="label" x="725" y="420">写 Y</text>
+  <path class="arrow" d="M696 240 V276"/>
+  <path class="arrow" d="M696 350 C696 371 718 382 746 390"/>
+  <rect class="ok" x="544" y="132" width="326" height="36" rx="6"/>
+  <text class="small" x="566" y="155">中间 A/B 不再写回外部内存</text>
+
+  <text class="small" x="62" y="484">判断线索：如果 profiling 中 DRAM bytes、task 数、layout copy 同时下降，融合才真正落到了执行路径。</text>
+</svg>
